@@ -15,4 +15,9 @@ public class Health : MonoBehaviour
     {
         health -= num;
     }
+
+    public int GetHealth()
+    {
+        return health;
+    }
 }
