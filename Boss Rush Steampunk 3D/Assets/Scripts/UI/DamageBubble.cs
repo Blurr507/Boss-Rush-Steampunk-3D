@@ -25,4 +25,12 @@ public class DamageBubble : MonoBehaviour
         //  Update the text
         text.text = damage.ToString();
     }
+
+    //  Reset damage
+    public void ResetDamage()
+    {
+        //  Disable text and set damage to 0
+        text.gameObject.SetActive(false);
+        damage = 0;
+    }
 }
