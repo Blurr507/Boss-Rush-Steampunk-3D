@@ -15,10 +15,13 @@ public class BattleStateManager : MonoBehaviour
 
     public GameObject attacksMenu;
     public GameObject spinners;
+	public GameObject bubble;
+
+	public static BattleStateManager me; //awful code
 
     void Start()
     {
-        
+		me = this;
     }
 
     void Update()
@@ -37,10 +40,12 @@ public class BattleStateManager : MonoBehaviour
         if (battleState == 2)
         {
             spinners.SetActive(true);
+			bubble.SetActive(true);
         }
         else
         {
             spinners.SetActive(false);
+			bubble.SetActive(false);
         }
     }
 }

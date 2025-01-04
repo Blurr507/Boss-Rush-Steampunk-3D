@@ -6,6 +6,12 @@ public class Health : MonoBehaviour
 {
     public int health;
 
+	//public bool boss;
+
+	//private bool ready;
+
+	public RectTransform hp;
+
     public void AddHealth(int num)
     {
         health += num;
@@ -20,4 +26,8 @@ public class Health : MonoBehaviour
     {
         return health;
     }
+
+	void Update(){
+		hp.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, health);
+	}
 }

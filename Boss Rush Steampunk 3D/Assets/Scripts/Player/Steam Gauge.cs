@@ -17,6 +17,11 @@ public class SteamGauge : MonoBehaviour
     public GameObject smallDamage; // A reference to the small damage prefab (which will be instantiated when you click)
     public Transform canvas; // A reference to the canvas to create the small damage object on
     public Bounds bounds; // The bounding box that the small damage objects can be create in
+	public Health enemyHealth; //enemy health script
+	public int totalDamage; //total damage
+
+	public DamageBubble bubble; //damage bubble
+
 
     void Start()
     {
@@ -28,8 +33,8 @@ public class SteamGauge : MonoBehaviour
 
     void Update()
     {
-        // Check if the left mouse button is clicked
-        if (isRotating && Input.GetMouseButtonDown(0))
+        // Check if the left mouse button is clicked or space bar
+        if (isRotating && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("space")))
         {
             isRotating = false; // Stop the rotation
 
@@ -41,19 +46,24 @@ public class SteamGauge : MonoBehaviour
                 Debug.Log("Success! Spinner stopped within the CRITICAL target range.");
                 SmallDamage damage = Instantiate(smallDamage, RandomPosInBounds(), Quaternion.LookRotation(transform.position - Camera.main.transform.position), canvas).GetComponent<SmallDamage>();
                 damage.damage = targetCriticalDamage;
+				totalDamage += targetCriticalDamage;
             }
             else if (IsWithinTargetRange(currentAngle, randomTargetAngle, targetAngleRange))
             {
                 Debug.Log("Success! Spinner stopped within the target range.");
                 SmallDamage damage = Instantiate(smallDamage, RandomPosInBounds(), Quaternion.LookRotation(transform.position - Camera.main.transform.position), canvas).GetComponent<SmallDamage>();
                 damage.damage = targetAngleDamage;
+				totalDamage += targetAngleDamage;
             }
             else
             {
                 Debug.Log($"Missed! Current angle: {currentAngle}°");
                 SmallDamage damage = Instantiate(smallDamage, RandomPosInBounds(), Quaternion.LookRotation(transform.position - Camera.main.transform.position), canvas).GetComponent<SmallDamage>();
                 damage.damage = targetFailDamage;
+				totalDamage += targetFailDamage;
             }
+
+			Invoke("next", 2f);
         }
 
         // Rotate the object if isRotating is true
@@ -63,9 +73,32 @@ public class SteamGauge : MonoBehaviour
         }
     }
 
+	void next(){
+		BattleStateManager.me.battleState = 3;
+		Invoke("hurt", 1f);
+		Invoke("back", 3f);
+	}
+
+	void hurt(){
+		bubble.Reset();
+		enemyHealth.SubtractHealth(totalDamage);
+		totalDamage = 0;
+	}
+
+	void back(){
+		BattleStateManager.me.battleState = 0;
+		Invoke("attak", 2f);
+	}
+
+	void attak(){
+		BattleStateManager.me.battleState = 1;
+	}
+
     public void Spin()
     {
         isRotating = true;
+		//set the battle state to the one with the wheel
+		BattleStateManager.me.battleState = 2;
     }
 
     private bool IsWithinTargetRange(float currentAngle, float targetAngle, float range)
