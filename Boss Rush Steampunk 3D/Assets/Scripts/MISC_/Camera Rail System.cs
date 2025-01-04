@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraRailSystem : MonoBehaviour
 {
+    //this script moves the object holding the camera to positions based on the state of the battle (choosing attacks, doing checks, etc)
     public BattleStateManager battleStateManager;
 
     [System.Serializable]
@@ -36,10 +37,6 @@ public class CameraRailSystem : MonoBehaviour
             // Get the target position and rotation
             Vector3 targetPosition = railPoints[currentState].position;
             Quaternion targetRotation = Quaternion.Euler(railPoints[currentState].rotation);
-
-            // Debugging Logs
-            Debug.Log($"Current battleState: {currentState}");
-            Debug.Log($"Target Position: {targetPosition}, Target Rotation: {targetRotation.eulerAngles}");
 
             // Smoothly interpolate position and rotation
             transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * positionLerpSpeed);

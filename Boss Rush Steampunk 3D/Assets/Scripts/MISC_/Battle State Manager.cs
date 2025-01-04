@@ -13,6 +13,9 @@ public class BattleStateManager : MonoBehaviour
     //more stages to be added/assigned
     public int battleState = 0;
 
+    public GameObject attacksMenu;
+    public GameObject spinners;
+
     void Start()
     {
         
@@ -20,6 +23,24 @@ public class BattleStateManager : MonoBehaviour
 
     void Update()
     {
-        
+        //EVERYTHING IN THIS UPDATE METHOD IS TEMPORARY AND FOR SHOWCASE TO THE TEAM
+        //also a switch case statement would be more efficient
+        if (battleState == 1)
+        {
+            attacksMenu.SetActive(true);
+        }
+        else
+        {
+            attacksMenu.SetActive(false);
+        }
+
+        if (battleState == 2)
+        {
+            spinners.SetActive(true);
+        }
+        else
+        {
+            spinners.SetActive(false);
+        }
     }
 }
