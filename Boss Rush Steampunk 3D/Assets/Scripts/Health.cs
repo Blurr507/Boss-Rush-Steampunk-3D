@@ -1,16 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     public int health;
+    public UnityEvent die;
+    public bool alive = true;
+    public RectTransform hp;
 
-	//public bool boss;
-
-	//private bool ready;
-
-	public RectTransform hp;
+    private void Start()
+    {
+        if(die.GetPersistentEventCount() == 0)
+        {
+            die.AddListener(Die);
+        }
+    }
+    void Update()
+    {
+        hp.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, health);
+        if(health <= 0 && alive)
+        {
+            die.Invoke();
+            alive = false;
+        }
+    }
 
     public void AddHealth(int num)
     {
@@ -27,7 +40,18 @@ public class Health : MonoBehaviour
         return health;
     }
 
-	void Update(){
-		hp.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, health);
-	}
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if(hp.gameObject != null)
+        {
+            Destroy(hp.parent.gameObject);
+            Destroy(hp.gameObject);
+        }
+    }
 }
