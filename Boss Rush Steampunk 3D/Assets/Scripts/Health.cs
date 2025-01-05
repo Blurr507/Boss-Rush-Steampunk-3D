@@ -48,7 +48,7 @@ public class Health : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(hp.gameObject != null)
+        if(hp != null && hp.gameObject != null)
         {
             Destroy(hp.parent.gameObject);
             Destroy(hp.gameObject);
