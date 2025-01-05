@@ -13,39 +13,78 @@ public class BattleStateManager : MonoBehaviour
     //more stages to be added/assigned
     public int battleState = 0;
 
-    public GameObject attacksMenu;
-    public GameObject spinners;
 	public GameObject bubble;
+    public List<CanSelect> selectables = new List<CanSelect>();
+    private CanSelect target;
 
 	public static BattleStateManager me; //awful code
 
     void Start()
     {
 		me = this;
+        for(int i =0; i < selectables.Count; i++)
+        {
+            selectables[i].canSelect = true;
+        }
     }
 
     void Update()
     {
-        //EVERYTHING IN THIS UPDATE METHOD IS TEMPORARY AND FOR SHOWCASE TO THE TEAM
-        //also a switch case statement would be more efficient
-        if (battleState == 1)
+        switch(battleState)
         {
-            attacksMenu.SetActive(true);
+            case 0: //  Select who to interact with
+                if(Input.GetMouseButtonDown(0))
+                {
+                    for(int i = 0; i < selectables.Count; i++)
+                    {
+                        if (selectables[i].selected)
+                        {
+                            target = selectables[i];
+                            IncrementState();
+                        }
+                    }
+                }
+                break;
         }
-        else
-        {
-            attacksMenu.SetActive(false);
-        }
+    }
 
-        if (battleState == 2)
+    public void IncrementState()
+    {
+        switch(battleState)
         {
-            spinners.SetActive(true);
-			bubble.SetActive(true);
+            case 0:
+                for(int i = 0; i < selectables.Count; i++)
+                {
+                    selectables[i].canSelect = false;
+                }
+                for(int i = 0; i < target.buttons.Count; i++)
+                {
+                    target.buttons[i].gameObject.SetActive(true);
+                }
+                battleState = 1;
+                break;
+            case 1:
+                for(int i = 0; i < target.buttons.Count; i++)
+                {
+                    target.buttons[i].gameObject.SetActive(false);
+                }
+                battleState = 2;
+                break;
+            case 2:
+                battleState = 3;
+                break;
+            case 3:
+                for (int i = 0; i < selectables.Count; i++)
+                {
+                    selectables[i].canSelect = true;
+                }
+                battleState = 0;
+                break;
         }
-        else
-        {
-            spinners.SetActive(false);
-			bubble.SetActive(false);
-        }
+    }
+
+    public void HurtTarget(int hp)
+    {
+        target.health.health -= hp;
     }
 }

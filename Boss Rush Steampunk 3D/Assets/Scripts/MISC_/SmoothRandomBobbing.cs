@@ -13,11 +13,13 @@ public class SmoothRandomBobbingAndRotation : MonoBehaviour
     public float yRotationAmplitude = 15f; // Maximum rotation on the Y-axis
     public float rotationSpeed = 1.0f; // Speed of rotation
 
-    private Vector3 initialLocalPosition;
-    private Quaternion initialLocalRotation;
+    [HideInInspector] public Vector3 initialLocalPosition;
+    [HideInInspector] public Quaternion initialLocalRotation;
     private float xNoiseOffset;
     private float yNoiseOffset;
     private float rotationNoiseOffset;
+
+    public bool active = true;
 
     void Start()
     {
@@ -33,20 +35,29 @@ public class SmoothRandomBobbingAndRotation : MonoBehaviour
 
     void Update()
     {
-        // Calculate offsets for position using Perlin noise
-        float x = Mathf.PerlinNoise(Time.time * xSpeed + xNoiseOffset, 0f) - 0.5f; // Centered around 0
-        float y = Mathf.PerlinNoise(Time.time * ySpeed + yNoiseOffset, 0f) - 0.5f; // Centered around 0
-        Vector3 positionOffset = new Vector3(x * xAmplitude * 2f, y * yAmplitude * 2f, 0f);
+        //  If active, do the wobbling and rotating
+        if (active)
+        {
+            // Calculate offsets for position using Perlin noise
+            float x = Mathf.PerlinNoise(Time.time * xSpeed + xNoiseOffset, 0f) - 0.5f; // Centered around 0
+            float y = Mathf.PerlinNoise(Time.time * ySpeed + yNoiseOffset, 0f) - 0.5f; // Centered around 0
+            Vector3 positionOffset = new Vector3(x * xAmplitude * 2f, y * yAmplitude * 2f, 0f);
 
-        // Update local position
-        transform.localPosition = initialLocalPosition + positionOffset;
+            // Update local position
+            transform.localPosition = initialLocalPosition + positionOffset;
 
-        // Calculate offsets for rotation using Perlin noise
-        float xRotation = (Mathf.PerlinNoise(Time.time * rotationSpeed + rotationNoiseOffset, 0f) - 0.5f) * 2f * xRotationAmplitude;
-        float yRotation = (Mathf.PerlinNoise(Time.time * rotationSpeed + rotationNoiseOffset + 50f, 0f) - 0.5f) * 2f * yRotationAmplitude; // Offset ensures different pattern
+            // Calculate offsets for rotation using Perlin noise
+            float xRotation = (Mathf.PerlinNoise(Time.time * rotationSpeed + rotationNoiseOffset, 0f) - 0.5f) * 2f * xRotationAmplitude;
+            float yRotation = (Mathf.PerlinNoise(Time.time * rotationSpeed + rotationNoiseOffset + 50f, 0f) - 0.5f) * 2f * yRotationAmplitude; // Offset ensures different pattern
 
-        // Update local rotation
-        Quaternion rotationOffset = Quaternion.Euler(xRotation, yRotation, 0f);
-        transform.localRotation = initialLocalRotation * rotationOffset;
+            // Update local rotation
+            Quaternion rotationOffset = Quaternion.Euler(xRotation, yRotation, 0f);
+            transform.localRotation = initialLocalRotation * rotationOffset;
+        }
+        else    //  Otherwise, just return to the initial position and rotation
+        {
+            transform.localPosition = initialLocalPosition;
+            transform.localRotation = initialLocalRotation;
+        }
     }
 }

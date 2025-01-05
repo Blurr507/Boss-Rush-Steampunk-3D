@@ -4,17 +4,17 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 
-[CustomEditor(typeof(SteamGauge))]
-public class SteamGaugeBoundingBox : Editor
+[CustomEditor(typeof(CreateObjectInBounds))]
+public class CreateObjectBounds : Editor
 {
-    SteamGauge gauge;
+    CreateObjectInBounds create;
     BoxBoundsHandle boxBoundsHandle = new BoxBoundsHandle();
 
     private void OnEnable()
     {
-        gauge = (SteamGauge)target;
-        boxBoundsHandle.size = gauge.bounds.size;
-        boxBoundsHandle.center = gauge.bounds.center;
+        create = (CreateObjectInBounds)target;
+        boxBoundsHandle.size = create.bounds.size;
+        boxBoundsHandle.center = create.bounds.center;
     }
 
     public override void OnInspectorGUI()
@@ -25,6 +25,6 @@ public class SteamGaugeBoundingBox : Editor
     private void OnSceneGUI()
     {
         boxBoundsHandle.DrawHandle();
-        gauge.bounds = new Bounds(boxBoundsHandle.center, boxBoundsHandle.size);
+        create.bounds = new Bounds(boxBoundsHandle.center, boxBoundsHandle.size);
     }
 }

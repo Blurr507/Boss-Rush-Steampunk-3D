@@ -14,6 +14,8 @@ public class DamageBubble : MonoBehaviour
         text = GetComponentInChildren<TextMeshProUGUI>();
         //  Make the text invisible if the current damage is 0
         text.gameObject.SetActive(damage != 0);
+        //  Set parent to the world space camera (for cases where it's instantiated as a child of a skillcheck object)
+        transform.parent = GameObject.FindGameObjectWithTag("WorldSpaceCanvas").transform;
     }
 
     //  Add damage to the total
