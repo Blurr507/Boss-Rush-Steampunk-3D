@@ -92,4 +92,18 @@ public class BattleStateManager : MonoBehaviour
     {
         target.health.health -= hp;
     }
+
+    public void BackToState0()
+    {
+        gooseAnimator.Play("Idle");
+        for (int i = 0; i < selectables.Count; i++)
+        {
+            selectables[i].canSelect = true;
+        }
+        battleState = 0;
+        for (int i = 0; i < target.buttons.Count; i++)
+        {
+            target.buttons[i].gameObject.SetActive(false);
+        }
+    }
 }
