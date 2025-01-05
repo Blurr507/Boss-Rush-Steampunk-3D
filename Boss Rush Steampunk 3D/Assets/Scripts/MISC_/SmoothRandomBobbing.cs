@@ -3,10 +3,10 @@ using UnityEngine;
 public class SmoothRandomBobbingAndRotation : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float xAmplitude = 0.5f; // Maximum horizontal distance
-    public float yAmplitude = 0.5f; // Maximum vertical distance
-    public float xSpeed = 1.0f; // Speed of horizontal movement
-    public float ySpeed = 1.0f; // Speed of vertical movement
+    public float xAmplitude = 0.2f; // Maximum horizontal distance
+    public float yAmplitude = 0.2f; // Maximum vertical distance
+    public float xSpeed = 0.5f; // Speed of horizontal movement
+    public float ySpeed = 0.5f; // Speed of vertical movement
 
     [Header("Rotation Settings")]
     public float xRotationAmplitude = 15f; // Maximum rotation on the X-axis

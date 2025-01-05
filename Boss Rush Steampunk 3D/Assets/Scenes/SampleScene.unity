@@ -152,9 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82e3b0405ffb5c42bb993a4178141a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gooseAnimator: {fileID: 363251907}
   battleState: 0
-  attacksMenu: {fileID: 1580799907}
-  spinners: {fileID: 0}
   bubble: {fileID: 0}
   selectables:
   - {fileID: 363251911}
@@ -660,7 +659,7 @@ Animator:
   m_GameObject: {fileID: 363251906}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6dfd016a7e204b643a7a619e7e5d642a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 51d3fa8b66cc77f42b6762fb2d7a74ce, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -712,7 +711,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 384600c4fb2d79d42aad98c4ae59deff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f74412f6224dc046a82e9e381cb87c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1100,7 +1099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1172885373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1246,7 +1245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1283642123
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1635,7 +1634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1580799908
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1986,13 +1985,14 @@ GameObject:
   - component: {fileID: 1950218385}
   - component: {fileID: 1950218384}
   - component: {fileID: 1950218387}
+  - component: {fileID: 1950218388}
   m_Layer: 5
   m_Name: Attack 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1950218383
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2117,6 +2117,20 @@ MonoBehaviour:
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
+--- !u!114 &1950218388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950218382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ba30d2ce13f6a48b5dba00745eb2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillCheck: {fileID: 6347206452958817606, guid: f0dd67962e8d5594ab7fcdb92b6358be,
+    type: 3}
 --- !u!1 &1999581186
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,9 +2520,7 @@ MonoBehaviour:
   selectOffset: {x: 0, y: 0.25, z: -0.25}
   transitionSpeed: 2
   buttons:
-  - {fileID: 1283642122}
-  - {fileID: 1950218382}
-  - {fileID: 1172885372}
+  - {fileID: 1580799907}
   health: {fileID: 0}
 --- !u!114 &2120184891
 MonoBehaviour:
@@ -2578,14 +2590,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120238108}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21561599, y: 0.08508985, z: -0.018863963, w: 0.9725809}
-  m_LocalPosition: {x: -0.8, y: 3.8, z: -4.6}
+  m_LocalRotation: {x: 0.2113091, y: 0.2113091, z: -0.0468461, w: 0.9531539}
+  m_LocalPosition: {x: -3.4, y: 1.8, z: -1.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 241451898}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 25, y: 10, z: 0}
+  m_LocalEulerAnglesHint: {x: 25, y: 25, z: 0}
 --- !u!114 &2120238111
 MonoBehaviour:
   m_ObjectHideFlags: 0

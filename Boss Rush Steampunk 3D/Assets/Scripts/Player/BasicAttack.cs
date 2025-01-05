@@ -18,7 +18,7 @@ public class BasicAttack : MonoBehaviour
         gauge = GetComponentInChildren<SteamGauge>();
         bubble = GetComponentInChildren<DamageBubble>();
         create = GetComponent<CreateObjectInBounds>();
-        Invoke("Spin", 1f);
+        Invoke("Spin", 0f);
         
     }
 

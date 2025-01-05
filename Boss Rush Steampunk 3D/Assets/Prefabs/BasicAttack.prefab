@@ -142,7 +142,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: ff76df7f72dc41548b59e7c414556a36, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 179cb8cc92532914494afac670e0d757, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -182,7 +182,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.084186025, y: 0.25783423, z: -0.02255758, w: 0.9622502}
   m_LocalPosition: {x: -2, y: 1, z: -0.2}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4739649935155603868}
@@ -206,8 +206,8 @@ MonoBehaviour:
   yAmplitude: 0.2
   xSpeed: 0.5
   ySpeed: 0.5
-  xRotationAmplitude: 10
-  yRotationAmplitude: 10
+  xRotationAmplitude: 15
+  yRotationAmplitude: 15
   rotationSpeed: 1
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
@@ -324,7 +324,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 763f983f439055f4d8630fdff0441a2d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5727ccedcdc0c8a4c80efadecd6698c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -408,7 +408,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0d4ffc6a422578b4c975726fa8842b57, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fcbb8b9bb4e6f25468c9c92deff38d57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -530,7 +530,7 @@ PrefabInstance:
     - target: {fileID: 5621164217480333004, guid: 93ffde220441565449e6778776da3f92,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.5
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 5621164217480333004, guid: 93ffde220441565449e6778776da3f92,
         type: 3}
@@ -565,8 +565,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8336437992679667849, guid: 93ffde220441565449e6778776da3f92,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3385900774350451497}
   m_SourcePrefab: {fileID: 100100000, guid: 93ffde220441565449e6778776da3f92, type: 3}
+--- !u!1 &6358100855854641208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8336437992679667849, guid: 93ffde220441565449e6778776da3f92,
+    type: 3}
+  m_PrefabInstance: {fileID: 3138016241045686449}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3385900774350451497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6358100855854641208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e6991a7a19e7b4cb7bc9a60276739e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xAmplitude: 0.2
+  yAmplitude: 0.2
+  xSpeed: 0.5
+  ySpeed: 0.5
+  xRotationAmplitude: 15
+  yRotationAmplitude: 15
+  rotationSpeed: 1
+  initialLocalPosition: {x: 0, y: 0, z: 0}
+  initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
+  active: 1
 --- !u!224 &7317815271905955453 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5621164217480333004, guid: 93ffde220441565449e6778776da3f92,
