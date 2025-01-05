@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    public int health;
+    public int health, maxHealth;
     public UnityEvent die;
     public bool alive = true;
     public RectTransform hp;
@@ -27,12 +27,12 @@ public class Health : MonoBehaviour
 
     public void AddHealth(int num)
     {
-        health += num;
+        health = Mathf.Min(health + num, maxHealth);
     }
 
     public void SubtractHealth(int num)
     {
-        health -= num;
+        health = Mathf.Max(health - num, 0);
     }
 
     public int GetHealth()

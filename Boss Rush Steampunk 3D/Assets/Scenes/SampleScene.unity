@@ -159,6 +159,9 @@ MonoBehaviour:
   selectables:
   - {fileID: 363251911}
   - {fileID: 2120184890}
+  enemies:
+  - {fileID: 2120184893}
+  currentEnemy: 0
 --- !u!4 &31058657
 Transform:
   m_ObjectHideFlags: 0
@@ -449,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &69365187
 RectTransform:
   m_ObjectHideFlags: 0
@@ -486,9 +489,11 @@ MonoBehaviour:
   yAmplitude: 0.05
   xSpeed: 0.2
   ySpeed: 0.2
+  lerpSpeed: 20
   xRotationAmplitude: 5
   yRotationAmplitude: 5
   rotationSpeed: 0.3
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
@@ -873,7 +878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &201198571
 RectTransform:
   m_ObjectHideFlags: 0
@@ -910,9 +915,11 @@ MonoBehaviour:
   yAmplitude: 0.05
   xSpeed: 0.2
   ySpeed: 0.2
+  lerpSpeed: 20
   xRotationAmplitude: 5
   yRotationAmplitude: 5
   rotationSpeed: 0.3
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
@@ -1031,7 +1038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &202984925
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1096,9 +1103,11 @@ MonoBehaviour:
   yAmplitude: 0.05
   xSpeed: 0.2
   ySpeed: 0.2
+  lerpSpeed: 20
   xRotationAmplitude: 5
   yRotationAmplitude: 5
   rotationSpeed: 0.3
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
@@ -1350,9 +1359,11 @@ MonoBehaviour:
   yAmplitude: 0.1
   xSpeed: 0.5
   ySpeed: 0.5
+  lerpSpeed: 20
   xRotationAmplitude: 2
   yRotationAmplitude: 2
   rotationSpeed: 0.5
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
@@ -1747,6 +1758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
+  maxHealth: 200
   die:
     m_PersistentCalls:
       m_Calls: []
@@ -1787,9 +1799,11 @@ MonoBehaviour:
   yAmplitude: 0.25
   xSpeed: 0.1
   ySpeed: 0.1
+  lerpSpeed: 20
   xRotationAmplitude: 5
   yRotationAmplitude: 5
   rotationSpeed: 1
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
@@ -1907,13 +1921,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 539022619}
+  - component: {fileID: 539022620}
   m_Layer: 5
   m_Name: Heal Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &539022619
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1937,6 +1952,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &539022620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539022618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b581a377d073ea74bbaba5333cb4f0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &550659411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,7 +2167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1172885373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2259,9 +2286,11 @@ MonoBehaviour:
   yAmplitude: 0.05
   xSpeed: 0.2
   ySpeed: 0.2
+  lerpSpeed: 20
   xRotationAmplitude: 5
   yRotationAmplitude: 5
   rotationSpeed: 0.3
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
@@ -2286,7 +2315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1283642123
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2417,9 +2446,11 @@ MonoBehaviour:
   yAmplitude: 0.05
   xSpeed: 0.2
   ySpeed: 0.2
+  lerpSpeed: 20
   xRotationAmplitude: 5
   yRotationAmplitude: 5
   rotationSpeed: 0.3
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
@@ -2669,13 +2700,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1580799908}
+  - component: {fileID: 1580799909}
   m_Layer: 5
   m_Name: Attacks Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1580799908
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2699,6 +2731,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1580799909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580799907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b581a377d073ea74bbaba5333cb4f0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1630705759
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,7 +2762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1630705760
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2755,9 +2799,11 @@ MonoBehaviour:
   yAmplitude: 0.05
   xSpeed: 0.2
   ySpeed: 0.2
+  lerpSpeed: 20
   xRotationAmplitude: 5
   yRotationAmplitude: 5
   rotationSpeed: 0.3
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
@@ -3072,7 +3118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1777151151
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3123,9 +3169,11 @@ MonoBehaviour:
   yAmplitude: 0.05
   xSpeed: 0.2
   ySpeed: 0.2
+  lerpSpeed: 20
   xRotationAmplitude: 5
   yRotationAmplitude: 5
   rotationSpeed: 0.3
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
@@ -3471,7 +3519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1950218383
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3590,9 +3638,11 @@ MonoBehaviour:
   yAmplitude: 0.05
   xSpeed: 0.2
   ySpeed: 0.2
+  lerpSpeed: 20
   xRotationAmplitude: 5
   yRotationAmplitude: 5
   rotationSpeed: 0.3
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
@@ -4008,6 +4058,7 @@ GameObject:
   - component: {fileID: 2120184892}
   - component: {fileID: 2120184891}
   - component: {fileID: 2120184890}
+  - component: {fileID: 2120184893}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -4116,6 +4167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
+  maxHealth: 200
   die:
     m_PersistentCalls:
       m_Calls: []
@@ -4156,9 +4208,11 @@ MonoBehaviour:
   yAmplitude: 0.25
   xSpeed: 0.1
   ySpeed: 0.1
+  lerpSpeed: 20
   xRotationAmplitude: 5
   yRotationAmplitude: 5
   rotationSpeed: 1
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
@@ -4181,8 +4235,50 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.3984175, y: 3.0959988, z: 0.20000002}
-  m_Center: {x: -0.056383163, y: 0.2382125, z: -0.00000025728403}
+  m_Size: {x: 4.3984175, y: 3.8104289, z: 0.20000002}
+  m_Center: {x: -0.056383163, y: -0.11900262, z: -0.00000017637831}
+--- !u!114 &2120184893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120184885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: babfb669beb2f8c49a90c4043213c668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacks: []
+  target: {fileID: 363251911}
+  turns: 1
+  maxTurns: 1
+  attack1Damage: 30
+  attack1: {fileID: 6753388683754912508, guid: e3b717adc15eced41afe5751b6f38d65, type: 3}
+  posCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 5.519876
+      outSlope: 5.519876
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.03695488
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2120238108
 GameObject:
   m_ObjectHideFlags: 0
@@ -4208,14 +4304,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120238108}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21577239, y: -0.07659923, z: 0.01698164, w: 0.9732864}
-  m_LocalPosition: {x: -1.7, y: 2.1, z: -2}
+  m_LocalRotation: {x: 0.215616, y: 0.085089795, z: -0.018863954, w: 0.9725809}
+  m_LocalPosition: {x: -0.8, y: 3.8, z: -4.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 241451898}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 25, y: -9, z: 0}
+  m_LocalEulerAnglesHint: {x: 25, y: 10, z: 0}
 --- !u!114 &2120238111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4236,8 +4332,14 @@ MonoBehaviour:
     rotation: {x: 25, y: -9, z: 0}
   - position: {x: -3.4, y: 1.8, z: -1.7}
     rotation: {x: 25, y: 25, z: 0}
-  - position: {x: 4, y: 3, z: -2.8}
-    rotation: {x: 20, y: -14, z: 0}
+  - position: {x: -0.8, y: 3.8, z: -4.6}
+    rotation: {x: 25, y: 10, z: 0}
+  - position: {x: 2.9, y: 2.9, z: -3}
+    rotation: {x: 19, y: 7, z: -3}
+  - position: {x: 3.7, y: 2.7, z: -2.2}
+    rotation: {x: 17, y: -14, z: -9}
+  - position: {x: -0.8, y: 3.8, z: -4.6}
+    rotation: {x: 25, y: 10, z: 0}
   positionLerpSpeed: 5
   rotationLerpSpeed: 5
 --- !u!1660057539 &9223372036854775807

@@ -107,9 +107,11 @@ MonoBehaviour:
   yAmplitude: 0.2
   xSpeed: 0.5
   ySpeed: 0.5
+  lerpSpeed: 20
   xRotationAmplitude: 15
   yRotationAmplitude: 15
   rotationSpeed: 1
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
@@ -250,9 +252,11 @@ MonoBehaviour:
   yAmplitude: 0.2
   xSpeed: 0.5
   ySpeed: 0.5
+  lerpSpeed: 20
   xRotationAmplitude: 15
   yRotationAmplitude: 15
   rotationSpeed: 1
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
@@ -607,7 +611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5815995183778627550}
-  - component: {fileID: 5011776381134253176}
+  - component: {fileID: 3295405493375231788}
   - component: {fileID: 3422003543469745128}
   m_Layer: 0
   m_Name: BasicHeal
@@ -633,7 +637,7 @@ Transform:
   - {fileID: 2888004501922609976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5011776381134253176
+--- !u!114 &3295405493375231788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -642,14 +646,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 8844748375504431931}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39f500969f61f714d94c711576fa7361, type: 3}
+  m_Script: {fileID: 11500000, guid: 639eb08d5ac93ee479d813a88b6f0ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gauge: {fileID: 0}
   bubble: {fileID: 0}
-  failDamage: -5
-  hitDamage: -15
-  critDamage: -30
+  bubbleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 5.519876
+      outSlope: 5.519876
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.03695488
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  failHeal: 5
+  hitHeal: 30
+  critHeal: 45
 --- !u!114 &3422003543469745128
 MonoBehaviour:
   m_ObjectHideFlags: 0

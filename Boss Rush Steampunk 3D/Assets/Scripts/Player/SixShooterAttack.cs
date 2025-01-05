@@ -12,6 +12,7 @@ public class SixShooterAttack : MonoBehaviour
     public SteamGauge gauge5;
     public SteamGauge gauge6;
     public DamageBubble bubble;
+    public AnimationCurve bubbleCurve;
     private int stage = 0;
     public int failDamage = 5;  // The damage done if the spinner stops outside of the target angle
     public int hitDamage = 20; // The damage done if the spinner stops in the target angle
@@ -88,6 +89,7 @@ public class SixShooterAttack : MonoBehaviour
     private void Move()
     {
         BattleStateManager.me.IncrementState();
+        bubble.MoveToPos(BattleStateManager.me.GetTarget().transform.position, 1f, bubbleCurve);
         Invoke("Attack", 1f);
     }
 
@@ -119,7 +121,6 @@ public class SixShooterAttack : MonoBehaviour
     private void Done()
     {
         BattleStateManager.me.IncrementState();
-        Destroy(bubble.gameObject);
         Destroy(gameObject);
     }
 }

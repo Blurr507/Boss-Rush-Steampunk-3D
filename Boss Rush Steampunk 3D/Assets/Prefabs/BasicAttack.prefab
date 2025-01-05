@@ -49,6 +49,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gauge: {fileID: 0}
   bubble: {fileID: 0}
+  bubbleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 5.519876
+      outSlope: 5.519876
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.03695488
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   failDamage: 5
   hitDamage: 20
   critDamage: 50
@@ -206,9 +230,11 @@ MonoBehaviour:
   yAmplitude: 0.2
   xSpeed: 0.5
   ySpeed: 0.5
+  lerpSpeed: 20
   xRotationAmplitude: 15
   yRotationAmplitude: 15
   rotationSpeed: 1
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
@@ -485,7 +511,7 @@ PrefabInstance:
     - target: {fileID: 5621164217480333004, guid: 93ffde220441565449e6778776da3f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.0009999997
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 5621164217480333004, guid: 93ffde220441565449e6778776da3f92,
         type: 3}
@@ -593,9 +619,11 @@ MonoBehaviour:
   yAmplitude: 0.2
   xSpeed: 0.5
   ySpeed: 0.5
+  lerpSpeed: 20
   xRotationAmplitude: 15
   yRotationAmplitude: 15
   rotationSpeed: 1
+  rotationLerpSpeed: 50
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1

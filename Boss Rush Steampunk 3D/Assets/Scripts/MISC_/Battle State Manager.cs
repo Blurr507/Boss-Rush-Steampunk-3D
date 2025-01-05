@@ -11,19 +11,24 @@ public class BattleStateManager : MonoBehaviour
     //the attack menu (choosing attacks) is assigned the interger 1
     //the skill check stage is assigned the interger 2
     //the boss damage stage is assigned the interger 3
+    //the boss attack stage is assigned the integer 4
+    //the defense stage is assigned the integer 5
+    //the player damage stage is assigned the integer 6
     //more stages to be added/assigned
     public int battleState = 0;
 
 	public GameObject bubble;
     public List<CanSelect> selectables = new List<CanSelect>();
+    public List<Enemy> enemies = new List<Enemy>();
     private CanSelect target;
+    public int currentEnemy = 0;
 
 	public static BattleStateManager me; //awful code
 
-    void Start()
+    void Awake()
     {
         me = this;
-        for(int i =0; i < selectables.Count; i++)
+        for(int i = 0; i < selectables.Count; i++)
         {
             selectables[i].canSelect = true;
         }
@@ -53,7 +58,7 @@ public class BattleStateManager : MonoBehaviour
     {
         switch(battleState)
         {
-            case 0:
+            case 0: //  Choose target
                 gooseAnimator.Play("Thinking");
                 for (int i = 0; i < selectables.Count; i++)
                 {
@@ -65,7 +70,7 @@ public class BattleStateManager : MonoBehaviour
                 }
                 battleState = 1;
                 break;
-            case 1:
+            case 1: //  Choose action
                 gooseAnimator.Play("Idle");
                 for (int i = 0; i < target.buttons.Count; i++)
                 {
@@ -73,24 +78,52 @@ public class BattleStateManager : MonoBehaviour
                 }
                 battleState = 2;
                 break;
-            case 2:
+            case 2: //  Skill check
                 gooseAnimator.Play("Idle");
                 battleState = 3;
                 break;
-            case 3:
-                gooseAnimator.Play("Idle");
-                for (int i = 0; i < selectables.Count; i++)
+            case 3: //  Damage/heal target
+                if (enemies.Count > 0)
                 {
-                    selectables[i].canSelect = true;
+                    ToState4();
                 }
-                battleState = 0;
+                else
+                {
+                    BackToState0();
+                }
+                break;
+            case 4: //  Enemy attack
+                battleState = 5;
+                break;
+            case 5: //  Player Block
+                battleState = 6;
+                break;
+            case 6: //  Player Damage
+                if(currentEnemy < enemies.Count)
+                {
+                    ToState4();
+                }
+                else
+                {
+                    BackToState0();
+                }
                 break;
         }
     }
 
     public void HurtTarget(int hp)
     {
-        target.health.health -= hp;
+        target.health.SubtractHealth(hp);
+    }
+
+    public void HealTarget(int hp)
+    {
+        target.health.AddHealth(hp);
+    }
+
+    public CanSelect GetTarget()
+    {
+        return target;
     }
 
     public void BackToState0()
@@ -105,5 +138,35 @@ public class BattleStateManager : MonoBehaviour
         {
             target.buttons[i].gameObject.SetActive(false);
         }
+        ResetEnemies();
+    }
+
+    public void ToState4()
+    {
+        gooseAnimator.Play("Idle");
+        for (int i = 0; i < selectables.Count; i++)
+        {
+            selectables[i].canSelect = false;
+        }
+        battleState = 4;
+        for (int i = 0; i < target.buttons.Count; i++)
+        {
+            target.buttons[i].gameObject.SetActive(false);
+        }
+
+        enemies[currentEnemy].DoTurn();
+        if (enemies[currentEnemy].turns <= 0)
+        {
+            currentEnemy++;
+        }
+    }
+
+    public void ResetEnemies()
+    {
+        foreach(Enemy enemy in enemies)
+        {
+            enemy.ResetTurns();
+        }
+        currentEnemy = 0;
     }
 }

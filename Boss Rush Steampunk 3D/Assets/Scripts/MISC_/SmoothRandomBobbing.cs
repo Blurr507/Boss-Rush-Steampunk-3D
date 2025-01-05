@@ -7,11 +7,13 @@ public class SmoothRandomBobbingAndRotation : MonoBehaviour
     public float yAmplitude = 0.2f; // Maximum vertical distance
     public float xSpeed = 0.5f; // Speed of horizontal movement
     public float ySpeed = 0.5f; // Speed of vertical movement
+    public float lerpSpeed = 20f; // Multiplier for lerping position
 
     [Header("Rotation Settings")]
     public float xRotationAmplitude = 15f; // Maximum rotation on the X-axis
     public float yRotationAmplitude = 15f; // Maximum rotation on the Y-axis
     public float rotationSpeed = 1.0f; // Speed of rotation
+    public float rotationLerpSpeed = 50f; // Multiplier for lerping rotation
 
     [HideInInspector] public Vector3 initialLocalPosition;
     [HideInInspector] public Quaternion initialLocalRotation;
@@ -43,21 +45,21 @@ public class SmoothRandomBobbingAndRotation : MonoBehaviour
             float y = Mathf.PerlinNoise(Time.time * ySpeed + yNoiseOffset, 0f) - 0.5f; // Centered around 0
             Vector3 positionOffset = new Vector3(x * xAmplitude * 2f, y * yAmplitude * 2f, 0f);
 
-            // Update local position
-            transform.localPosition = initialLocalPosition + positionOffset;
+            // Update local position (with lerp for smoothing)
+            transform.localPosition = Vector3.Lerp(transform.localPosition, initialLocalPosition + positionOffset, lerpSpeed * Time.deltaTime);
 
             // Calculate offsets for rotation using Perlin noise
             float xRotation = (Mathf.PerlinNoise(Time.time * rotationSpeed + rotationNoiseOffset, 0f) - 0.5f) * 2f * xRotationAmplitude;
             float yRotation = (Mathf.PerlinNoise(Time.time * rotationSpeed + rotationNoiseOffset + 50f, 0f) - 0.5f) * 2f * yRotationAmplitude; // Offset ensures different pattern
 
-            // Update local rotation
+            // Update local rotation (with lerp for smoothing)
             Quaternion rotationOffset = Quaternion.Euler(xRotation, yRotation, 0f);
-            transform.localRotation = initialLocalRotation * rotationOffset;
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, initialLocalRotation * rotationOffset, rotationLerpSpeed * Time.deltaTime);
         }
-        else    //  Otherwise, just return to the initial position and rotation
+        else    //  Otherwise, just return to the initial position and rotation (with lerp for smoothing)
         {
-            transform.localPosition = initialLocalPosition;
-            transform.localRotation = initialLocalRotation;
+            transform.localPosition = Vector3.Lerp(transform.localPosition, initialLocalPosition, lerpSpeed * Time.deltaTime); ;
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, initialLocalRotation, rotationLerpSpeed * Time.deltaTime);
         }
     }
 }
