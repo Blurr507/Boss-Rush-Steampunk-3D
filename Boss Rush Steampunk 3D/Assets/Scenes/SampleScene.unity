@@ -164,6 +164,11 @@ MonoBehaviour:
   currentEnemy: 0
   damageNumberObject: {fileID: 2984769879015613166, guid: 1bf1a535fe573d04babe7b09b19a51e8,
     type: 3}
+  baseDamage: {r: 1, g: 1, b: 1, a: 1}
+  fireDamage: {r: 1, g: 0, b: 0, a: 1}
+  electricDamage: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  oilDamage: {r: 0, g: 0, b: 0, a: 1}
+  healDamage: {r: 0, g: 1, b: 0, a: 1}
 --- !u!4 &31058657
 Transform:
   m_ObjectHideFlags: 0
@@ -371,7 +376,7 @@ GameObject:
   - component: {fileID: 62863244}
   - component: {fileID: 62863243}
   m_Layer: 5
-  m_Name: Image
+  m_Name: GaeuxHealthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3760,7 +3765,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &1999581190
 RectTransform:
@@ -3999,7 +4004,7 @@ GameObject:
   - component: {fileID: 2117721395}
   - component: {fileID: 2117721394}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: SpiderHealthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4079,6 +4084,7 @@ GameObject:
   - component: {fileID: 2120184891}
   - component: {fileID: 2120184890}
   - component: {fileID: 2120184893}
+  - component: {fileID: 2120184894}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -4274,6 +4280,7 @@ MonoBehaviour:
   turns: 1
   maxTurns: 1
   attack1Damage: 30
+  damageType: 0
   attack1: {fileID: 6753388683754912508, guid: e3b717adc15eced41afe5751b6f38d65, type: 3}
   posCurve:
     serializedVersion: 2
@@ -4299,6 +4306,23 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2120184894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120184885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b0cd0fdb1847a4795a2f21a118c914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 0}
+  bounds:
+    m_Center: {x: 3.535092, y: 3.1680403, z: -0.084183276}
+    m_Extent: {x: 0.53035474, y: 0.2577176, z: 0.23640111}
+  faceCamera: 1
 --- !u!1 &2120238108
 GameObject:
   m_ObjectHideFlags: 0

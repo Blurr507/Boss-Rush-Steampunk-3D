@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,6 +32,7 @@ public class BattleStateManager : MonoBehaviour
 
     void Awake()
     {
+        Random.InitState(System.DateTime.Today.Second * System.DateTime.Today.Minute);
         me = this;
         for(int i = 0; i < selectables.Count; i++)
         {
