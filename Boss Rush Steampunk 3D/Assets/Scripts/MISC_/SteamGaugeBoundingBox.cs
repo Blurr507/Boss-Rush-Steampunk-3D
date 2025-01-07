@@ -1,8 +1,8 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.IMGUI.Controls;
+//using UnityEditor.IMGUI.Controls;
 
 [CustomEditor(typeof(CreateObjectInBounds))]
 public class CreateObjectBounds : Editor
@@ -27,4 +27,4 @@ public class CreateObjectBounds : Editor
         boxBoundsHandle.DrawHandle();
         create.bounds = new Bounds(boxBoundsHandle.center, boxBoundsHandle.size);
     }
-}
+} */

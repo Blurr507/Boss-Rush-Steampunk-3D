@@ -1,12 +1,11 @@
-using UnityEditor.IMGUI.Controls;
-using UnityEditor.TerrainTools;
+//using UnityEditor.IMGUI.Controls;
+//using UnityEditor.TerrainTools;
 using UnityEngine;
 
 public class SteamGauge : MonoBehaviour
 {
     public Transform spinner; // Reference to the object to rotate
-    public Transform indicator; // Reference to the skill check indicator
-    public Transform notches; // Reference to the gauge notches
+    public Transform indicator; //Reference to the skill check indicator
     public float rotationSpeed = 90f; // Speed of rotation in degrees per second
     public float targetAngleRange = 45f; // Range of degrees within which the spinner stops
     public float targetCriticalRange = 10f; // Range of degrees within which the spinner stops to get a critical strike
@@ -75,7 +74,6 @@ public class SteamGauge : MonoBehaviour
         // Choose a random target angle at the start (0 to 360 degrees)
         randomTargetAngle = Random.Range(0f, 360f);
         indicator.Rotate(0, 0, randomTargetAngle);
-        notches.Rotate(0, 0, randomTargetAngle);
         Debug.Log($"Target Angle: {randomTargetAngle}°");
     }
 
