@@ -12,6 +12,7 @@ public class BasicAttack : MonoBehaviour
     public int failDamage = 5; // The damage done if the spinner stops outside of the target angle
     public int hitDamage = 20; // The damage done if the spinner stops in the target angle
     public int critDamage = 50; // The damage done if the spinner stops in the target angle
+    public int damageType = 0;  // This dictates the damage type.
     private CreateObjectInBounds create; // A reference to a CreateObjectInBounds component for creating the SmallDamage numbers
 
     void Start()
@@ -73,7 +74,7 @@ public class BasicAttack : MonoBehaviour
     private void Attack()
     {
         //  Deal damage to the battle state's selected enemy, and call done in 1 second
-        BattleStateManager.me.HurtTarget(bubble.damage);
+        BattleStateManager.me.HurtTarget(bubble.damage, damageType);
         Invoke("Done", 1f);
     }
 

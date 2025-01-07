@@ -162,6 +162,8 @@ MonoBehaviour:
   enemies:
   - {fileID: 2120184893}
   currentEnemy: 0
+  damageNumberObject: {fileID: 2984769879015613166, guid: 1bf1a535fe573d04babe7b09b19a51e8,
+    type: 3}
 --- !u!4 &31058657
 Transform:
   m_ObjectHideFlags: 0
@@ -878,7 +880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &201198571
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1033,12 +1035,12 @@ GameObject:
   - component: {fileID: 202984927}
   - component: {fileID: 202984926}
   m_Layer: 5
-  m_Name: Attack 1
+  m_Name: Heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &202984925
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1558,7 +1560,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buff
+  m_text: Cleanse
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1650,6 +1652,7 @@ GameObject:
   - component: {fileID: 363251913}
   - component: {fileID: 363251912}
   - component: {fileID: 363251911}
+  - component: {fileID: 363251914}
   m_Layer: 0
   m_Name: testgaeux
   m_TagString: Untagged
@@ -1828,6 +1831,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6220455, y: 1.6334863, z: 0.2}
   m_Center: {x: 0.035666227, y: 0.004104048, z: 0}
+--- !u!114 &363251914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363251906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b0cd0fdb1847a4795a2f21a118c914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 0}
+  bounds:
+    m_Center: {x: -3.4565206, y: 1.9299004, z: 0.00011909008}
+    m_Extent: {x: 0.26088858, y: 0.15031981, z: 0.078297645}
+  faceCamera: 1
 --- !u!1 &449842363
 GameObject:
   m_ObjectHideFlags: 0
@@ -2757,12 +2777,12 @@ GameObject:
   - component: {fileID: 1630705762}
   - component: {fileID: 1630705761}
   m_Layer: 5
-  m_Name: Attack 3
+  m_Name: Defend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1630705760
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3113,12 +3133,12 @@ GameObject:
   - component: {fileID: 1777151153}
   - component: {fileID: 1777151152}
   m_Layer: 5
-  m_Name: Attack 2
+  m_Name: Cleanse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1777151151
 RectTransform:
   m_ObjectHideFlags: 0

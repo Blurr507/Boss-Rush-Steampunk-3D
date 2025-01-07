@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Spider : Enemy
 {
     public int attack1Damage = 30;
+    public int damageType = 0;
     public GameObject attack1;
     public AnimationCurve posCurve;
 
@@ -33,7 +34,7 @@ public class Spider : Enemy
         // State = 6
         bubble.MoveToPos(target.transform.position, 1, posCurve);
         yield return new WaitForSeconds(1f);
-        HurtTarget(attack1Damage);
+        HurtTarget(attack1Damage, damageType);
         Destroy(attack);
         BattleStateManager.me.IncrementState();
     }

@@ -17,6 +17,7 @@ public class SixShooterAttack : MonoBehaviour
     public int failDamage = 5;  // The damage done if the spinner stops outside of the target angle
     public int hitDamage = 20; // The damage done if the spinner stops in the target angle
     public int critDamage = 50; // The damage done if the spinner stops in the target angle
+    public int damageType = 2; // The type of damage done by this attack
     private CreateObjectInBounds create;
 
     private int currentGaugeIndex = 0; // Tracks which gauge is currently spinning
@@ -114,7 +115,7 @@ public class SixShooterAttack : MonoBehaviour
         }
 
         bubble.damage = totalDamage;
-        BattleStateManager.me.HurtTarget(bubble.damage);
+        BattleStateManager.me.HurtTarget(bubble.damage, damageType);
         Invoke("Done", 1f);
     }
 

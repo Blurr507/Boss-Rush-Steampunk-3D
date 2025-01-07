@@ -21,9 +21,9 @@ public class Enemy : MonoBehaviour
         turns = maxTurns;
     }
 
-    public void HurtTarget(int damage)
+    public void HurtTarget(int damage, int damageType = 0)
     {
-        target.health.SubtractHealth(damage);
+        target.health.SubtractHealth(damage, damageType);
     }
 
     private void OnDestroy()

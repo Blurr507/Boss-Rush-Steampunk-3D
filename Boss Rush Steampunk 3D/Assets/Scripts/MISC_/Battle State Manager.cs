@@ -22,8 +22,14 @@ public class BattleStateManager : MonoBehaviour
     public List<Enemy> enemies = new List<Enemy>();
     private CanSelect target;
     public int currentEnemy = 0;
+    public GameObject damageNumberObject;
+    public Color baseDamage = Color.white;
+    public Color fireDamage = Color.red;
+    public Color electricDamage = Color.yellow;
+    public Color oilDamage = Color.black;
+    public Color healDamage = Color.green;
 
-	public static BattleStateManager me; //awful code
+    public static BattleStateManager me; //awful code
 
     void Awake()
     {
@@ -111,14 +117,14 @@ public class BattleStateManager : MonoBehaviour
         }
     }
 
-    public void HurtTarget(int hp)
+    public void HurtTarget(int hp, int damageType = 0)
     {
-        target.health.SubtractHealth(hp);
+        target.health.SubtractHealth(hp, damageType);
     }
 
-    public void HealTarget(int hp)
+    public void HealTarget(int hp, int damageType = -1)
     {
-        target.health.AddHealth(hp);
+        target.health.AddHealth(hp, damageType);
     }
 
     public CanSelect GetTarget()
