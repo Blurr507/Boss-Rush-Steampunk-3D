@@ -65,7 +65,7 @@ public class BattleStateManager : MonoBehaviour
         switch(battleState)
         {
             case 0: //  Choose target
-                gooseAnimator.Play("Thinking");
+                gooseAnimator.SetBool("Thinking", true);
                 for (int i = 0; i < selectables.Count; i++)
                 {
                     selectables[i].canSelect = false;
@@ -77,7 +77,7 @@ public class BattleStateManager : MonoBehaviour
                 battleState = 1;
                 break;
             case 1: //  Choose action
-                gooseAnimator.Play("Idle");
+				gooseAnimator.SetBool("Thinking", false);
                 for (int i = 0; i < target.buttons.Count; i++)
                 {
                     target.buttons[i].gameObject.SetActive(false);
@@ -85,7 +85,7 @@ public class BattleStateManager : MonoBehaviour
                 battleState = 2;
                 break;
             case 2: //  Skill check
-                gooseAnimator.Play("Idle");
+				gooseAnimator.SetBool("Thinking", false);
                 battleState = 3;
                 break;
             case 3: //  Damage/heal target
@@ -134,7 +134,7 @@ public class BattleStateManager : MonoBehaviour
 
     public void BackToState0()
     {
-        gooseAnimator.Play("Idle");
+		gooseAnimator.SetBool("Thinking", false);
         for (int i = 0; i < selectables.Count; i++)
         {
             selectables[i].canSelect = true;
@@ -149,7 +149,7 @@ public class BattleStateManager : MonoBehaviour
 
     public void ToState4()
     {
-        gooseAnimator.Play("Idle");
+		gooseAnimator.SetBool("Thinking", false);
         for (int i = 0; i < selectables.Count; i++)
         {
             selectables[i].canSelect = false;
