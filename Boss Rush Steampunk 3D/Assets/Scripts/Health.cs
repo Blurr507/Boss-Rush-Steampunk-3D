@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,11 +6,12 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    private int health, maxHealth;
-    public UnityEvent die;
-    public bool alive = true;
-    public RectTransform hp;
-    private CreateObjectInBounds damageNumberCreator;
+    private int health, maxHealth;  //  The current health and maximum health
+    public UnityEvent die;          //  The event that will be called when this object dies (runs out of health)
+    public bool alive = true;       //  Used to specify if the object is alive, to ensure that the death script is only called once
+    public RectTransform hp;        //  A reference to this object's healthbar object
+    public List<string> effects = new List<string>();   //  A list to keep track of the effects on this object (i.e. burning, wet, buffed, etc.)
+    private CreateObjectInBounds damageNumberCreator;   //  Used to create a DamageNumber in a specified bounds.
 
     private void Start()
     {

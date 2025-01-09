@@ -4,15 +4,17 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(CanSelect))]
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour  //  A base class for all enemies which will be inherited from by additional enemy's
 {
-    [HideInInspector]public List<UnityEvent> attacks = new List<UnityEvent>();
     public CanSelect target;
     public int turns = 1, maxTurns = 1;
 
-    public void DoTurn()
+    //  Default turn script for all enemies. Can be overriden in scritpts that inherit
+    public virtual void DoTurn()
     {
-        attacks[0].Invoke();
+        BattleStateManager.me.IncrementState();
+        BattleStateManager.me.IncrementState();
+        BattleStateManager.me.IncrementState();
         turns--;
     }
 

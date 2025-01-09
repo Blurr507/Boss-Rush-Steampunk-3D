@@ -10,12 +10,12 @@ public class Spider : Enemy
     public GameObject attack1;
     public AnimationCurve posCurve;
 
-    private void Start()
-    {
-        attacks.Add(new UnityEvent());
-        attacks[0].AddListener(Attack1);
-    }
 
+    public override void DoTurn()
+    {
+        Attack1();
+        turns--;
+    }
     public void Attack1()
     {
         StartCoroutine(Attack1Co());
