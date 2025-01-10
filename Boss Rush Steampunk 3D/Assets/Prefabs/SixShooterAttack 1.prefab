@@ -54,8 +54,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 3309622814263130625, guid: e0cf3e9d0eb006a4e8bd4138b9abc803, type: 3}
   bounds:
-    m_Center: {x: -1.7786043, y: 1.5259562, z: -0.64465153}
-    m_Extent: {x: 0.16292119, y: 0.25454354, z: 0.07919848}
+    m_Center: {x: -1.8, y: 1.5, z: -0.8}
+    m_Extent: {x: 0.1, y: 0.25454354, z: 0.05}
   faceCamera: 1
 --- !u!114 &7097530901137487063
 MonoBehaviour:

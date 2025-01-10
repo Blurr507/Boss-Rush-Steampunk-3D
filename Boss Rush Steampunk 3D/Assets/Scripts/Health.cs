@@ -12,19 +12,27 @@ public class Health : MonoBehaviour
     public RectTransform hp;        //  A reference to this object's healthbar object
     public List<string> effects = new List<string>();   //  A list to keep track of the effects on this object (i.e. burning, wet, buffed, etc.)
     private CreateObjectInBounds damageNumberCreator;   //  Used to create a DamageNumber in a specified bounds.
+    public static int healthbarScaleMultiplier = 200;   //  A multiplier for the scale of all healthbars
 
     private void Start()
     {
-        if(die.GetPersistentEventCount() == 0)
+        StartOverride();
+    }
+
+    public virtual void StartOverride()
+    {
+        hp.parent.SetParent(GameObject.FindGameObjectWithTag("WorldSpaceCanvas").transform);
+        if (die.GetPersistentEventCount() == 0)
         {
             die.AddListener(Die);
         }
         damageNumberCreator = GetComponent<CreateObjectInBounds>();
         damageNumberCreator.obj = BattleStateManager.me.damageNumberObject;
     }
+
     void Update()
     {
-        hp.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, health);
+        hp.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, healthbarScaleMultiplier * health / maxHealth);
         if(health <= 0 && alive)
         {
             die.Invoke();
@@ -101,7 +109,12 @@ public class Health : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(hp != null && hp.gameObject != null)
+        OnDestroyOverride();
+    }
+
+    public virtual void OnDestroyOverride()
+    {
+        if (hp != null && hp.gameObject != null)
         {
             Destroy(hp.parent.gameObject);
             Destroy(hp.gameObject);

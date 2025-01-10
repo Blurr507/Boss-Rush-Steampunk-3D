@@ -4,7 +4,6 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(SmoothRandomBobbingAndRotation))]
-[RequireComponent(typeof(Health))]
 public class CanSelect : MonoBehaviour
 {
     public bool canSelect = false;                                  //  If the object can currently be selected
@@ -15,14 +14,12 @@ public class CanSelect : MonoBehaviour
     private Collider collider;                                      //  A reference to the collider for hit detection
     private SmoothRandomBobbingAndRotation bobble;                  //  A reference to the bobble script, so that it can be enabled/disabled
     public List<GameObject> buttons = new List<GameObject>();       //  The list of buttons that can be used when this target is selected
-    [HideInInspector]public Health health;                          //  A reference to this object's health
 
     private void Start()
     {
         //  Get the collider, bobble and health off of the object
         collider = GetComponent<Collider>();
         bobble = GetComponent<SmoothRandomBobbingAndRotation>();
-        health = GetComponent<Health>();
         //  Disable the bobble and set the save the initial position
         bobble.active = false;
         initialLocalPosition = transform.position;

@@ -15,6 +15,10 @@ public class Spider : Enemy
     {
         Attack1();
         turns--;
+        if (turns <= 0)
+        {
+            BattleStateManager.me.IncrementCurrentEnemy();
+        }
     }
     public void Attack1()
     {

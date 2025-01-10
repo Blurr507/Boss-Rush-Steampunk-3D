@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Oilmancer : Enemy
 {
-    private Health health;
-
-    void Start()
-    {
-        health = GetComponent<Health>();
-    }
+    [SerializeField]
+    private GameObject minion;
 }

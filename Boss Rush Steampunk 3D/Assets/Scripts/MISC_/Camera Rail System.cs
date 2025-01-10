@@ -30,7 +30,7 @@ public class CameraRailSystem : MonoBehaviour
         }
 
         // Get the current battle state
-        int currentState = battleStateManager.battleState;
+        int currentState = battleStateManager.GetState();
 
         if (currentState >= 0 && currentState < railPoints.Count)
         {

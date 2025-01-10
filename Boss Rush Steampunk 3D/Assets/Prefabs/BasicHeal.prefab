@@ -692,6 +692,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 3309622814263130625, guid: e0cf3e9d0eb006a4e8bd4138b9abc803, type: 3}
   bounds:
-    m_Center: {x: -1.5930442, y: 1.7727687, z: -0.5849458}
-    m_Extent: {x: 0.5768477, y: 0.260221, z: 0.2532606}
+    m_Center: {x: -1.6, y: 1.7, z: -0.4}
+    m_Extent: {x: 0.4, y: 0.2, z: 0.1}
   faceCamera: 1
