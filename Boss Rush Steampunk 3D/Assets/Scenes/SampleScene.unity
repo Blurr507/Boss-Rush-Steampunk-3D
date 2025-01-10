@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -161,6 +161,7 @@ MonoBehaviour:
   - {fileID: 2120184890}
   enemies:
   - {fileID: 2120184893}
+  target: {fileID: 0}
   currentEnemy: 0
   damageNumberObject: {fileID: 2984769879015613166, guid: 1bf1a535fe573d04babe7b09b19a51e8,
     type: 3}
@@ -1445,7 +1446,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1925,6 +1926,7 @@ MonoBehaviour:
       m_Calls: []
   alive: 1
   hp: {fileID: 1507919016}
+  effects: []
 --- !u!114 &363251911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1943,7 +1945,6 @@ MonoBehaviour:
   transitionSpeed: 2
   buttons:
   - {fileID: 539022618}
-  health: {fileID: 0}
 --- !u!114 &363251912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4281,6 +4282,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 550659412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1870393981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1870393983}
+  - component: {fileID: 1870393982}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1870393982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870393981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: abc45110f9fd6604fb7250fe6e7fe9d0, type: 2}
+--- !u!4 &1870393983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870393981}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1950218382
 GameObject:
   m_ObjectHideFlags: 0
@@ -5228,7 +5278,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120184885}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f77d0c3fcd512442a64095450bd4cb9, type: 3}
   m_Name: 
@@ -5240,6 +5290,7 @@ MonoBehaviour:
       m_Calls: []
   alive: 1
   hp: {fileID: 1655020216}
+  effects: []
 --- !u!114 &2120184890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5258,7 +5309,6 @@ MonoBehaviour:
   transitionSpeed: 2
   buttons:
   - {fileID: 1580799907}
-  health: {fileID: 0}
 --- !u!114 &2120184891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5316,7 +5366,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: babfb669beb2f8c49a90c4043213c668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attacks: []
+  health: 200
+  maxHealth: 200
+  die:
+    m_PersistentCalls:
+      m_Calls: []
+  alive: 1
+  hp: {fileID: 1655020216}
+  effects: []
   target: {fileID: 363251911}
   turns: 1
   maxTurns: 1
@@ -5359,7 +5416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b0cd0fdb1847a4795a2f21a118c914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
+  obj: {fileID: 2984769879015613166, guid: 1bf1a535fe573d04babe7b09b19a51e8, type: 3}
   bounds:
     m_Center: {x: 3.535092, y: 3.1680403, z: -0.084183276}
     m_Extent: {x: 0.53035474, y: 0.2577176, z: 0.23640111}
@@ -5440,3 +5497,4 @@ SceneRoots:
   - {fileID: 550659412}
   - {fileID: 1999581190}
   - {fileID: 2116178893}
+  - {fileID: 1870393983}
