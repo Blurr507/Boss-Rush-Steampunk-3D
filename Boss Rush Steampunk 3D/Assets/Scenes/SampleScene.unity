@@ -2002,9 +2002,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b0cd0fdb1847a4795a2f21a118c914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
+  obj: {fileID: 2984769879015613166, guid: 1bf1a535fe573d04babe7b09b19a51e8, type: 3}
   bounds:
-    m_Center: {x: -3.4565206, y: 1.9299004, z: 0.00011909008}
+    m_Center: {x: 0, y: 1.2, z: 0}
     m_Extent: {x: 0.26088858, y: 0.15031981, z: 0.078297645}
   faceCamera: 1
 --- !u!1 &449842363
@@ -5170,7 +5170,6 @@ GameObject:
   - component: {fileID: 2120184888}
   - component: {fileID: 2120184887}
   - component: {fileID: 2120184886}
-  - component: {fileID: 2120184889}
   - component: {fileID: 2120184892}
   - component: {fileID: 2120184891}
   - component: {fileID: 2120184890}
@@ -5271,26 +5270,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 10, y: 25, z: 0}
---- !u!114 &2120184889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120184885}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f77d0c3fcd512442a64095450bd4cb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 200
-  maxHealth: 200
-  die:
-    m_PersistentCalls:
-      m_Calls: []
-  alive: 1
-  hp: {fileID: 1655020216}
-  effects: []
 --- !u!114 &2120184890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5418,8 +5397,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 2984769879015613166, guid: 1bf1a535fe573d04babe7b09b19a51e8, type: 3}
   bounds:
-    m_Center: {x: 3.535092, y: 3.1680403, z: -0.084183276}
-    m_Extent: {x: 0.53035474, y: 0.2577176, z: 0.23640111}
+    m_Center: {x: 0, y: 2, z: -0.35}
+    m_Extent: {x: 0.25, y: 0.25, z: 0.2}
   faceCamera: 1
 --- !u!1 &2120238108
 GameObject:

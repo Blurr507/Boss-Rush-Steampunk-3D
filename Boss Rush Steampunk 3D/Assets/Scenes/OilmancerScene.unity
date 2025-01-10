@@ -2318,7 +2318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b0cd0fdb1847a4795a2f21a118c914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
+  obj: {fileID: 2984769879015613166, guid: 1bf1a535fe573d04babe7b09b19a51e8, type: 3}
   bounds:
     m_Center: {x: 0, y: 1.2, z: 0}
     m_Extent: {x: 0.26088858, y: 0.15031981, z: 0.078297645}
