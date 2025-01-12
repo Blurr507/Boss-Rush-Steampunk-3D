@@ -11,10 +11,17 @@ public class Oilmancer : Enemy
     public int block1Target = -35;
     public int block1Crit = -50;
     public int damageType = 3;
+    public int maxAttacks = 1, attacks = 1;
+    public int maxSpawns = 1, spawns = 1;
     public List<OilmancerMinion> minions = new List<OilmancerMinion>();
     public List<Transform> minionLocations = new List<Transform>();
     public AnimationCurve posCurve;
     private Animator anim;
+
+    private void Start()
+    {
+        StartOverride();
+    }
 
     public override void StartOverride()
     {
@@ -35,26 +42,31 @@ public class Oilmancer : Enemy
             //  If we're on fire, put it out
             StartCoroutine(PutOutFire());
         }
-        else if(minions.Count < minionLocations.Count)
+        else if(minions.Count < minionLocations.Count && spawns > 0)
         {
-            //  If we're not burning, and we aren't at max minion capacity then spawn a minion
+            //  If we're not burning, and we aren't at max minion capacity, and we have more spawns available this turn then spawn a minion
             StartCoroutine(SpawnMinion());
         }
-        else if(turns > 0)
+        else if(turns > 0 && attacks > 0)
         {
-            //  If it's not the last turn, attack
+            //  If it's not the last turn, and we have more attacks this turn, then attack
+            StartCoroutine(Attack1());
+        }
+        else if(attacks > 0)
+        {
             StartCoroutine(Attack1());
         }
         else
         {
-            //  If this is the last turn, either attack, or buff next turns damage (currently can only attack)
-            StartCoroutine(Attack1());
+            turns = 2;
+            base.DoTurn();
         }
     }
 
 
     private IEnumerator Attack1()
     {
+        attacks--;
         //  State = 4
         yield return new WaitForSeconds(0.5f);
         GameObject attack = Instantiate(attack1);
@@ -104,6 +116,7 @@ public class Oilmancer : Enemy
 
     private IEnumerator SpawnMinion()
     {
+        spawns--;
         yield return new WaitForSeconds(1f);
         BattleStateManager.me.IncrementState();
         BattleStateManager.me.IncrementState();
@@ -155,5 +168,12 @@ public class Oilmancer : Enemy
     public override void UpdateAnimatorBools()
     {
         anim.SetBool("Burning", effects.Contains("burning"));
+    }
+
+    public override void ResetTurns()
+    {
+        turns = maxTurns;
+        attacks = maxAttacks;
+        spawns = maxSpawns;
     }
 }

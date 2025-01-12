@@ -25,7 +25,7 @@ public class Enemy : Health  //  A base class for all enemies which will be inhe
         BattleStateManager.me.IncrementState();
     }
 
-    public void ResetTurns()
+    public virtual void ResetTurns()
     {
         turns = maxTurns;
     }
@@ -38,6 +38,7 @@ public class Enemy : Health  //  A base class for all enemies which will be inhe
     public override void OnDestroyOverride()
     {
         BattleStateManager.me.enemies.Remove(this);
+        BattleStateManager.me.selectables.Remove(GetComponent<CanSelect>());
         base.OnDestroyOverride();
     }
 

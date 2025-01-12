@@ -8,8 +8,14 @@ public class OilmancerMinion : Enemy
     private Animator anim;
     private Oilmancer oilmancer;
 
+    private void Start()
+    {
+        StartOverride();
+    }
+
     public override void StartOverride()
     {
+        anim = GetComponent<Animator>();
         base.StartOverride();
         if (!BattleStateManager.me.enemies.Contains(this))
         {
@@ -17,16 +23,13 @@ public class OilmancerMinion : Enemy
             BattleStateManager.me.enemies.Add(this);
             GetComponent<CanSelect>().canSelect = true;
         }
-        if (!effects.Contains("oiled"))
-        {
-            effects.Add("oiled");
-        }
+        AddEffect("oiled");
         //  Find the oilmancer in the scene, add self to his minions, and set his buttons to our buttons
         oilmancer = FindObjectOfType<Oilmancer>();
         oilmancer.minions.Add(this);
         GetComponent<CanSelect>().buttons = oilmancer.GetComponent<CanSelect>().buttons;
-        anim = GetComponent<Animator>();
         UpdateAnimatorBools();
+        turns = 0;
     }
 
     public override void DoTurn()
@@ -54,7 +57,7 @@ public class OilmancerMinion : Enemy
             }
             else
             {
-                turns++;
+                turns = 2;
                 base.DoTurn();
             }
         }
@@ -123,6 +126,11 @@ public class OilmancerMinion : Enemy
     {
         anim.SetBool("Burning", effects.Contains("burning"));
         anim.SetBool("Oiled", effects.Contains("oiled"));
+    }
+
+    private void OnDestroy()
+    {
+        OnDestroyOverride();
     }
 
     public override void OnDestroyOverride()

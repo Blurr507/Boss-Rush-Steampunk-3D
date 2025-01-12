@@ -325,7 +325,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   failHeal: 5
   hitHeal: 30
-  critHeal: 45
+  critHeal: 60
 --- !u!114 &3422003543469745128
 MonoBehaviour:
   m_ObjectHideFlags: 0
