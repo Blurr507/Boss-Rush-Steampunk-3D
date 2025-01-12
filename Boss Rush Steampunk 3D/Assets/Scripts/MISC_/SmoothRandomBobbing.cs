@@ -26,8 +26,7 @@ public class SmoothRandomBobbingAndRotation : MonoBehaviour
     void Start()
     {
         // Store the initial local position and rotation of the object
-        initialLocalPosition = transform.localPosition;
-        initialLocalRotation = transform.localRotation;
+        SetInitialPositionAndRotation();
 
         // Generate random offsets for the Perlin noise
         xNoiseOffset = Random.Range(0f, 100f);
@@ -61,5 +60,12 @@ public class SmoothRandomBobbingAndRotation : MonoBehaviour
             transform.localPosition = Vector3.Lerp(transform.localPosition, initialLocalPosition, lerpSpeed * Time.deltaTime); ;
             transform.localRotation = Quaternion.Lerp(transform.localRotation, initialLocalRotation, rotationLerpSpeed * Time.deltaTime);
         }
+    }
+
+    public void SetInitialPositionAndRotation()
+    {
+        // Store the initial local position and rotation of the object
+        initialLocalPosition = transform.localPosition;
+        initialLocalRotation = transform.localRotation;
     }
 }

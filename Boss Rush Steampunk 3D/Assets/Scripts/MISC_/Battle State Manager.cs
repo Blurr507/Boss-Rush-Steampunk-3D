@@ -20,6 +20,7 @@ public class BattleStateManager : MonoBehaviour
 
 	public GameObject bubble;
     public List<CanSelect> selectables = new List<CanSelect>();
+    public List<CanSelect> heroes = new List<CanSelect>();
     public List<Enemy> enemies = new List<Enemy>();
     public CanSelect target;
     public int currentEnemy = 0;

@@ -5,5 +5,155 @@ using UnityEngine;
 public class Oilmancer : Enemy
 {
     [SerializeField]
-    private GameObject minion;
+    private GameObject minion, attack1, block1;
+    public int attack1Damage = 50;
+    public int block1Fail = 0;
+    public int block1Target = -35;
+    public int block1Crit = -50;
+    public int damageType = 3;
+    public List<OilmancerMinion> minions = new List<OilmancerMinion>();
+    public List<Transform> minionLocations = new List<Transform>();
+    public AnimationCurve posCurve;
+    private Animator anim;
+
+    public override void StartOverride()
+    {
+        base.StartOverride();
+        anim = GetComponent<Animator>();
+    }
+
+    public override void DoTurn()
+    {
+        turns--;
+        if (turns <= 0)
+        {
+            BattleStateManager.me.IncrementCurrentEnemy();
+        }
+
+        if(effects.Contains("burning"))
+        {
+            //  If we're on fire, put it out
+            StartCoroutine(PutOutFire());
+        }
+        else if(minions.Count < minionLocations.Count)
+        {
+            //  If we're not burning, and we aren't at max minion capacity then spawn a minion
+            StartCoroutine(SpawnMinion());
+        }
+        else if(turns > 0)
+        {
+            //  If it's not the last turn, attack
+            StartCoroutine(Attack1());
+        }
+        else
+        {
+            //  If this is the last turn, either attack, or buff next turns damage (currently can only attack)
+            StartCoroutine(Attack1());
+        }
+    }
+
+
+    private IEnumerator Attack1()
+    {
+        //  State = 4
+        yield return new WaitForSeconds(0.5f);
+        GameObject attack = Instantiate(attack1);
+        DamageBubble bubble = FindObjectOfType<DamageBubble>();
+        bubble.AddDamage(attack1Damage);
+        yield return new WaitForSeconds(0.5f);
+        BattleStateManager.me.IncrementState();
+        GameObject block = Instantiate(block1);
+        SteamGauge gauge = block.GetComponentInChildren<SteamGauge>();
+        yield return new WaitForSeconds(0.5f);
+        gauge.Spin();
+        while(true)
+        {
+            if(gauge.result != -1)
+            {
+                if(block1Fail != 0 || gauge.result > 0)
+                {
+                    SmallDamage smallDamage = gauge.GetComponent<CreateObjectInBounds>().CreateObject().GetComponent<SmallDamage>();
+                    switch (gauge.result)
+                    {
+                        case 0:
+                            smallDamage.damage = block1Fail;
+                            break;
+                        case 1:
+                            smallDamage.damage = block1Target;
+                            break;
+                        case 2:
+                            smallDamage.damage = block1Crit;
+                            break;
+                    }
+                    yield return new WaitForSeconds(1f);
+                }
+                yield return new WaitForSeconds(1f);
+                break;
+            }
+            yield return new WaitForEndOfFrame();
+        }
+        BattleStateManager.me.IncrementState();
+        // State = 6
+        bubble.MoveToPos(target.transform.position, 1, posCurve);
+        yield return new WaitForSeconds(1f);
+        HurtTarget(bubble.damage, damageType);
+        Destroy(attack);
+        Destroy(block);
+        BattleStateManager.me.IncrementState();
+    }
+
+    private IEnumerator SpawnMinion()
+    {
+        yield return new WaitForSeconds(1f);
+        BattleStateManager.me.IncrementState();
+        BattleStateManager.me.IncrementState();
+        yield return new WaitForSeconds(1f);
+        for(int i = 0; i < minionLocations.Count; i++)
+        {
+            //  Loop through the minion spawns and look for one that doesn't have a child (minion)
+            if (minionLocations[i].childCount == 0)
+            {
+                //  Once it's found create a minion there and break the loop
+                Transform spawn = minionLocations[i];
+                SmoothRandomBobbingAndRotation bob = Instantiate(minion, spawn.position, spawn.rotation, spawn).GetComponent<SmoothRandomBobbingAndRotation>();
+                bob.SetInitialPositionAndRotation();
+                break;
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+        BattleStateManager.me.IncrementState();
+    }
+
+    private IEnumerator PutOutFire()
+    {
+        yield return new WaitForSeconds(1f);
+        effects.Remove("burning");
+        UpdateAnimatorBools();
+        yield return new WaitForSeconds(0.5f);
+        BattleStateManager.me.IncrementState();
+        BattleStateManager.me.IncrementState();
+        yield return new WaitForSeconds(0.5f);
+        BattleStateManager.me.IncrementState();
+    }
+
+    public override bool AddEffect(string effect)
+    {
+        switch(effect)
+        {
+            case "burning":
+                if(!effects.Contains(effect))
+                {
+                    effects.Add(effect);
+                    UpdateAnimatorBools();
+                    return true;
+                }
+                break;
+        }
+        return false;
+    }
+
+    public override void UpdateAnimatorBools()
+    {
+        anim.SetBool("Burning", effects.Contains("burning"));
+    }
 }

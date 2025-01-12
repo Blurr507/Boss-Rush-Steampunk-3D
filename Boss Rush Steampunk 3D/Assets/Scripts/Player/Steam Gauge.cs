@@ -15,10 +15,6 @@ public class SteamGauge : MonoBehaviour
     public GameObject smallDamage; // A reference to the small damage prefab (which will be instantiated when you click)
     public Transform canvas; // A reference to the canvas to create the small damage object on
     public Bounds bounds; // The bounding box that the small damage objects can be create in
-	//public Health enemyHealth; //enemy health script
-	//public int totalDamage; //total damage
-
-	public GameObject bubbleObject; //damage bubble
 
 
     void Start()

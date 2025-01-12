@@ -107,6 +107,12 @@ public class Health : MonoBehaviour
         Destroy(gameObject);
     }
 
+    //  An overridable method for the classes that inherit from Health to individually say how they respond to specific effects. Returns whether or not the effect was ignored.
+    public virtual bool AddEffect(string effect)
+    {
+        return false;
+    }
+
     private void OnDestroy()
     {
         OnDestroyOverride();

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class OilmancerMinion : Enemy
@@ -20,6 +21,10 @@ public class OilmancerMinion : Enemy
         {
             effects.Add("oiled");
         }
+        //  Find the oilmancer in the scene, add self to his minions, and set his buttons to our buttons
+        oilmancer = FindObjectOfType<Oilmancer>();
+        oilmancer.minions.Add(this);
+        GetComponent<CanSelect>().buttons = oilmancer.GetComponent<CanSelect>().buttons;
         anim = GetComponent<Animator>();
         UpdateAnimatorBools();
     }
@@ -53,6 +58,30 @@ public class OilmancerMinion : Enemy
                 base.DoTurn();
             }
         }
+    }
+
+    public override bool AddEffect(string effect)
+    {
+        switch(effect)
+        {
+            case "burning":
+                if(effects.Contains("oiled") && !effects.Contains("burning"))
+                {
+                    effects.Add(effect);
+                    UpdateAnimatorBools();
+                    return true;
+                }
+                break;
+            case "oiled":
+                if(!effects.Contains("burning") && !effects.Contains("oiled"))
+                {
+                    effects.Add(effect);
+                    UpdateAnimatorBools();
+                    return true;
+                }
+                break;
+        }
+        return false;
     }
 
     private IEnumerator PutOutFire()
@@ -94,5 +123,14 @@ public class OilmancerMinion : Enemy
     {
         anim.SetBool("Burning", effects.Contains("burning"));
         anim.SetBool("Oiled", effects.Contains("oiled"));
+    }
+
+    public override void OnDestroyOverride()
+    {
+        base.OnDestroyOverride();
+        if(oilmancer != null)
+        {
+            oilmancer.minions.Remove(this);
+        }
     }
 }
