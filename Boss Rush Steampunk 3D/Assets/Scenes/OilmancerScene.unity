@@ -680,8 +680,7 @@ Transform:
   m_LocalPosition: {x: 1.86, y: 1, z: -0.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 216986840}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &79542566
@@ -1415,89 +1414,9 @@ Transform:
   m_LocalPosition: {x: 4.77, y: 1, z: -1.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 700165782}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &216986839
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 77478176}
-    m_Modifications:
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6933766375650478383, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_Name
-      value: OilMinion
-      objectReference: {fileID: 0}
-    - target: {fileID: 7043860172329711764, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cae6890b60876fd44bf55179a4b4c84b, type: 3}
---- !u!4 &216986840 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-    type: 3}
-  m_PrefabInstance: {fileID: 216986839}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &241451895
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,12 +2479,6 @@ Transform:
   - {fileID: 1955154778}
   m_Father: {fileID: 363251909}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &700165782 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-    type: 3}
-  m_PrefabInstance: {fileID: 8948933342902339418}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &784916931
 GameObject:
   m_ObjectHideFlags: 0
@@ -6246,11 +6159,15 @@ MonoBehaviour:
   minion: {fileID: 6933766375650478383, guid: cae6890b60876fd44bf55179a4b4c84b, type: 3}
   attack1: {fileID: 2583852553595416887, guid: 54ffbbc9de1f6604fa2b4883469a42a1, type: 3}
   block1: {fileID: 5241078388051594694, guid: f77154abc2ea15a45b40fda06c476015, type: 3}
-  attack1Damage: 50
+  attack1Damage: 100
   block1Fail: 0
-  block1Target: -35
-  block1Crit: -50
+  block1Target: -50
+  block1Crit: -80
   damageType: 3
+  maxAttacks: 1
+  attacks: 1
+  maxSpawns: 1
+  spawns: 1
   minions: []
   minionLocations:
   - {fileID: 77478176}
@@ -6342,84 +6259,6 @@ MonoBehaviour:
     rotation: {x: 7, y: 10, z: 0}
   positionLerpSpeed: 5
   rotationLerpSpeed: 5
---- !u!1001 &8948933342902339418
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 207393820}
-    m_Modifications:
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 18.667
-      objectReference: {fileID: 0}
-    - target: {fileID: 5404683561186633789, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5616214043567813272, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: buttons.Array.data[0]
-      value: 
-      objectReference: {fileID: 1580799907}
-    - target: {fileID: 6191588862710530836, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 363251911}
-    - target: {fileID: 6933766375650478383, guid: cae6890b60876fd44bf55179a4b4c84b,
-        type: 3}
-      propertyPath: m_Name
-      value: OilMinion
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cae6890b60876fd44bf55179a4b4c84b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
