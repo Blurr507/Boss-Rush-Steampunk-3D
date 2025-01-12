@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 6520270571523962236}
   - component: {fileID: 1466295203725065670}
   - component: {fileID: 8771221599119948796}
-  - component: {fileID: 324063877862715029}
   m_Layer: 0
   m_Name: SteamGauge
   m_TagString: Untagged
@@ -160,10 +159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spinner: {fileID: 6868600670689883242}
   indicator: {fileID: 6962624487481442060}
-  notches: {fileID: 4115483593417949593}
   rotationSpeed: 500
   targetAngleRange: 45
-  targetCriticalRange: 12
+  targetCriticalRange: 14
   result: -1
   smallDamage: {fileID: 3309622814263130625, guid: e0cf3e9d0eb006a4e8bd4138b9abc803,
     type: 3}
@@ -171,21 +169,6 @@ MonoBehaviour:
   bounds:
     m_Center: {x: -1.8793185, y: 1.6308, z: -0.40368477}
     m_Extent: {x: 0.47498655, y: 0.14204669, z: 0.29539618}
-  bubbleObject: {fileID: 0}
---- !u!114 &324063877862715029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2468749346693416073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da2b06e35eca3a4f9dad131a3ec7648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  complete: 0
-  value: 0
 --- !u!1 &2862393443711853515
 GameObject:
   m_ObjectHideFlags: 0

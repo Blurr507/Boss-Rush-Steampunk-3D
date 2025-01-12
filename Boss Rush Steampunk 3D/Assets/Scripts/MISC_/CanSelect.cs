@@ -22,7 +22,7 @@ public class CanSelect : MonoBehaviour
         bobble = GetComponent<SmoothRandomBobbingAndRotation>();
         //  Disable the bobble and set the save the initial position
         bobble.active = false;
-        initialLocalPosition = transform.position;
+        initialLocalPosition = transform.localPosition;
     }
 
     void Update()
