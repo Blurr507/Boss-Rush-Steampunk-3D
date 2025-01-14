@@ -5,6 +5,8 @@ using UnityEngine;
 public class BattleStateManager : MonoBehaviour
 {
     public Animator gooseAnimator;
+
+	public AudioSource[] audios;
     //battleState refers to the state of the battle (choosing attacks stage, skill checks stage, boss damager stage, etc)
     //it controls things like logic and camera position
     //the main battle menu (choosing to attack or heal etc) is assigned the intereger 0
@@ -16,6 +18,11 @@ public class BattleStateManager : MonoBehaviour
     //the player damage stage is assigned the integer 6
     //more stages to be added/assigned
     [SerializeField]
+
+	public LineRenderer lr;
+
+	public Transform[] lrpos;
+
     private int battleState = 0;
 
 	public GameObject bubble;
@@ -45,6 +52,8 @@ public class BattleStateManager : MonoBehaviour
 
     void Update()
     {
+		lr.SetPosition(0, lrpos[0].position);
+		lr.SetPosition(1, lrpos[1].position);
         switch(battleState)
         {
             case 0: //  Select who to interact with
@@ -206,6 +215,8 @@ public class BattleStateManager : MonoBehaviour
         enemies[currentEnemy].DoTurn();
         //yield return null;
     }
+
+
 
     public void IncrementCurrentEnemy()
     {

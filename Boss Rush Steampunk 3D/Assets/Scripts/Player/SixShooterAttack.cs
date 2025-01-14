@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(CreateObjectInBounds))]
 public class SixShooterAttack : MonoBehaviour
 {
+	private Animator gooseAnimator;
+
     public SteamGauge gauge1;
     public SteamGauge gauge2;
     public SteamGauge gauge3;
@@ -34,6 +36,9 @@ public class SixShooterAttack : MonoBehaviour
 
         // Start the process with the first gauge
         SpinGauge(currentGaugeIndex);
+		gooseAnimator = BattleStateManager.me.gooseAnimator;
+		gooseAnimator.SetBool("Aiming", true);
+		gooseAnimator.SetBool("Thinking", true);
     }
 
     void Update()
@@ -45,6 +50,10 @@ public class SixShooterAttack : MonoBehaviour
             // Check if the current gauge has a result
             if (currentGauge.result != -1)
             {
+				gooseAnimator.SetTrigger("Shoot");
+				BattleStateManager.me.audios[0].pitch = Random.Range(0.8f, 1f);
+				BattleStateManager.me.audios[0].Play();
+				//Debug.Log("!!!!!");
                 results.Add(currentGauge.result);
 
                 // Handle the damage based on the result
@@ -85,6 +94,7 @@ public class SixShooterAttack : MonoBehaviour
     private void SpinGauge(int index)
     {
         gauges[index].Spin();
+
     }
 
     private void Move()
@@ -98,6 +108,7 @@ public class SixShooterAttack : MonoBehaviour
     {
         // Calculate total damage from the results
         int totalDamage = 0;
+
         foreach (int result in results)
         {
             switch (result)
@@ -121,7 +132,11 @@ public class SixShooterAttack : MonoBehaviour
 
     private void Done()
     {
+		gooseAnimator.SetBool("Aiming", false);
+		gooseAnimator.SetBool("Thinking", false);
         BattleStateManager.me.IncrementState();
         Destroy(gameObject);
     }
+
+
 }
