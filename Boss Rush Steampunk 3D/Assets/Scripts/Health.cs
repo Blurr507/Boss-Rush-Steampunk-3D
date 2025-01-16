@@ -16,37 +16,47 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+        //  This was because I didn't realize that scripts inheriting from Health could have their own Start Event, all of the desired start code is in StartOverride()
         StartOverride();
     }
 
     public virtual void StartOverride()
     {
+        //  Make sure that the healthbar's background (which is it's parent) is a child of the WorldSpaceCanvas
         hp.parent.SetParent(GameObject.FindGameObjectWithTag("WorldSpaceCanvas").transform);
         if (die.GetPersistentEventCount() == 0)
         {
+            //  If we haven't been given a custom death action, then default it to the Die method
             die.AddListener(Die);
         }
+        //  Assign damageNumberCreator to our CreateObjectInBounds, and set the object it creates to the damageNumberObject assigned in the BattleStateManager
         damageNumberCreator = GetComponent<CreateObjectInBounds>();
         damageNumberCreator.obj = BattleStateManager.me.damageNumberObject;
     }
 
     void Update()
     {
+        //  Scale the healthbar based on the amount of health that we have versus our maxHealth
         hp.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, healthbarScaleMultiplier * health / maxHealth);
         if(health <= 0 && alive)
         {
+            //  If we're out of health and still alive, call our death event, and set alive to false (to prevent the death event from being called more than once)
             die.Invoke();
             alive = false;
         }
     }
 
+    //  Adds `num` health of type `type` up to our maxHealth
     public void AddHealth(int num, int type = -1)
     {
+        //  Add the health, but clamp it to not go above our maxHealth
         health = Mathf.Min(health + num, maxHealth);
+        //  Create a DamageNumber, and save a reference of it so that we can assign its healing
         DamageNumber damageNumber = damageNumberCreator.CreateObject().GetComponent<DamageNumber>();
         damageNumber.damage = num;
         switch(type)
         {
+            //  Set the color of the damageNumber to the appropriate type's color
             case -1:
                 damageNumber.color = BattleStateManager.me.healDamage;
                 break;
@@ -68,13 +78,17 @@ public class Health : MonoBehaviour
         }
     }
 
+    //  Subtracts 'num' health of type 'type'
     public void SubtractHealth(int num, int type = 0)
     {
+        //  Reduce health by num down to a minimum of 0
         health = Mathf.Max(health - num, 0);
+        //  Create a DamageNumber, and save a reference of it so that we can assign its damage
         DamageNumber damageNumber = damageNumberCreator.CreateObject().GetComponent<DamageNumber>();
         damageNumber.damage = num;
         switch(type)
         {
+            //  Set the color of the damageNumber to the appropriate type's color
             case -1:
                 damageNumber.color = BattleStateManager.me.healDamage;
                 break;
@@ -104,6 +118,7 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
+        //  The default die event is just destroying this object
         Destroy(gameObject);
     }
 
@@ -115,11 +130,14 @@ public class Health : MonoBehaviour
 
     private void OnDestroy()
     {
+        //  This is because I didn't realize that scripts inheriting from Health still have their own OnDestroy Event. All OnDestroy code is found in OnDestroyOverride
         OnDestroyOverride();
     }
 
+    //  An overridable method for what happens when this obejct is destroyed
     public virtual void OnDestroyOverride()
     {
+        //  By default, when destroyed, make sure to also destroy the healthbar if it still exists
         if (hp != null && hp.gameObject != null)
         {
             Destroy(hp.parent.gameObject);

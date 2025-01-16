@@ -25,29 +25,27 @@ public class BattleStateManager : MonoBehaviour
 
     private int battleState = 0;
 
-	public GameObject bubble;
-    public List<CanSelect> selectables = new List<CanSelect>();
-    public List<CanSelect> heroes = new List<CanSelect>();
-    public List<Enemy> enemies = new List<Enemy>();
-    public CanSelect target;
-    public int currentEnemy = 0;
-    public GameObject damageNumberObject;
-    public Color baseDamage = Color.white;
-    public Color fireDamage = Color.red;
-    public Color electricDamage = Color.yellow;
-    public Color oilDamage = Color.black;
-    public Color healDamage = Color.green;
+    public List<CanSelect> selectables = new List<CanSelect>(); //  A list of all the things that can be selected in battleState 0 (i.e. enemies, heroes, chandeliers, etc.)
+    public List<CanSelect> heroes = new List<CanSelect>();      //  A list of the heroes in the scene, (currently only geaux, but this will be used to help enemies choose who to target)
+    public List<Enemy> enemies = new List<Enemy>();             //  A list of the enemies in the scene, used to keep track of turns, and to figure out win conditions eventually
+    public CanSelect target;                                    //  The thing that was clicked on during battleState 0.
+    public int currentEnemy = 0;                                //  An integer to keep track of which enemy's turn it currently is
+    public GameObject damageNumberObject;                       //  A prefab for creating a damageNumberObject. (Referenced by the health objects so that we don't have to add it to all of them)
+    public Color baseDamage = Color.white;                      //  The color of the damage numbers when using base(regular) damage
+    public Color fireDamage = Color.red;                        //  The color of the damage numbers when using fire damage
+    public Color electricDamage = Color.yellow;                 //  The color of the damage numbers when using electric damage
+    public Color oilDamage = Color.black;                       //  The color of the damage numbers when using oil damage
+    public Color healDamage = Color.green;                      //  The color of the damage numbers when using heal damage
 
     public static BattleStateManager me; //awful code
 
     void Awake()
     {
+        //  Randomize the random number generator
         Random.InitState(System.DateTime.Today.Second * System.DateTime.Today.Minute);
+        //  Set the static reference 'me' to this object, so that it can be reference by other scripts
         me = this;
-        for(int i = 0; i < selectables.Count; i++)
-        {
-            selectables[i].canSelect = true;
-        }
+        BackToState0();
     }
 
     void Update()
@@ -59,10 +57,12 @@ public class BattleStateManager : MonoBehaviour
             case 0: //  Select who to interact with
                 if(Input.GetMouseButtonDown(0))
                 {
+                    //  If we're clicking, check if we're hovering over any of our selectables
                     for(int i = 0; i < selectables.Count; i++)
                     {
                         if (selectables[i].selected)
                         {
+                            //  If we are, make that selectable the target, and increment the state
                             target = selectables[i];
                             IncrementState();
                         }
@@ -176,21 +176,29 @@ public class BattleStateManager : MonoBehaviour
         {
             selectables[i].canSelect = true;
         }
+        //  If the battleState is currently 6, then we are on the last state, and this turn is over
+        bool battlePhaseOver = battleState == 6;
         //  Set the state back to 0
         battleState = 0;
-        //  Deactivate the selected target's action buttons
-        for (int i = 0; i < target.buttons.Count; i++)
+        //  If there is a selected target, then deactivate its buttons
+        if (target != null)
         {
-            target.buttons[i].gameObject.SetActive(false);
+            for (int i = 0; i < target.buttons.Count; i++)
+            {
+                target.buttons[i].gameObject.SetActive(false);
+            }
         }
-        //  Reset all enemies (specifically their turn count)
-        ResetEnemies();
+        //  Reset all enemies (specifically their turn count) if we were just on battleState 6
+        if (battlePhaseOver)
+        {
+            ResetEnemies();
+        }
     }
     
     public void ToState4()
     {
         //  Don't let the geaux think
-		//gooseAnimator.SetBool("Thinking", false);
+		gooseAnimator.SetBool("Thinking", false);
         //  Make sure all selectables can't be selected
         for (int i = 0; i < selectables.Count; i++)
         {
@@ -205,30 +213,25 @@ public class BattleStateManager : MonoBehaviour
         }
 
         //  Do the current enemy's turn
-        //StartCoroutine(DoEnemyTurn());
         enemies[currentEnemy].DoTurn();
-    }
-
-    private IEnumerator DoEnemyTurn()
-    {
-        yield return new WaitForEndOfFrame();
-        enemies[currentEnemy].DoTurn();
-        //yield return null;
     }
 
 
 
     public void IncrementCurrentEnemy()
     {
+        //  Guess what this does
         currentEnemy++;
     }
 
     public void ResetEnemies()
     {
+        //  Reset the turns for each enemy
         foreach(Enemy enemy in enemies)
         {
             enemy.ResetTurns();
         }
+        //  Set currentEnemy back to 0
         currentEnemy = 0;
     }
 }
