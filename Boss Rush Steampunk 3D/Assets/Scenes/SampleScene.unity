@@ -1339,6 +1339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillCheck: {fileID: 8844748375504431931, guid: 44aefaa1258bd6048b9c494f248c666f,
     type: 3}
+  cooldown: 0
 --- !u!114 &202984927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8211,6 +8212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillCheck: {fileID: 259771252588534856, guid: 7332a9a0ab8bf9044a7a998cf2ca1b85,
     type: 3}
+  cooldown: 0
 --- !u!114 &1283642129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9305,6 +9307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillCheck: {fileID: 6347206452958817606, guid: f0dd67962e8d5594ab7fcdb92b6358be,
     type: 3}
+  cooldown: 0
 --- !u!114 &1777151153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9875,6 +9878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillCheck: {fileID: 6347206452958817606, guid: f0dd67962e8d5594ab7fcdb92b6358be,
     type: 3}
+  cooldown: 2
 --- !u!1 &1955154777
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,11 +17,11 @@ public class BattleStateManager : MonoBehaviour
     //the defense stage is assigned the integer 5
     //the player damage stage is assigned the integer 6
     //more stages to be added/assigned
-    [SerializeField]
 
 	public LineRenderer lr;
 
 	public Transform[] lrpos;
+    [HideInInspector] public List<SelectableButton> buttons;                     //  A hidden list of all buttons in the scene, so that the BattleStateManager can access them when they're deactivated.
 
     private int battleState = 0;
 
@@ -50,8 +50,14 @@ public class BattleStateManager : MonoBehaviour
 
     void Update()
     {
-		lr.SetPosition(0, lrpos[0].position);
-		lr.SetPosition(1, lrpos[1].position);
+        if (lrpos[0] != null)
+        {
+            lr.SetPosition(0, lrpos[0].position);
+        }
+        if (lrpos[1] != null)
+        {
+            lr.SetPosition(1, lrpos[1].position);
+        }
         switch(battleState)
         {
             case 0: //  Select who to interact with
@@ -189,9 +195,11 @@ public class BattleStateManager : MonoBehaviour
             }
         }
         //  Reset all enemies (specifically their turn count) if we were just on battleState 6
+        //  When reseting, also tick down all of the button cooldowns
         if (battlePhaseOver)
         {
             ResetEnemies();
+            DecreaseButtonCooldowns();
         }
     }
     
@@ -233,5 +241,14 @@ public class BattleStateManager : MonoBehaviour
         }
         //  Set currentEnemy back to 0
         currentEnemy = 0;
+    }
+
+    public void DecreaseButtonCooldowns()
+    {
+        Debug.Log($"There are {buttons.Count} buttons.");
+        foreach(SelectableButton button in buttons)
+        {
+            button.StepCooldown();
+        }
     }
 }

@@ -161,7 +161,7 @@ MonoBehaviour:
   indicator: {fileID: 6962624487481442060}
   rotationSpeed: 500
   targetAngleRange: 45
-  targetCriticalRange: 14
+  targetCriticalRange: 15
   result: -1
   smallDamage: {fileID: 3309622814263130625, guid: e0cf3e9d0eb006a4e8bd4138b9abc803,
     type: 3}

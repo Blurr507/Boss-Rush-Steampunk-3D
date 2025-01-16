@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.21
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -210,6 +210,7 @@ MonoBehaviour:
   lrpos:
   - {fileID: 2008835557}
   - {fileID: 2120184888}
+  buttons: []
   selectables:
   - {fileID: 2008835556}
   - {fileID: 2120184890}
@@ -1168,6 +1169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillCheck: {fileID: 8844748375504431931, guid: 44aefaa1258bd6048b9c494f248c666f,
     type: 3}
+  cooldown: 0
 --- !u!114 &202984928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2172,7 +2174,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.8519328, b: 0.4481132, a: 1}
   m_Intensity: 1.85
   m_Range: 10
   m_SpotAngle: 30
@@ -2293,6 +2295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillCheck: {fileID: 1815895980609603312, guid: 13accddd65e93984486a1215fe83feda,
     type: 3}
+  cooldown: 0
 --- !u!114 &979987167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2840,6 +2843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillCheck: {fileID: 259771252588534856, guid: 7332a9a0ab8bf9044a7a998cf2ca1b85,
     type: 3}
+  cooldown: 0
 --- !u!1 &1384405087
 GameObject:
   m_ObjectHideFlags: 0
@@ -3955,6 +3959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillCheck: {fileID: 6347206452958817606, guid: f0dd67962e8d5594ab7fcdb92b6358be,
     type: 3}
+  cooldown: 0
 --- !u!114 &1777151153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4462,6 +4467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillCheck: {fileID: 6347206452958817606, guid: f0dd67962e8d5594ab7fcdb92b6358be,
     type: 3}
+  cooldown: 2
 --- !u!1 &1999581186
 GameObject:
   m_ObjectHideFlags: 0
@@ -4636,6 +4642,11 @@ PrefabInstance:
       propertyPath: hp
       value: 
       objectReference: {fileID: 1507919016}
+    - target: {fileID: 8066323690253971016, guid: 8dd2816b6cab8884f9ec11a2df3db73f,
+        type: 3}
+      propertyPath: buttons.Array.data[0]
+      value: 
+      objectReference: {fileID: 539022618}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
