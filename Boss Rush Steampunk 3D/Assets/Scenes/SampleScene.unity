@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -160,6 +160,7 @@ MonoBehaviour:
   lrpos:
   - {fileID: 574754243}
   - {fileID: 2120184888}
+  buttons: []
   selectables:
   - {fileID: 363251911}
   - {fileID: 2120184890}
@@ -1868,7 +1869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &265749192
 Transform:
   m_ObjectHideFlags: 0
@@ -9878,7 +9879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillCheck: {fileID: 6347206452958817606, guid: f0dd67962e8d5594ab7fcdb92b6358be,
     type: 3}
-  cooldown: 2
+  cooldown: 0
 --- !u!1 &1955154777
 GameObject:
   m_ObjectHideFlags: 0
