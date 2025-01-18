@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CreateObjectInBounds))]
-public class SixShooterAttack : MonoBehaviour
+public class SixShooterAttack : SkillCheck
 {
 	private Animator gooseAnimator;
 
@@ -53,7 +53,6 @@ public class SixShooterAttack : MonoBehaviour
 				gooseAnimator.SetTrigger("Shoot");
 				BattleStateManager.me.audios[0].pitch = Random.Range(0.8f, 1f);
 				BattleStateManager.me.audios[0].Play();
-				//Debug.Log("!!!!!");
                 results.Add(currentGauge.result);
 
                 // Handle the damage based on the result
@@ -82,6 +81,15 @@ public class SixShooterAttack : MonoBehaviour
                     // All gauges have been processed
                     stage++;
                 }
+            }
+            else if(currentGaugeIndex == 0 && Input.GetMouseButtonDown(1))
+            {
+                Cancel();
+                BattleStateManager.me.BackToState0();
+                gooseAnimator.SetBool("Aiming", false);
+                gooseAnimator.SetBool("Thinking", false);
+                Destroy(bubble.gameObject);
+                Destroy(gameObject);
             }
         }
         else if (stage == 1)

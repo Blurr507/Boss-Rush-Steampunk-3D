@@ -35,6 +35,10 @@ public class CanSelect : MonoBehaviour
             {
                 selected = collider == hit.collider;
             }
+            else
+            {
+                selected = false;
+            }
         }
         else
         {

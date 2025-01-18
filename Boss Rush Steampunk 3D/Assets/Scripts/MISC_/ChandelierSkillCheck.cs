@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChandelierSkillCheck : MonoBehaviour
+public class ChandelierSkillCheck : SkillCheck
 {
     private Chandelier chandelier;
     private int stage = 0;
@@ -20,9 +20,16 @@ public class ChandelierSkillCheck : MonoBehaviour
 
     private void Update()
     {
-        if(clicked == 0 && Input.GetMouseButtonDown(0))
+        if(clicked == 0)
         {
-            clicked = 1;
+            if (Input.GetMouseButtonDown(0))
+            {
+                clicked = 1;
+            }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                clicked = 2;
+            }
         }
     }
 
@@ -31,38 +38,25 @@ public class ChandelierSkillCheck : MonoBehaviour
         chandelier = FindObjectOfType<Chandelier>();
         chandelier.critDamage = critDamage;
         BattleStateManager.me.IncrementState();
+        chandelier.showColors = true;
 
         while (true)
         {
             if (clicked == 1)
             {
-                float angle = Vector3.SignedAngle(Vector3.down, chandelier.transform.position - chandelier.hinge.position, Vector3.forward);
-                if(Mathf.Abs(angle - critAngle) < critAngleMargin)
-                {
-                    Debug.Log($"Critical hit! Angle was {angle}");
-                    chandelier.result = 3;
-                    
-                }
-                else if(Mathf.Abs(angle - targetAngle) < targetAngleMargin)
-                {
-                    Debug.Log($"Successful hit! Angle was {angle}");
-                    chandelier.result = 2;
-                }
-                else if (Mathf.Abs(angle - failAngle) < failAngleMargin)
-                {
-                    Debug.Log($"You're a failure! Angle was {angle}");
-                    chandelier.result = 1;
-                }
-                else
-                {
-                    Debug.Log($"Well that was boring :( ... Your angle was {angle}");
-                    chandelier.result = 0;
-                }
-
                 chandelier.GetComponent<DistanceJoint2D>().enabled = false;
+                chandelier.cut = true;
                 stage++;
                 clicked = -1;
                 break;
+            }
+            else if(clicked == 2)
+            {
+                //  If we right click before finishing, then cancel
+                Cancel();
+                chandelier.showColors = false;
+                Destroy(gameObject);
+                BattleStateManager.me.BackToState0();
             }
             yield return new WaitForEndOfFrame();
         }

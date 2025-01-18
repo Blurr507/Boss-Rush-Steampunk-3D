@@ -34,32 +34,42 @@ public class OilmancerMinion : Enemy
 
     public override void DoTurn()
     {
-        turns--;
-        if (turns <= 0)
+        if (turns > 0)
         {
-            BattleStateManager.me.IncrementCurrentEnemy();
-        }
-
-        if (effects.Contains("burning"))
-        {
-            StartCoroutine(PutOutFire());
-        }
-        else if(!effects.Contains("oiled"))
-        {
-            StartCoroutine(OilSelf());
-        }
-        else
-        {
-            oilmancer = FindObjectOfType<Oilmancer>();
-            if(oilmancer != null)
+            turns--;
+            if (turns <= 0)
             {
-                StartCoroutine(HealOilmancer());
+                BattleStateManager.me.IncrementCurrentEnemy();
+            }
+            if (effects.Contains("burning"))
+            {
+                StartCoroutine(PutOutFire());
+            }
+            else if (!effects.Contains("oiled"))
+            {
+                StartCoroutine(OilSelf());
             }
             else
             {
-                turns = 2;
-                base.DoTurn();
+                oilmancer = FindObjectOfType<Oilmancer>();
+                if (oilmancer != null)
+                {
+                    StartCoroutine(HealOilmancer());
+                }
+                else
+                {
+                    turns = 2;
+                    base.DoTurn();
+                }
             }
+        }
+        else
+        {
+            //  If we're already out of turns, then skip this turn
+            BattleStateManager.me.IncrementCurrentEnemy();
+            BattleStateManager.me.IncrementState();
+            BattleStateManager.me.IncrementState();
+            BattleStateManager.me.IncrementState();
         }
     }
 

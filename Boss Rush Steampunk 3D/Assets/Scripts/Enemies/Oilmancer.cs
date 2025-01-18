@@ -111,6 +111,7 @@ public class Oilmancer : Enemy
         HurtTarget(bubble.damage, damageType);
         Destroy(attack);
         Destroy(block);
+        yield return new WaitForSeconds(1f);
         BattleStateManager.me.IncrementState();
     }
 

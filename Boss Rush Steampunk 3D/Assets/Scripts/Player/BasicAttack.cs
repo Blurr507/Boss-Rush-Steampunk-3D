@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CreateObjectInBounds))]
-public class BasicAttack : MonoBehaviour
+public class BasicAttack : SkillCheck
 {
     public SteamGauge gauge; // A reference to the steam gauge in this object's children
     public DamageBubble bubble; // A reference to the damage bubble in this object's children
@@ -48,6 +48,14 @@ public class BasicAttack : MonoBehaviour
                     }
                     //  Increment stage
                     stage++;
+                }
+                else if (Input.GetMouseButtonDown(1))
+                {
+                    //  Cancel this attack if we haven't attacked yet, and we press RMB
+                    Cancel();
+                    BattleStateManager.me.BackToState0();
+                    Destroy(bubble.gameObject);
+                    Destroy(gameObject);
                 }
                 break;
             case 1: //  Move the camera to look at the boss in 2 seconds, and increment the stage to prevent it from being called again

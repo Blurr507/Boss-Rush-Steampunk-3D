@@ -25,7 +25,7 @@ public class SelectableButton : MonoBehaviour
 
     public void ActivateSkillCheck()
     {
-        Instantiate(skillCheck);
+        Instantiate(skillCheck).GetComponent<SkillCheck>().button = this;
         currentCooldown = cooldown;
         usedThisTurn = true;
         ManageButtonActiveness();
@@ -34,6 +34,12 @@ public class SelectableButton : MonoBehaviour
     public int GetCooldown()
     {
         return currentCooldown;
+    }
+
+    public void ResetCooldown()
+    {
+        currentCooldown = 0;
+        ManageButtonActiveness();
     }
 
     public void StepCooldown()

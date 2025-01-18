@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43130cac290c7d4409438a8d3a1ecb1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
   gauge1: {fileID: 6979698701550996989}
   gauge2: {fileID: 2894924014346453927}
   gauge3: {fileID: 5808609704569300085}

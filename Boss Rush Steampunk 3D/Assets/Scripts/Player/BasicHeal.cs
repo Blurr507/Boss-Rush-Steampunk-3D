@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CreateObjectInBounds))]
-public class BasicHeal : MonoBehaviour
+public class BasicHeal : SkillCheck
 {
     public SteamGauge gauge; // A reference to the steam gauge in this object's children
     public DamageBubble bubble; // A reference to the damage bubble in this object's children
@@ -11,6 +11,7 @@ public class BasicHeal : MonoBehaviour
     public int hitHeal = 20; // The damage done if the spinner stops in the target angle
     public int critHeal = 40; // The damage done if the spinner stops in the target angle
     private CreateObjectInBounds create; // A reference to a CreateObjectInBounds component for creating the SmallDamage numbers
+    private SkillCheck skillCheck; // Used for telling the button that the attack was cancelled
 
     void Start()
     {
@@ -45,6 +46,14 @@ public class BasicHeal : MonoBehaviour
                     }
                     //  Increment stage
                     stage++;
+                }
+                else if (Input.GetMouseButtonDown(1))
+                {
+                    //  Cancel this healing if we haven't clicked yet, and we press RMB
+                    Cancel();
+                    BattleStateManager.me.BackToState0();
+                    Destroy(bubble.gameObject);
+                    Destroy(gameObject);
                 }
                 break;
             case 1: //  Move the camera to look at the boss in 2 seconds, and increment the stage to prevent it from being called again

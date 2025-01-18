@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SkillCheck : MonoBehaviour
 {
-    public bool complete = false;
-    public float value = 0;
+    public SelectableButton button;
+    
+    public void Cancel()
+    {
+        button.ResetCooldown();
+    }
 }
