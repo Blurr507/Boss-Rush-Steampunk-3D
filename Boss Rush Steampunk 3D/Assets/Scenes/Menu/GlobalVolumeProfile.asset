@@ -172,7 +172,7 @@ MonoBehaviour:
     m_Value: 0.03
   m_Jolt:
     m_OverrideState: 1
-    m_Value: 0.02
+    m_Value: 0.016
   m_Fps:
     m_OverrideState: 1
     m_Value: 60
@@ -187,7 +187,7 @@ MonoBehaviour:
     m_Value: 1
   m_Volume:
     m_OverrideState: 1
-    m_Value: 0.03
+    m_Value: 0
   m_Pich:
     m_OverrideState: 1
     m_Value: 0.8
@@ -246,4 +246,4 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.213

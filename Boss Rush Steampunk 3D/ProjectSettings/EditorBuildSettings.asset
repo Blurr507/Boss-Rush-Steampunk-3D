@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 06c7cf3484dfe2c4e88c9a04e608bde8
+  - enabled: 1
+    path: Assets/Scenes/OilmancerScene.unity
+    guid: 1165d70fcaa334f4ea6a021f7fa6191f
   m_configObjects: {}
