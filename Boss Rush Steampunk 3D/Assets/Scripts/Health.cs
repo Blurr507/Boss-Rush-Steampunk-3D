@@ -7,7 +7,6 @@ public class Health : MonoBehaviour
 {
     [SerializeField]
     private int health, maxHealth;  //  The current health and maximum health
-    public UnityEvent die;          //  The event that will be called when this object dies (runs out of health)
     public bool alive = true;       //  Used to specify if the object is alive, to ensure that the death script is only called once
     public RectTransform hp;        //  A reference to this object's healthbar object
     public List<string> effects = new List<string>();   //  A list to keep track of the effects on this object (i.e. burning, wet, buffed, etc.)
@@ -24,11 +23,6 @@ public class Health : MonoBehaviour
     {
         //  Make sure that the healthbar's background (which is it's parent) is a child of the WorldSpaceCanvas
         hp.parent.SetParent(GameObject.FindGameObjectWithTag("WorldSpaceCanvas").transform);
-        if (die.GetPersistentEventCount() == 0)
-        {
-            //  If we haven't been given a custom death action, then default it to the Die method
-            die.AddListener(Die);
-        }
         //  Assign damageNumberCreator to our CreateObjectInBounds, and set the object it creates to the damageNumberObject assigned in the BattleStateManager
         damageNumberCreator = GetComponent<CreateObjectInBounds>();
         damageNumberCreator.obj = BattleStateManager.me.damageNumberObject;
@@ -37,12 +31,19 @@ public class Health : MonoBehaviour
     void Update()
     {
         //  Scale the healthbar based on the amount of health that we have versus our maxHealth
-        hp.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, healthbarScaleMultiplier * health / maxHealth);
-        if(health <= 0 && alive)
+        if (alive)
         {
-            //  If we're out of health and still alive, call our death event, and set alive to false (to prevent the death event from being called more than once)
-            die.Invoke();
-            alive = false;
+            hp.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, healthbarScaleMultiplier * health / maxHealth);
+            if (health <= 0)
+            {
+                //  If we're out of health and still alive, call our death event, and set alive to false (to prevent the death event from being called more than once)
+                Die();
+                alive = false;
+            }
+        }
+        else
+        {
+            hp.gameObject.SetActive(false);
         }
     }
 
@@ -110,13 +111,14 @@ public class Health : MonoBehaviour
         }
     }
 
+    //  Returns this object's health
     public int GetHealth()
     {
         return health;
     }
 
-
-    public void Die()
+    //  An overridable event for what happens when this object dies
+    public virtual void Die()
     {
         //  The default die event is just destroying this object
         Destroy(gameObject);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BattleStateManager : MonoBehaviour
 {
@@ -200,6 +201,7 @@ public class BattleStateManager : MonoBehaviour
         {
             ResetEnemies();
             DecreaseButtonCooldowns();
+            ManageGeauxDOTs();
         }
     }
     
@@ -224,7 +226,11 @@ public class BattleStateManager : MonoBehaviour
         enemies[currentEnemy].DoTurn();
     }
 
-
+    //  For focusing on geaux when he dies
+    public void ToState7()
+    {
+        battleState = 7;
+    }
 
     public void IncrementCurrentEnemy()
     {
@@ -250,5 +256,19 @@ public class BattleStateManager : MonoBehaviour
         {
             button.StepCooldown();
         }
+    }
+
+    public void ManageGeauxDOTs()
+    {
+        Geaux geaux = FindObjectOfType<Geaux>();
+        if(geaux != null && geaux.effects.Contains("burning"))
+        {
+            geaux.Burn();
+        }
+    }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

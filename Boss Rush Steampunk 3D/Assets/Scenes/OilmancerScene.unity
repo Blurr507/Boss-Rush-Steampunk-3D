@@ -4705,7 +4705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ba30d2ce13f6a48b5dba00745eb2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillCheck: {fileID: 6347206452958817606, guid: f0dd67962e8d5594ab7fcdb92b6358be,
+  skillCheck: {fileID: 9184625425534454636, guid: d9da35a13e61dba488a3475fd1c2c613,
     type: 3}
   cooldown: 0
 --- !u!114 &1777151153
@@ -5469,6 +5469,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5986276126606674418, guid: 8dd2816b6cab8884f9ec11a2df3db73f,
+        type: 3}
+      propertyPath: hp
+      value: 
+      objectReference: {fileID: 1507919016}
+    - target: {fileID: 5986276126606674418, guid: 8dd2816b6cab8884f9ec11a2df3db73f,
+        type: 3}
+      propertyPath: blackCircleOfDeath
+      value: 
+      objectReference: {fileID: 3175631906743716405, guid: bdd5e1bd7de9de749872dbd0b50f31b7,
+        type: 3}
     - target: {fileID: 7125443889457089556, guid: 8dd2816b6cab8884f9ec11a2df3db73f,
         type: 3}
       propertyPath: hp
@@ -6087,9 +6098,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 250
   maxHealth: 250
-  die:
-    m_PersistentCalls:
-      m_Calls: []
   alive: 1
   hp: {fileID: 1655020216}
   effects: []
@@ -6168,7 +6176,7 @@ Transform:
   m_Children:
   - {fileID: 241451898}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 17, y: -14, z: -9}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2120238111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6197,6 +6205,8 @@ MonoBehaviour:
     rotation: {x: 17, y: -14, z: -9}
   - position: {x: -0.8, y: 3, z: -5.5}
     rotation: {x: 7, y: 10, z: 0}
+  - position: {x: -3.3, y: 0.8, z: -2.5}
+    rotation: {x: 0, y: 0, z: 0}
   positionLerpSpeed: 5
   rotationLerpSpeed: 5
 --- !u!1660057539 &9223372036854775807

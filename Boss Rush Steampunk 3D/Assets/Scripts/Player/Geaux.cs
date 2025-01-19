@@ -4,15 +4,59 @@ using UnityEngine;
 
 public class Geaux : Health
 {
-    // Start is called before the first frame update
-    void Start()
+    public int burnDamage = 10;
+    public GameObject blackCircleOfDeath;
+    private Animator anim;
+
+    private void Start()
     {
-        
+        anim = GetComponent<Animator>();
+        StartOverride();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override bool AddEffect(string effect)
     {
-        
+        switch(effect)
+        {
+            case "burning":
+                if (!effects.Contains("burning"))
+                {
+                    effects.Add("burning");
+                    return true;
+                }
+                break;
+        }
+        return false;
+    }
+
+    public void Burn()
+    {
+        if(effects.Contains("burning"))
+        {
+            SubtractHealth(burnDamage, 1);
+        }
+    }
+
+    public void Extinguish()
+    {
+        if (effects.Contains("burning"))
+        {
+            effects.Remove("burning");
+        }
+    }
+
+    public override void Die()
+    {
+        StartCoroutine(DeathCoroutine());
+    }
+
+    private IEnumerator DeathCoroutine()
+    {
+        Instantiate(blackCircleOfDeath);
+        GameObject.FindGameObjectWithTag("WorldSpaceCanvas").SetActive(false);
+        BattleStateManager.me.ToState7();
+        anim.SetTrigger("Dead");
+        yield return new WaitForSeconds(4f);
+        BattleStateManager.me.RestartScene();
     }
 }
