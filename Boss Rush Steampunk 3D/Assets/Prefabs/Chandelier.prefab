@@ -260,8 +260,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 3.75, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4324415168101857147}
   m_Father: {fileID: 3508088263173191759}
@@ -307,7 +307,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 348a3e1f33115b54a9ddb0fa781c244b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e02b461d01ba56e4cbd8af4bf24d2531, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -381,7 +381,19 @@ MonoBehaviour:
   dir: 1
   result: -1
   critDamage: 10
+  failPos: -3.5
+  failRange: 1.5
+  targetPos: 3.5
+  targetRange: 0.5
+  critSpeed: 2
+  critSpeedRange: 0.5
   hinge: {fileID: 8816664275025936310}
+  showColors: 0
+  cut: 0
+  missColor: {r: 1, g: 1, b: 1, a: 1}
+  failColor: {r: 1, g: 0, b: 0, a: 1}
+  targetColor: {r: 0, g: 1, b: 0, a: 1}
+  critColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!120 &1039240943183708960
 LineRenderer:
   serializedVersion: 2
@@ -425,7 +437,7 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 4.3, z: 0}
+  - {x: 0, y: 4.45, z: 0}
   - {x: 0, y: 7, z: 0}
   m_Parameters:
     serializedVersion: 3
