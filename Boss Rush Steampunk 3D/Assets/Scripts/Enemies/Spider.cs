@@ -10,10 +10,19 @@ public class Spider : Enemy
     public GameObject attack1;
     public AnimationCurve posCurve;
 
+	public Animator spiderstuff;
+	public ParticleSystem fireparts;
+
+	public Transform[] lazerspots;
+	public LineRenderer[] lazers;
 
     public override void DoTurn()
     {
+		if(Random.Range(0, 2) == 0){
         Attack1();
+		} else {
+		Attack2();
+		}
         turns--;
         if (turns <= 0)
         {
@@ -25,9 +34,21 @@ public class Spider : Enemy
         StartCoroutine(Attack1Co());
     }
 
+	public void Attack2()
+	{
+		StartCoroutine(Attack2Co());
+	}
+
+	private void Update(){
+		for(int i = 0; i < 4; i++){
+			lazers[i].SetPosition(1, lazerspots[i].position);
+		}
+	}
+
     private IEnumerator Attack1Co()
     {
         //  State = 4
+		spiderstuff.SetTrigger("Attack1");
         yield return new WaitForSeconds(0.5f);
         GameObject attack = Instantiate(attack1);
         DamageBubble bubble = FindObjectOfType<DamageBubble>();
@@ -35,11 +56,33 @@ public class Spider : Enemy
         yield return new WaitForSeconds(0.5f);
         BattleStateManager.me.IncrementState();
         BattleStateManager.me.IncrementState();
+
         // State = 6
         bubble.MoveToPos(target.transform.position, 1, posCurve);
         yield return new WaitForSeconds(1f);
+		fireparts.Play();
         HurtTarget(attack1Damage, damageType);
         Destroy(attack);
         BattleStateManager.me.IncrementState();
     }
+	private IEnumerator Attack2Co()
+	{
+		//  State = 4
+		spiderstuff.SetTrigger("attack2");
+		yield return new WaitForSeconds(0.5f);
+		GameObject attack = Instantiate(attack1);
+		DamageBubble bubble = FindObjectOfType<DamageBubble>();
+		bubble.AddDamage(100);
+		yield return new WaitForSeconds(0.25f);
+		BattleStateManager.me.IncrementState();
+		BattleStateManager.me.IncrementState();
+		
+		// State = 6
+		bubble.MoveToPos(target.transform.position, 2.25f, posCurve);
+		yield return new WaitForSeconds(2.25f);
+		//fireparts.Play();
+		HurtTarget(attack1Damage, damageType);
+		Destroy(attack);
+		BattleStateManager.me.IncrementState();
+	}
 }
