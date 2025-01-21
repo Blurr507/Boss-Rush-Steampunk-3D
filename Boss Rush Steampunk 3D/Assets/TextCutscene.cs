@@ -19,7 +19,7 @@ public class TextCutscene : MonoBehaviour
 		text2 = new List<string[]>();
 		SetText(0, 0);
 		scene = 0;
-		for(int i = 0; i < 3;  i++){
+		for(int i = 0; i < 9;  i++){
 			scenes[i].SetActive(false);
 		}
 		scenes[scene].SetActive(true);
@@ -59,18 +59,39 @@ public class TextCutscene : MonoBehaviour
 			//text2.Add (new string[]{"", "1", "0"});
 		}else if (day == 1) {
 			text2.Add (new string[]{"Geaux: What am I going to tell my wife and several dozen children of various ages and genders!!", "1", "0"});
-			text2.Add (new string[]{"Geaux: How am I going to pay off my debt to president bush and his oilers now... :(", "1", "0"});
+			text2.Add (new string[]{"Geaux: How am I going to pay off my debt to George W Bush and his oilers now... :(", "1", "0"});
 			text2.Add (new string[]{"Geaux: At least I have my comically large revolver!", "1", "0"});
 		} else if (day == 2) {
 			text2.Add (new string[]{"Knock Knock (on the door)", "0", "1"});
 			text2.Add (new string[]{"Geaux: whar", "1", "0"});
-			text2.Add (new string[]{"Geaux: Oh no! It must be president bush and the oilers!", "1", "0"});
+			text2.Add (new string[]{"Geaux: Oh no! It must be George W Bush and the oilers!", "1", "0"});
 			text2.Add (new string[]{"Geaux: How am I going to tell them that I dont have 7 quindecillion USD right now??", "0", "1"});
 		} else if (day == 3) {
-			text2.Add (new string[]{"Hello!", "0", "1"});
-			text2.Add (new string[]{"...", "2", "0"});
-			text2.Add (new string[]{"Your mission remains the same, destroy the enemy", "1", "0"});
-			text2.Add (new string[]{"Ok.", "0", "1"});
-		} 
+			text2.Add (new string[]{"Redacted: Heyyyy~", "0", "1"});
+			text2.Add (new string[]{"Redacted: Wheres my cash bucko?", "2", "0"});
+			text2.Add (new string[]{"Geaux: I don have, my hopital bills are too much :(", "1", "0"});
+			text2.Add (new string[]{"Redacted: Well then i'll take your left arm as payment!", "0", "1"});
+		} else if (day == 4) {
+			text2.Add (new string[]{"Slice sfx", "0", "1"});
+		} else if (day == 5) {
+			text2.Add (new string[]{"House: You should be careful, I think the oilers might chop your arm off.", "0", "1"});
+			text2.Add (new string[]{"House: Oh wait, I'm a little late with that", "0", "1"});
+			text2.Add (new string[]{"House: Anyway...", "0", "1"});
+		} else if (day == 6) {
+			text2.Add (new string[]{"House: I have this time travelling watch for you...", "0", "1"});
+			text2.Add (new string[]{"House: Dont question where I got it.", "0", "1"});
+			text2.Add (new string[]{"House: Uhh, I need you to go destroy the oilers", "0", "1"});
+			text2.Add (new string[]{"House: They- are you even alive?", "0", "1"});
+		} else if (day == 7) {
+			text2.Add (new string[]{"Geaux: Huh?", "0", "1"});
+			text2.Add (new string[]{"House: I was saying that the oilers are in texas", "0", "1"});
+			text2.Add (new string[]{"Geaux: Why exactly do you want me of all people to destroy them??", "0", "1"});
+			text2.Add (new string[]{"House: Well they took your arm, and your bones are made of iron", "0", "1"});
+			text2.Add (new string[]{"House: I'm sure you can beat them!", "0", "1"});
+			text2.Add (new string[]{"Geaux: Okay..?", "0", "1"});
+		} else if (day == 8) {
+			text2.Add (new string[]{"Flight Attendant: Your flight to The middle of nowhere, texas, will be landing in 1 hour!", "0", "1"});
+			text2.Add (new string[]{"Geaux: Wow this place was suprisingly easy to get to", "0", "1"});
+		}
 	}
 }
