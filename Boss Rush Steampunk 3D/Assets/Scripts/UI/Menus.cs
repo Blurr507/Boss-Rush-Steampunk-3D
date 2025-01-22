@@ -12,7 +12,7 @@ public class Menus : MonoBehaviour
     }
 
 	public void toMain(){
-		SceneManager.LoadSceneAsync("OilmancerScene");
+		SceneManager.LoadSceneAsync("Story");
 	}
 
 
