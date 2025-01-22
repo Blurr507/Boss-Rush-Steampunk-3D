@@ -9,6 +9,12 @@ public class Geaux : Health
     public GameObject firePart;
     private Animator anim;
 
+	public AudioSource timetravel;
+
+	public AudioSource normalMusic;
+
+	public ParticleSystem deathparts;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -59,7 +65,10 @@ public class Geaux : Health
         GameObject.FindGameObjectWithTag("WorldSpaceCanvas").SetActive(false);
         BattleStateManager.me.ToState7();
         anim.SetTrigger("Dead");
-        yield return new WaitForSeconds(4f);
+		timetravel.Play();
+		deathparts.Play();
+		normalMusic.Stop();
+        yield return new WaitForSeconds(15f);
         BattleStateManager.me.RestartScene();
     }
 }
