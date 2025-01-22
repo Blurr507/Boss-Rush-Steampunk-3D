@@ -39,7 +39,7 @@ public class Chandelier : MonoBehaviour
         if(result == -1)
         {
             //  Update the rope
-            line.SetPosition(0, transform.position + Vector3.up * 4.45f);
+            line.SetPosition(0, transform.position + Vector3.up * 0.7f);
             line.SetPosition(1, hinge.position);
 
             if (showColors)
