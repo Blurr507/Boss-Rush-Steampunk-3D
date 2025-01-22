@@ -40,6 +40,7 @@ public class Spider : Enemy
 	}
 
 	private void Update(){
+		ManageHealth();
 		for(int i = 0; i < 4; i++){
 			lazers[i].SetPosition(1, lazerspots[i].position);
 		}

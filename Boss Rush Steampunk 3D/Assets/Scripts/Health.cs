@@ -30,6 +30,11 @@ public class Health : MonoBehaviour
 
     void Update()
     {
+        ManageHealth();
+    }
+
+    public void ManageHealth()
+    {
         //  Scale the healthbar based on the amount of health that we have versus our maxHealth
         if (alive)
         {
