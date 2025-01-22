@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TextCutscene : MonoBehaviour
 {
@@ -36,6 +37,10 @@ public class TextCutscene : MonoBehaviour
 		section++;
 		if(section >= text2.Count){
 			scene++;
+			if(scene > 8){
+				SceneManager.LoadSceneAsync("SampleScene");
+				scene--;
+			}
 			text2 = new List<string[]>();
 			section = 0;
 			for(int i = 0; i < 3;  i++){
