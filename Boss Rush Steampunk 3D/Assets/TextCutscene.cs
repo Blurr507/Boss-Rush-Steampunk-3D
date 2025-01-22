@@ -49,14 +49,14 @@ public class TextCutscene : MonoBehaviour
 			scenes[scene].SetActive(true);
 			SetText(scene, 0);
 		}
-		if(section == 4)
+		/*if(scene == 4)
 		{
 			Camera.main.backgroundColor = Color.red;
 		}
 		else
 		{
 			Camera.main.backgroundColor = Color.black;
-		}
+		}*/
 	}
 
 	public void SetText(int day, int ID){

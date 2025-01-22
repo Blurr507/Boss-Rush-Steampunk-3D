@@ -6,6 +6,7 @@ public class Geaux : Health
 {
     public int burnDamage = 10;
     public GameObject blackCircleOfDeath;
+    public GameObject firePart;
     private Animator anim;
 
     private void Start()
@@ -22,6 +23,7 @@ public class Geaux : Health
                 if (!effects.Contains("burning"))
                 {
                     effects.Add("burning");
+                    firePart.SetActive(true);
                     return true;
                 }
                 break;
@@ -42,6 +44,7 @@ public class Geaux : Health
         if (effects.Contains("burning"))
         {
             effects.Remove("burning");
+            firePart.SetActive(false);
         }
     }
 
