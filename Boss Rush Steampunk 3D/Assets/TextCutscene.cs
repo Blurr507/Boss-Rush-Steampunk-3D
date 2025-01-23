@@ -70,7 +70,7 @@ public class TextCutscene : MonoBehaviour
 			text2.Add (new string[]{"Geaux: Bruh.", "0", "1"});
 			//text2.Add (new string[]{"", "1", "0"});
 		}else if (day == 1) {
-			text2.Add (new string[]{"Geaux: What am I going to tell my wife and several dozen children of various ages and genders!!", "1", "0"});
+			text2.Add (new string[]{"Geaux: What am I going to tell my wife and several dozen children!!", "1", "0"});
 			text2.Add (new string[]{"Geaux: How am I going to pay off my debt to George W Bush and his oilers now... :(", "1", "0"});
 			text2.Add (new string[]{"Geaux: At least I have my comically large revolver!", "1", "0"});
 		} else if (day == 2) {
@@ -89,19 +89,26 @@ public class TextCutscene : MonoBehaviour
 		} else if (day == 5) {
 			text2.Add (new string[]{"House: You should be careful, I think the oilers might chop your arm off.", "0", "1"});
 			text2.Add (new string[]{"House: Oh wait, I'm a little late with that.", "0", "1"});
-			text2.Add (new string[]{"House: Anyway...", "0", "1"});
+			text2.Add (new string[]{"House: Anyway", "0", "1"});
 		} else if (day == 6) {
 			text2.Add (new string[]{"House: I have this time travelling watch for you...", "0", "1"});
 			text2.Add (new string[]{"House: Dont question where I got it.", "0", "1"});
-			text2.Add (new string[]{"House: Uhh, I need you to go destroy the oilers!", "0", "1"});
+			text2.Add (new string[]{"House: Uhhh, I need you to go destroy the oilers.", "0", "1"});
 			text2.Add (new string[]{"House: They- hello? are you even alive?", "0", "1"});
 		} else if (day == 7) {
 			text2.Add (new string[]{"Geaux: Huh?", "0", "1"});
 			text2.Add (new string[]{"House: I was saying that the oilers are in texas!", "0", "1"});
 			text2.Add (new string[]{"Geaux: Why exactly do you want me of all people to destroy them??", "0", "1"});
 			text2.Add (new string[]{"House: Well they took your arm, and your bones are made of iron.", "0", "1"});
-			text2.Add (new string[]{"House: I'm sure you can beat them!", "0", "1"});
-			text2.Add (new string[]{"Geaux: Okay..?", "0", "1"});
+			text2.Add (new string[]{"House: I'm sure you can probably not die that much!", "0", "1"});
+			text2.Add (new string[]{"Geaux: That isnt very reassuring...", "0", "1"});
+			text2.Add (new string[]{"House: Also, one last thing", "0", "1"});
+			text2.Add (new string[]{"House: When you travel back in time", "0", "1"});
+			text2.Add (new string[]{"House: The timeline will progress as if you didnt", "0", "1"});
+			text2.Add (new string[]{"House: So if you remember what happened", "0", "1"});
+			text2.Add (new string[]{"House: You can avoid it.", "0", "1"});
+			text2.Add (new string[]{"House: Also remember that the butterfly effect exists!!", "0", "1"});
+			text2.Add (new string[]{"House: Anyway, off you go!", "0", "1"});
 		} else if (day == 8) {
 			text2.Add (new string[]{"*After not very long...*", "0", "1"});
 			text2.Add (new string[]{"Flight Attendant: Your flight to The middle of nowhere, texas, will be landing in 1 hour!", "0", "1"});
