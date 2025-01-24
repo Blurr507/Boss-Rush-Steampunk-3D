@@ -40,10 +40,11 @@ public class TextCutscene : MonoBehaviour
 			if(scene > 8){
 				SceneManager.LoadSceneAsync("OilmancerScene");
 				scene--;
+				section = text2.Count - 1;
 			}
 			text2 = new List<string[]>();
 			section = 0;
-			for(int i = 0; i < 3;  i++){
+			for(int i = 0; i < scenes.Length;  i++){
 				scenes[i].SetActive(false);
 			}
 			scenes[scene].SetActive(true);
