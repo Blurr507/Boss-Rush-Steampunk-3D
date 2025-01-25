@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16383,7 +16383,7 @@ MonoBehaviour:
   attack1: {fileID: 2583852553595416887, guid: 54ffbbc9de1f6604fa2b4883469a42a1, type: 3}
   block1: {fileID: 5241078388051594694, guid: f77154abc2ea15a45b40fda06c476015, type: 3}
   attack1Damage: 100
-  block1Fail: 0
+  block1Fail: -20
   block1Target: -50
   block1Crit: -80
   damageType: 3
@@ -16391,6 +16391,7 @@ MonoBehaviour:
   attacks: 1
   maxSpawns: 1
   spawns: 1
+  spawnCooldown: 0
   minions: []
   minionLocations:
   - {fileID: 77478176}

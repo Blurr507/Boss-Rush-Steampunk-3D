@@ -12,7 +12,7 @@ public class Oilmancer : Enemy
     public int block1Crit = -50;
     public int damageType = 3;
     public int maxAttacks = 1, attacks = 1;
-    public int maxSpawns = 1, spawns = 1;
+    public int spawnPreps = 1, spawns = 0;
     public List<OilmancerMinion> minions = new List<OilmancerMinion>();
     public List<Transform> minionLocations = new List<Transform>();
     public AnimationCurve posCurve;
@@ -118,6 +118,7 @@ public class Oilmancer : Enemy
     private IEnumerator SpawnMinion()
     {
         spawns--;
+        spawnPreps--;
         yield return new WaitForSeconds(1f);
         BattleStateManager.me.IncrementState();
         BattleStateManager.me.IncrementState();
@@ -175,6 +176,16 @@ public class Oilmancer : Enemy
     {
         turns = maxTurns;
         attacks = maxAttacks;
-        spawns = maxSpawns;
+        if(minions.Count < minionLocations.Count)
+        {
+            if(spawnPreps == 0)
+            {
+                spawnPreps++;
+            }
+            else
+            {
+                spawns = 1;
+            }
+        }
     }
 }

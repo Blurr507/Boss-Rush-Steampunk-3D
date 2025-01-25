@@ -297,6 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639eb08d5ac93ee479d813a88b6f0ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
   gauge: {fileID: 0}
   bubble: {fileID: 0}
   bubbleCurve:
@@ -323,9 +324,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  failHeal: 5
-  hitHeal: 30
-  critHeal: 60
+  failHeal: 30
+  hitHeal: 60
+  critHeal: 100
 --- !u!114 &3422003543469745128
 MonoBehaviour:
   m_ObjectHideFlags: 0
