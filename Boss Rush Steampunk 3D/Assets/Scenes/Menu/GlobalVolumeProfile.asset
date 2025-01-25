@@ -102,7 +102,7 @@ MonoBehaviour:
     m_Value: 0.9
   intensity:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 6
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
@@ -148,6 +148,8 @@ MonoBehaviour:
   - {fileID: -7345891040160480055}
   - {fileID: -1147986721836079691}
   - {fileID: 492000080733604749}
+  - {fileID: 1676269472360066955}
+  - {fileID: 3195138407550273652}
 --- !u!114 &492000080733604749
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -191,6 +193,52 @@ MonoBehaviour:
   m_Pich:
     m_OverrideState: 1
     m_Value: 0.8
+--- !u!114 &1676269472360066955
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
+  m_Name: DepthOfField
+  m_EditorClassIdentifier: 
+  active: 0
+  mode:
+    m_OverrideState: 1
+    m_Value: 2
+  gaussianStart:
+    m_OverrideState: 1
+    m_Value: 108.6
+  gaussianEnd:
+    m_OverrideState: 1
+    m_Value: 92.5
+  gaussianMaxRadius:
+    m_OverrideState: 1
+    m_Value: 1.5
+  highQualitySampling:
+    m_OverrideState: 0
+    m_Value: 0
+  focusDistance:
+    m_OverrideState: 1
+    m_Value: 5.95
+  aperture:
+    m_OverrideState: 1
+    m_Value: 24.5
+  focalLength:
+    m_OverrideState: 1
+    m_Value: 180
+  bladeCount:
+    m_OverrideState: 1
+    m_Value: 3
+  bladeCurvature:
+    m_OverrideState: 1
+    m_Value: 1
+  bladeRotation:
+    m_OverrideState: 1
+    m_Value: 180
 --- !u!114 &1881579288749618558
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -247,3 +295,28 @@ MonoBehaviour:
   intensity:
     m_OverrideState: 1
     m_Value: 0.213
+--- !u!114 &3195138407550273652
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf1aba9553839d41ae37dd52e9ebcce, type: 3}
+  m_Name: MotionBlur
+  m_EditorClassIdentifier: 
+  active: 0
+  mode:
+    m_OverrideState: 1
+    m_Value: 0
+  quality:
+    m_OverrideState: 1
+    m_Value: 2
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  clamp:
+    m_OverrideState: 1
+    m_Value: 0.2

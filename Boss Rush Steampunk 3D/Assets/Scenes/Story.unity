@@ -1667,10 +1667,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: lorem ipsum whatever
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9b98ec4cc0e14dd46a3c3a10c28b4bba, type: 2}
-  m_sharedMaterial: {fileID: -3044306509449268283, guid: 9b98ec4cc0e14dd46a3c3a10c28b4bba,
+  m_fontAsset: {fileID: 11400000, guid: e8ef7e5140ae108439ecfbbae74a68aa, type: 2}
+  m_sharedMaterial: {fileID: 785915706952197548, guid: e8ef7e5140ae108439ecfbbae74a68aa,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1695,7 +1695,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.1
+  m_fontSize: 50
   m_fontSizeBase: 22.1
   m_fontWeight: 400
   m_enableAutoSizing: 1

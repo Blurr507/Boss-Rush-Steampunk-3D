@@ -18,6 +18,8 @@ public class Oilmancer : Enemy
     public AnimationCurve posCurve;
     private Animator anim;
 
+	public ParticleSystem fire;
+
     private void Start()
     {
         StartOverride();
@@ -159,6 +161,7 @@ public class Oilmancer : Enemy
                 if(!effects.Contains(effect))
                 {
                     effects.Add(effect);
+					fire.Play ();
                     UpdateAnimatorBools();
                     return true;
                 }
@@ -169,7 +172,7 @@ public class Oilmancer : Enemy
 
     public override void UpdateAnimatorBools()
     {
-        anim.SetBool("Burning", effects.Contains("burning"));
+		//uhh
     }
 
     public override void ResetTurns()

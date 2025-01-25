@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc95f302f1d54cc43ab28bff752a1c53, type: 3}
   m_Name: OldMovieFx
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   _event: 600
   _pass: {fileID: 2438113473988791160}
   _blitShader: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}

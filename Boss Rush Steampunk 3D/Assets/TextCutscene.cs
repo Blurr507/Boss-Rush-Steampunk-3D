@@ -72,21 +72,21 @@ public class TextCutscene : MonoBehaviour
 			//text2.Add (new string[]{"", "1", "0"});
 		}else if (day == 1) {
 			text2.Add (new string[]{"Geaux: What am I going to tell my wife and several dozen children!!", "1", "0"});
-			text2.Add (new string[]{"Geaux: How am I going to pay off my debt to George W Bush and his oilers now... :(", "1", "0"});
+			text2.Add (new string[]{"Geaux: How am I going to pay off my debt to John Oil and his oilers now... :(", "1", "0"});
 			text2.Add (new string[]{"Geaux: At least I have my comically large revolver!", "1", "0"});
 		} else if (day == 2) {
 			text2.Add (new string[]{"Knock Knock (on the door)", "0", "1"});
 			text2.Add (new string[]{"Geaux: Eh?", "1", "0"});
-			text2.Add (new string[]{"Geaux: Oh no! It must be George W. Bush and the oilers!", "1", "0"});
+			text2.Add (new string[]{"Geaux: Oh no! It must be John Oil and the oilers!", "1", "0"});
 			text2.Add (new string[]{"Geaux: How am I going to tell them that I dont have 7 quindecillion USD right now??", "0", "1"});
 		} else if (day == 3) {
-			text2.Add (new string[]{"Redacted: Heyyyy~", "0", "1"});
-			text2.Add (new string[]{"Redacted: Wheres my cash, bucko?", "2", "0"});
-			text2.Add (new string[]{"Geaux: I dont have it, my hopital bills are too much! :(", "1", "0"});
-			text2.Add (new string[]{"Redacted: Well then I'll take your left arm as payment!", "0", "1"});
+			text2.Add (new string[]{"Oiler: Heyyyy~", "0", "1"});
+			text2.Add (new string[]{"Oiler: Wheres my cash, bucko?", "2", "0"});
+			text2.Add (new string[]{"Geaux: I don have, my hopital bills are too much! :(", "1", "0"});
+			text2.Add (new string[]{"Oiler: Well then I'll take your left arm as payment!", "0", "1"});
 		} else if (day == 4) {
 			text2.Add (new string[]{"Slice sfx", "0", "1"});
-			text2.Add (new string[]{"Geaux: AEUGHHGHHHHHH", "0", "1"});
+			text2.Add (new string[]{"Geaux: Ouch! My arm :(", "0", "1"});
 		} else if (day == 5) {
 			text2.Add (new string[]{"House: You should be careful, I think the oilers might chop your arm off.", "0", "1"});
 			text2.Add (new string[]{"House: Oh wait, I'm a little late with that.", "0", "1"});
