@@ -126,8 +126,11 @@ public class TextCutscene : MonoBehaviour
 	public void SetText2(int day, int ID){
 		if (day == 0) {
 			text2.Add (new string[]{"Geaux: Hallo", "0", "0"});
-			text2.Add (new string[]{"Mr. Oil Mancer: Blud is NOT allowed in MY area!", "1", "0"});
-			text2.Add (new string[]{"Mr. Oil Mancer: Get out of mein haus!", "1", "0"});
+			//text2.Add (new string[]{"Mr. Oil Mancer: Blud is NOT allowed in MY area!", "1", "0"});
+			text2.Add (new string[]{"Mr. Oil Mancer: It's you.", "1", "0"});
+			//text2.Add (new string[]{"Mr. Oil Mancer: Get out of mein haus!", "1", "0"});
+			text2.Add (new string[]{"Mr. Oil Mancer: Look, Whatever you're here for, it isnt worth it.", "1", "0"});
+			text2.Add (new string[]{"Mr. Oil Mancer: You'd never make it to the CEO, anyway.", "1", "0"});
 			text2.Add (new string[]{"Geaux: nuh uh", "0", "1"});
 		}
 	}
