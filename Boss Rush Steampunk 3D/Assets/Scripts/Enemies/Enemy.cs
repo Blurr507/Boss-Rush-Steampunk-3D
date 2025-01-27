@@ -52,7 +52,7 @@ public class Enemy : Health  //  A base class for all enemies which will be inhe
         BattleStateManager.me.enemies.Remove(this);
         BattleStateManager.me.selectables.Remove(GetComponent<CanSelect>());
         //  Perform the default OnDestroy code
-        if (BattleStateManager.me.enemies.Count == 0 && FindObjectOfType<Geaux>().alive)
+        if (BattleStateManager.me.enemies.Count == 0 && FindObjectOfType<Geaux>() != null && FindObjectOfType<Geaux>().alive)
         {
             BattleStateManager.me.BackToMenu();
         }

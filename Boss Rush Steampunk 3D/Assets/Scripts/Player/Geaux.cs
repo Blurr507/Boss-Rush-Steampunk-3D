@@ -13,12 +13,13 @@ public class Geaux : Health
 
 	public AudioSource normalMusic;
 
-	public ParticleSystem deathparts;
+	private ParticleSystem deathparts;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         StartOverride();
+        deathparts = GetComponent<ParticleSystem>();
     }
 
     public override bool AddEffect(string effect)
