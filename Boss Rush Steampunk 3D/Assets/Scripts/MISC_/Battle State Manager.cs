@@ -37,6 +37,7 @@ public class BattleStateManager : MonoBehaviour
     public Color electricDamage = Color.yellow;                 //  The color of the damage numbers when using electric damage
     public Color oilDamage = Color.black;                       //  The color of the damage numbers when using oil damage
     public Color healDamage = Color.green;                      //  The color of the damage numbers when using heal damage
+    public bool paused = false;                                 //  Used to pause the battle for cinematics and stuff
 
     public static BattleStateManager me; //awful code
 
@@ -86,73 +87,76 @@ public class BattleStateManager : MonoBehaviour
 
     public void IncrementState()
     {
-        switch(battleState)
+        if (!paused)
         {
-            case 0: //  Choose target
-                //  Swap geaux's animation to "Thinking"
-                gooseAnimator.SetBool("Thinking", true);
-                //  Stop all CanSelects from being selectable
-                for (int i = 0; i < selectables.Count; i++)
-                {
-                    selectables[i].canSelect = false;
-                }
-                //  Enable the chosen target's action buttons
-                for(int i = 0; i < target.buttons.Count; i++)
-                {
-                    target.buttons[i].gameObject.SetActive(true);
-                }
-                //  Increment the state
-                battleState = 1;
-                break;
-            case 1: //  Choose action
-                //  Pull geaux from his deep thought
-				gooseAnimator.SetBool("Thinking", false);
-                //  Deactivate the action buttons
-                for (int i = 0; i < target.buttons.Count; i++)
-                {
-                    target.buttons[i].gameObject.SetActive(false);
-                }
-                //  Increment the state
-                battleState = 2;
-                break;
-            case 2: //  Skill check
-                //  Make sure geaux isn't somehow thinking (we can't be having that now can we)
-				gooseAnimator.SetBool("Thinking", false);
-                //  Increment the state
-                battleState = 3;
-                break;
-            case 3: //  Damage/heal target
-                if (enemies.Count > 0)
-                {
-                    //  If there are any enemies, then proceed to state 4, starting an enemy's turn
-                    ToState4();
-                }
-                else
-                {
-                    //  If there are no enemies, geaux may go
-                    BackToState0();
-                }
-                break;
-            case 4: //  Enemy attack
-                //  Increment the state
-                battleState = 5;
-                break;
-            case 5: //  Player Block
-                //  Increment the state
-                battleState = 6;
-                break;
-            case 6: //  Player Damage
-                if(currentEnemy < enemies.Count)
-                {
-                    //  If more enemies need to play, then return to state 4
-                    ToState4();
-                }
-                else
-                {
-                    //  Otherwise, go back to geaux
-                    BackToState0();
-                }
-                break;
+            switch (battleState)
+            {
+                case 0: //  Choose target
+                        //  Swap geaux's animation to "Thinking"
+                    gooseAnimator.SetBool("Thinking", true);
+                    //  Stop all CanSelects from being selectable
+                    for (int i = 0; i < selectables.Count; i++)
+                    {
+                        selectables[i].canSelect = false;
+                    }
+                    //  Enable the chosen target's action buttons
+                    for (int i = 0; i < target.buttons.Count; i++)
+                    {
+                        target.buttons[i].gameObject.SetActive(true);
+                    }
+                    //  Increment the state
+                    battleState = 1;
+                    break;
+                case 1: //  Choose action
+                        //  Pull geaux from his deep thought
+                    gooseAnimator.SetBool("Thinking", false);
+                    //  Deactivate the action buttons
+                    for (int i = 0; i < target.buttons.Count; i++)
+                    {
+                        target.buttons[i].gameObject.SetActive(false);
+                    }
+                    //  Increment the state
+                    battleState = 2;
+                    break;
+                case 2: //  Skill check
+                        //  Make sure geaux isn't somehow thinking (we can't be having that now can we)
+                    gooseAnimator.SetBool("Thinking", false);
+                    //  Increment the state
+                    battleState = 3;
+                    break;
+                case 3: //  Damage/heal target
+                    if (enemies.Count > 0)
+                    {
+                        //  If there are any enemies, then proceed to state 4, starting an enemy's turn
+                        ToState4();
+                    }
+                    else
+                    {
+                        //  If there are no enemies, geaux may go
+                        BackToState0();
+                    }
+                    break;
+                case 4: //  Enemy attack
+                        //  Increment the state
+                    battleState = 5;
+                    break;
+                case 5: //  Player Block
+                        //  Increment the state
+                    battleState = 6;
+                    break;
+                case 6: //  Player Damage
+                    if (currentEnemy < enemies.Count)
+                    {
+                        //  If more enemies need to play, then return to state 4
+                        ToState4();
+                    }
+                    else
+                    {
+                        //  Otherwise, go back to geaux
+                        BackToState0();
+                    }
+                    break;
+            }
         }
     }
 

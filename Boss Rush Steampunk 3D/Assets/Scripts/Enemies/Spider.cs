@@ -16,7 +16,13 @@ public class Spider : Enemy
 	public Transform[] lazerspots;
 	public LineRenderer[] lazers;
 
-    public override void DoTurn()
+	public override void StartOverride()
+	{
+		base.StartOverride();
+		Random.InitState(10);
+	}
+
+	public override void DoTurn()
     {
 		if(Random.Range(0, 2) == 0){
         Attack1();

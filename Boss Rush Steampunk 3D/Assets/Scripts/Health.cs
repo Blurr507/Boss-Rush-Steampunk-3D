@@ -122,6 +122,12 @@ public class Health : MonoBehaviour
         return health;
     }
 
+    //  Returns this object's max health
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     //  An overridable event for what happens when this object dies
     public virtual void Die()
     {
