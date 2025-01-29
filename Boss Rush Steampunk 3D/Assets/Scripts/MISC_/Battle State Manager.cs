@@ -280,4 +280,16 @@ public class BattleStateManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void NextScene()
+    {
+        if(SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            BackToMenu();
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
 }

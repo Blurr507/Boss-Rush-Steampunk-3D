@@ -6,6 +6,7 @@ public class DamageBubble : MonoBehaviour
 {
     private TextMeshProUGUI text;   //  Text object that displays the current damage
     public int damage;              //  The currently stored amount of damage
+    private Coroutine move;
 
     void Start()
     {
@@ -32,7 +33,11 @@ public class DamageBubble : MonoBehaviour
 
     public void MoveToPos(Vector3 endPos, float time, AnimationCurve posCurve, bool destroyOnArrival = true)
     {
-        StartCoroutine(MoveToPosition(endPos, time, posCurve, destroyOnArrival));
+        if(move != null)
+        {
+            StopCoroutine(move);
+        }
+        move = StartCoroutine(MoveToPosition(endPos, time, posCurve, destroyOnArrival));
     }
 
     private IEnumerator MoveToPosition(Vector3 endPos, float time, AnimationCurve posCurve, bool destroyOnArrival)

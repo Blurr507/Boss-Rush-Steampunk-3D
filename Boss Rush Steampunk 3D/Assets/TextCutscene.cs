@@ -76,7 +76,7 @@ public class TextCutscene : MonoBehaviour
 			if(!dialog){
 			scene++;
 			if(scene > 8){
-				SceneManager.LoadSceneAsync("OilmancerScene");
+				SceneManager.LoadSceneAsync("KevinScene");
 				scene--;
 				section = text2.Count - 1;
 			}
@@ -117,7 +117,7 @@ public class TextCutscene : MonoBehaviour
 	}
 
 	public void GetTextSetter(string name, int in1, int in2){
-		if(name.Equals ("Story")){
+		if(name.Equals ("StoryScene")){
 			SetText(in1, in2);
 		} else if(name.Equals ("OilmancerScene")){
 			SetText2(in1, in2);

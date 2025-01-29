@@ -49,12 +49,18 @@ public class Enemy : Health  //  A base class for all enemies which will be inhe
     public override void OnDestroyOverride()
     {
         //  When getting destroyed, remove this object from the BattleStateManager's enemies and selectables list
-        BattleStateManager.me.enemies.Remove(this);
-        BattleStateManager.me.selectables.Remove(GetComponent<CanSelect>());
+        if (BattleStateManager.me.enemies.Contains(this))
+        {
+            BattleStateManager.me.enemies.Remove(this);
+        }
+        if (BattleStateManager.me.selectables.Contains(GetComponent<CanSelect>()))
+        {
+            BattleStateManager.me.selectables.Remove(GetComponent<CanSelect>());
+        }
         //  Perform the default OnDestroy code
         if (BattleStateManager.me.enemies.Count == 0 && FindObjectOfType<Geaux>() != null && FindObjectOfType<Geaux>().alive)
         {
-            BattleStateManager.me.BackToMenu();
+            BattleStateManager.me.NextScene();
         }
         base.OnDestroyOverride();
     }

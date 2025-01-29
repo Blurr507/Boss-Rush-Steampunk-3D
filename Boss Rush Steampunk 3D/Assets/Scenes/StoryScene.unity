@@ -1366,6 +1366,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   output: {fileID: 1584676049}
+  output2: {fileID: 0}
+  selectables: []
+  outputs: []
   section: 0
   speaker: 0
   scenes:
@@ -1379,6 +1382,7 @@ MonoBehaviour:
   - {fileID: 1858486085}
   - {fileID: 638293210}
   scene: 0
+  dialog: 0
 --- !u!1 &1104228955
 GameObject:
   m_ObjectHideFlags: 0
