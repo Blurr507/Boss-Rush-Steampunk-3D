@@ -177,6 +177,7 @@ MonoBehaviour:
   electricDamage: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   oilDamage: {r: 0, g: 0, b: 0, a: 1}
   healDamage: {r: 0, g: 1, b: 0, a: 1}
+  paused: 0
 --- !u!4 &31058657
 Transform:
   m_ObjectHideFlags: 0
@@ -2309,7 +2310,8 @@ PrefabInstance:
       value: BackToState0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4886527577642301190, guid: fc3bfc4de29bf474f8a5adddf96554c2, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc3bfc4de29bf474f8a5adddf96554c2, type: 3}
