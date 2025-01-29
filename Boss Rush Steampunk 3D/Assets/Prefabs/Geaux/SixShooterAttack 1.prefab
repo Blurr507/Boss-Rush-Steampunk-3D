@@ -189,7 +189,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   failDamage: 1
   hitDamage: 10
-  critDamage: 25
+  critDamage: 20
   damageType: 2
 --- !u!1001 &1220305047210653990
 PrefabInstance:
