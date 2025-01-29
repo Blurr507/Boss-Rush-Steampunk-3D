@@ -132,6 +132,7 @@ public class TextCutscene : MonoBehaviour
 			text2.Add (new string[]{"Mr. Oil Mancer: Look, Whatever you're here for, it isnt worth it.", "1", "0"});
 			text2.Add (new string[]{"Mr. Oil Mancer: You'd never make it to the CEO, anyway.", "1", "0"});
 			text2.Add (new string[]{"Geaux: nuh uh", "0", "1"});
+			text2.Add (new string[]{"Geaux: (Huh. That chandeleir looks deliberately placed there. Odd...)", "0", "1"});
 		}
 	}
 	public void SetText(int day, int ID){
