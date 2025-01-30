@@ -77,7 +77,13 @@ MonoBehaviour:
   failDamage: 10
   hitDamage: 20
   critDamage: 30
+  damageCap: 50
+  damageMultiplier: 1
+  damageReductionMultiplier: 0.5
   damageType: 0
+  startRotSpeed: 400
+  rotHitMultiplierLow: -1.1
+  rotHitMultiplierHigh: -1.2
 --- !u!114 &6222479029120930838
 MonoBehaviour:
   m_ObjectHideFlags: 0

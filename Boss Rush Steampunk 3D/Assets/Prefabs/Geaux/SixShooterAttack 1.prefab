@@ -187,7 +187,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  failDamage: 1
+  failDamage: 5
   hitDamage: 10
   critDamage: 20
   damageType: 2

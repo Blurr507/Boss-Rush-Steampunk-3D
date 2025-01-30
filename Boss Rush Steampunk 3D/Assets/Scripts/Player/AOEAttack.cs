@@ -9,15 +9,22 @@ public class AOEAttack : SkillCheck
     public AnimationCurve bubbleCurve; // The curve that the bubble follows when moving toward the target
     private int stage = 0; // Used to manage what part of the attack is happening
     public int failDamage = 10; // The damage done if the spinner stops outside of the target angle
-    public int hitDamage = 20; // The damage done if the spinner stops in the target angle
-    public int critDamage = 30; // The damage done if the spinner stops in the target angle
+    public int hitDamage = 10; // The damage done if the spinner stops in the target angle
+    public int critDamage = 15; // The damage done if the spinner stops in the target angle
+    public int damageCap = 50; // The damage at which it starts to fall off, and speed gets much faster
+    public float damageMultiplier = 1; // The amount that the damage is multiplied by
+    public float damageReductionMultiplier = 0.75f; // The amount that the new damage is multiplied by after passing the damageCap
     public int damageType = 0;  // This dictates the damage type.
+    public float startRotSpeed = 400f; // This is how fast it starts spinning
+    public float rotHitMultiplierLow = -1.1f; // How much the rotation speed is multiplied with each successful hit
+    public float rotHitMultiplierHigh = -1.2f; // How much the rotation speed is multiplied with each successful hit
     private CreateObjectInBounds create; // A reference to a CreateObjectInBounds component for creating the SmallDamage numbers
 
     void Start()
     {
         // Grab the guage, bubble and create from this object and its children
         gauge = GetComponentInChildren<SteamGauge>();
+        gauge.rotationSpeed = startRotSpeed;
         bubble = GetComponentInChildren<DamageBubble>();
         create = GetComponent<CreateObjectInBounds>();
         // Spin the wheel in .5 seconds
@@ -36,17 +43,45 @@ public class AOEAttack : SkillCheck
                     switch (gauge.result)
                     {
                         case 0:
-                            damage.damage = failDamage;
+                            damage.damage = (int)(failDamage * damageMultiplier);
+                            //  Increment stage
+                            stage++;
                             break;
                         case 1:
-                            damage.damage = hitDamage;
+                            if (gauge.tolerance > 0)
+                            {
+                                gauge.tolerance--;
+                            }
+                            if (bubble.damage >= damageCap)
+                            {
+                                gauge.rotationSpeed *= rotHitMultiplierHigh;
+                                damageMultiplier *= damageReductionMultiplier;
+                            }
+                            else
+                            {
+                                gauge.rotationSpeed *= rotHitMultiplierLow;
+                            }
+                            damage.damage = (int)(hitDamage * damageMultiplier);
+                            gauge.Spin();
                             break;
                         case 2:
-                            damage.damage = critDamage;
+                            if (gauge.tolerance > 0)
+                            {
+                                gauge.tolerance--;
+                            }
+                            if (bubble.damage >= damageCap)
+                            {
+                                gauge.rotationSpeed *= rotHitMultiplierHigh;
+                                damageMultiplier *= damageReductionMultiplier;
+                            }
+                            else
+                            {
+                                gauge.rotationSpeed *= rotHitMultiplierLow;
+                            }
+                            damage.damage = (int)(critDamage * damageMultiplier);
+                            gauge.Spin();
                             break;
                     }
-                    //  Increment stage
-                    stage++;
                 }
                 else if (Input.GetMouseButtonDown(1))
                 {
@@ -75,19 +110,13 @@ public class AOEAttack : SkillCheck
         yield return new WaitForSeconds(1f);
         BattleStateManager.me.IncrementState();
         yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < BattleStateManager.me.enemies.Count; i++)
+        bubble.MoveToPos(BattleStateManager.me.target.transform.position, 1f, bubbleCurve);
+        yield return new WaitForSeconds(0.99f);
+        for (int i = BattleStateManager.me.enemies.Count - 1; i >= 0; i--)
         {
             Enemy enemy = BattleStateManager.me.enemies[i];
-            bubble.MoveToPos(enemy.transform.position, 1f, bubbleCurve, false);
-            yield return new WaitForSeconds(1f);
             enemy.SubtractHealth(bubble.damage, damageType);
-            if(enemy.GetHealth() <= 0)
-            {
-                i--;
-            }
-            yield return new WaitForSeconds(0.1f);
         }
-        Destroy(bubble.gameObject);
         yield return new WaitForSeconds(1f);
         Done();
     }
