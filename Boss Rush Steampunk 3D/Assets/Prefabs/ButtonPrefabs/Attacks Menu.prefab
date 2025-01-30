@@ -319,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillCheck: {fileID: 3572274829814210074, guid: 73a3648580dbd354899a2e29911a6141,
     type: 3}
-  cooldown: 1
+  cooldown: 2
 --- !u!1 &2570206765996185961
 GameObject:
   m_ObjectHideFlags: 0
