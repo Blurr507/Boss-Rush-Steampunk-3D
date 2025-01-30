@@ -20,6 +20,8 @@ public class AOEAttack : SkillCheck
     public float rotHitMultiplierHigh = -1.2f; // How much the rotation speed is multiplied with each successful hit
     private CreateObjectInBounds create; // A reference to a CreateObjectInBounds component for creating the SmallDamage numbers
 
+	public AudioSource aud;
+
     void Start()
     {
         // Grab the guage, bubble and create from this object and its children
@@ -38,6 +40,8 @@ public class AOEAttack : SkillCheck
             case 0: //  While the wheel is spinning
                 if (gauge.result != -1)
                 {
+					aud.Play();
+					aud.pitch += 0.1f;
                     //  Once the spinner stops, create a small damage object, and assign it's number to the correct damage
                     SmallDamage damage = create.CreateObject().GetComponent<SmallDamage>();
                     switch (gauge.result)
@@ -63,6 +67,7 @@ public class AOEAttack : SkillCheck
                             }
                             damage.damage = (int)(hitDamage * damageMultiplier);
                             gauge.Spin();
+							
                             break;
                         case 2:
                             if (gauge.tolerance > 0)
