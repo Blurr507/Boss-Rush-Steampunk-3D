@@ -17,11 +17,14 @@ public class SteamGauge : MonoBehaviour
     public Transform canvas; // A reference to the canvas to create the small damage object on
     public Bounds bounds; // The bounding box that the small damage objects can be create in
 
+	public TextCutscene cutscene;
+	public bool tutorial;
 
     void Start()
     {
         // Choose a random target angle at the start (0 to 360 degrees)
         Randomize();
+		cutscene = TextCutscene.me;
     }
 
     void Update()
@@ -29,6 +32,9 @@ public class SteamGauge : MonoBehaviour
         // Check if the left mouse button is clicked or space bar
         if (isRotating && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("space")))
         {
+			if(tutorial){
+				cutscene.next();
+			}
             isRotating = false; // Stop the rotation
 
             // Check if the spinner stopped within the target range

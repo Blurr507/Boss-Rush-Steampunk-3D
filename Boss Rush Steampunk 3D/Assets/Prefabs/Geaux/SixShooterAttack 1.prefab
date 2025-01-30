@@ -1216,6 +1216,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8771221599119948796, guid: 96c88158e7e0e8f428e86f73d8244b73,
         type: 3}
+      propertyPath: tutorial
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771221599119948796, guid: 96c88158e7e0e8f428e86f73d8244b73,
+        type: 3}
       propertyPath: rotationSpeed
       value: 750
       objectReference: {fileID: 0}

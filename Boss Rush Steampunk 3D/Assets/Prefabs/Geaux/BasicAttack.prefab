@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f500969f61f714d94c711576fa7361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
   gauge: {fileID: 0}
   bubble: {fileID: 0}
   bubbleCurve:
@@ -155,6 +156,11 @@ PrefabInstance:
     - target: {fileID: 6520270571523962236, guid: 96c88158e7e0e8f428e86f73d8244b73,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771221599119948796, guid: 96c88158e7e0e8f428e86f73d8244b73,
+        type: 3}
+      propertyPath: tutorial
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
