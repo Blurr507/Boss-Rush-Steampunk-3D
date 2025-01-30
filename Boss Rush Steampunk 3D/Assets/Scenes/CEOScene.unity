@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4199,12 +4199,6 @@ PrefabInstance:
       propertyPath: normalMusic
       value: 
       objectReference: {fileID: 31058658}
-    - target: {fileID: 5986276126606674418, guid: 8dd2816b6cab8884f9ec11a2df3db73f,
-        type: 3}
-      propertyPath: blackCircleOfDeath
-      value: 
-      objectReference: {fileID: 3175631906743716405, guid: bdd5e1bd7de9de749872dbd0b50f31b7,
-        type: 3}
     - target: {fileID: 7125443889457089556, guid: 8dd2816b6cab8884f9ec11a2df3db73f,
         type: 3}
       propertyPath: hp

@@ -5272,8 +5272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e6991a7a19e7b4cb7bc9a60276739e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xAmplitude: 0.25
-  yAmplitude: 0.25
+  xAmplitude: 0.5
+  yAmplitude: 0.5
   xSpeed: 0.1
   ySpeed: 0.1
   lerpSpeed: 20
