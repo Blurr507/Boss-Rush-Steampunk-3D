@@ -115,12 +115,20 @@ public class BattleStateManager : MonoBehaviour
                     {
                         target.buttons[i].gameObject.SetActive(false);
                     }
+                    for (int i = 0; i < selectables.Count; i++)
+                    {
+                        selectables[i].canSelect = false;
+                    }
                     //  Increment the state
                     battleState = 2;
                     break;
                 case 2: //  Skill check
                         //  Make sure geaux isn't somehow thinking (we can't be having that now can we)
                     gooseAnimator.SetBool("Thinking", false);
+                    for (int i = 0; i < selectables.Count; i++)
+                    {
+                        selectables[i].canSelect = false;
+                    }
                     //  Increment the state
                     battleState = 3;
                     break;

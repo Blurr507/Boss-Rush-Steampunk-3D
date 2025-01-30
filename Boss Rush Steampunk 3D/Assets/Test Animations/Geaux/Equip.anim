@@ -28,40 +28,6 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.5
-        value: {x: 0, y: 0, z: 89.6}
-        inSlope: {x: 0, y: 0, z: 520.38184}
-        outSlope: {x: 0, y: 0, z: 520.38184}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.29861248}
-      - serializedVersion: 3
-        time: 1
-        value: {x: 0, y: 0, z: -377.8}
-        inSlope: {x: 0, y: 0, z: 1904.8594}
-        outSlope: {x: 0, y: 0, z: 1904.8594}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.116851926}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: armjoint/Bicep/foramejoint/Forearm/GameObject
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 0.5
         value: {x: 0, y: 0, z: 158.1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
@@ -81,7 +47,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: armjoint
+    path: Body/armjoint
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -115,7 +81,41 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: armjoint/Bicep/foramejoint
+    path: Body/armjoint/Bicep/foramejoint
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 0.5
+        value: {x: 0, y: 0, z: 89.6}
+        inSlope: {x: 0, y: 0, z: 520.38184}
+        outSlope: {x: 0, y: 0, z: 520.38184}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.29861248}
+      - serializedVersion: 3
+        time: 1
+        value: {x: 0, y: 0, z: -377.8}
+        inSlope: {x: 0, y: 0, z: 1904.8594}
+        outSlope: {x: 0, y: 0, z: 1904.8594}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.116851926}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Body/armjoint/Bicep/foramejoint/Forearm/GameObject
   m_PositionCurves: []
   m_ScaleCurves:
   - curve:
@@ -160,7 +160,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: armjoint/Bicep/foramejoint/Forearm/GameObject
+    path: Body/armjoint/Bicep/foramejoint/Forearm/GameObject
   m_FloatCurves:
   - serializedVersion: 2
     curve:
@@ -188,10 +188,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: armjoint/Bicep/foramejoint/Forearm/GameObject
+    path: Body/armjoint/Bicep/foramejoint/Forearm/GameObject
     classID: 1
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -201,7 +201,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 281934919
+      path: 3077660984
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -210,7 +210,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3978897872
+      path: 1640007963
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -219,7 +219,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3602640291
+      path: 3690652113
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -228,7 +228,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 281934919
+      path: 3690652113
       attribute: 3
       script: {fileID: 0}
       typeID: 4
@@ -237,7 +237,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 281934919
+      path: 3690652113
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -273,135 +273,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_IsActive
-    path: armjoint/Bicep/foramejoint/Forearm/GameObject
-    classID: 1
-    script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.x
-    path: armjoint/Bicep/foramejoint/Forearm/GameObject
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.y
-    path: armjoint/Bicep/foramejoint/Forearm/GameObject
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.5
-        value: 89.6
-        inSlope: 520.38184
-        outSlope: 520.38184
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.29861248
-      - serializedVersion: 3
-        time: 1
-        value: -377.8
-        inSlope: 1904.8594
-        outSlope: 1904.8594
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.116851926
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.z
-    path: armjoint/Bicep/foramejoint/Forearm/GameObject
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
         value: 0
         inSlope: 0
         outSlope: 0
@@ -431,7 +302,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: armjoint
+    path: Body/armjoint
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -470,7 +341,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: armjoint
+    path: Body/armjoint
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -509,7 +380,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: armjoint
+    path: Body/armjoint
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -548,7 +419,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: armjoint/Bicep/foramejoint
+    path: Body/armjoint/Bicep/foramejoint
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -587,7 +458,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: armjoint/Bicep/foramejoint
+    path: Body/armjoint/Bicep/foramejoint
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -626,7 +497,106 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: armjoint/Bicep/foramejoint
+    path: Body/armjoint/Bicep/foramejoint
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: Body/armjoint/Bicep/foramejoint/Forearm/GameObject
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: Body/armjoint/Bicep/foramejoint/Forearm/GameObject
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: 89.6
+        inSlope: 520.38184
+        outSlope: 520.38184
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.29861248
+      - serializedVersion: 3
+        time: 1
+        value: -377.8
+        inSlope: 1904.8594
+        outSlope: 1904.8594
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.116851926
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: Body/armjoint/Bicep/foramejoint/Forearm/GameObject
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -674,7 +644,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: armjoint/Bicep/foramejoint/Forearm/GameObject
+    path: Body/armjoint/Bicep/foramejoint/Forearm/GameObject
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -704,7 +674,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: armjoint/Bicep/foramejoint/Forearm/GameObject
+    path: Body/armjoint/Bicep/foramejoint/Forearm/GameObject
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -734,8 +704,38 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: armjoint/Bicep/foramejoint/Forearm/GameObject
+    path: Body/armjoint/Bicep/foramejoint/Forearm/GameObject
     classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: Body/armjoint/Bicep/foramejoint/Forearm/GameObject
+    classID: 1
     script: {fileID: 0}
     flags: 0
   m_EulerEditorCurves:
@@ -747,7 +747,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: armjoint/Bicep/foramejoint
+    path: Body/armjoint
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -759,7 +759,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: armjoint/Bicep/foramejoint
+    path: Body/armjoint
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -771,7 +771,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: armjoint/Bicep/foramejoint
+    path: Body/armjoint
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -783,7 +783,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: armjoint
+    path: Body/armjoint/Bicep/foramejoint
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -795,7 +795,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: armjoint
+    path: Body/armjoint/Bicep/foramejoint
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -807,7 +807,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: armjoint
+    path: Body/armjoint/Bicep/foramejoint
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -819,7 +819,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: armjoint/Bicep/foramejoint/Forearm/GameObject
+    path: Body/armjoint/Bicep/foramejoint/Forearm/GameObject
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -831,7 +831,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: armjoint/Bicep/foramejoint/Forearm/GameObject
+    path: Body/armjoint/Bicep/foramejoint/Forearm/GameObject
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -843,7 +843,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: armjoint/Bicep/foramejoint/Forearm/GameObject
+    path: Body/armjoint/Bicep/foramejoint/Forearm/GameObject
     classID: 4
     script: {fileID: 0}
     flags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CursorManager : MonoBehaviour
 {
@@ -8,11 +9,6 @@ public class CursorManager : MonoBehaviour
     public Texture2D cursorTextureHovering;
     public Vector2 clickOffset = Vector2.zero;
     public bool hovering = false;
-
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
 
     void Update()
     {
