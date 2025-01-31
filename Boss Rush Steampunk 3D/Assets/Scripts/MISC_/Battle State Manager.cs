@@ -41,6 +41,8 @@ public class BattleStateManager : MonoBehaviour
     private Coroutine toNextScene;                              //  Check if we're swapping to the next scene
     public SpriteRenderer blackSquare;                          //  The black square that fades in to cover the camera
 
+	public ParticleSystem[] parts;
+
     public static BattleStateManager me; //awful code
 
     void Awake()

@@ -15,12 +15,23 @@ public class CEO : Enemy
     public GameObject guns;
     private Animator anim;
 
+	public ParticleSystem[] parts;
+
+	public bool gunsDestroyed;
+
     public override void StartOverride()
     {
+		gunsDestroyed = false;
         base.StartOverride();
         Random.InitState(10);
         anim = GetComponent<Animator>();
     }
+
+	void FixedUpdate(){
+		if(gunsDestroyed){
+			parts[1].Play();
+		}
+	}
 
     public override void DoTurn()
     {
@@ -137,6 +148,8 @@ public class CEO : Enemy
 
     private IEnumerator DestroyGuns()
     {
+		gunsDestroyed = true;
+		parts[0].Play();
         BattleStateManager.me.paused = true;
         yield return new WaitForSeconds(1f);
         Destroy(guns);

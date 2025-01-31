@@ -112,11 +112,13 @@ public class AOEAttack : SkillCheck
 
     private IEnumerator MoveDamageBubble()
     {
+		BattleStateManager.me.gooseAnimator.SetTrigger("Grenade");
         yield return new WaitForSeconds(1f);
         BattleStateManager.me.IncrementState();
         yield return new WaitForSeconds(0.5f);
         bubble.MoveToPos(BattleStateManager.me.target.transform.position, 1f, bubbleCurve);
         yield return new WaitForSeconds(0.99f);
+		BattleStateManager.me.parts[0].Play();
         for (int i = BattleStateManager.me.enemies.Count - 1; i >= 0; i--)
         {
             Enemy enemy = BattleStateManager.me.enemies[i];
