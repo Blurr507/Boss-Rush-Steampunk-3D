@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Array2DEditor;
 
 public class TextCutscene : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class TextCutscene : MonoBehaviour
 	private bool done;
 
 	public static TextCutscene me;
+
+	public Array2DAudioClip lines;
+
+	public AudioSource audsrc;
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +89,9 @@ public class TextCutscene : MonoBehaviour
 
 	public void next(){
 		section++;
+		if(!dialog){
+			//audsrc.clip = lines.GetCell(scene,section);
+		}
 		if(section < text2.Count){
 		speaker = int.Parse(text2 [section][1]);
 		}
@@ -216,7 +224,7 @@ public class TextCutscene : MonoBehaviour
 			text2.Add (new string[]{"Mr. Haus: You have Hemochromatosis.", "1", "0"});
 			text2.Add (new string[]{"Geaux: Gosh darnoux!", "1", "0"});
 			//text2.Add (new string[]{"Geaux: What can I do about it?", "0", "1"});
-			text2.Add (new string[]{"Mr. Haus: Since your right arm and all of your bones have already solidified into iron...", "1", "0"});
+			text2.Add (new string[]{"Mr. Haus: Since your arms and all of your bones have already solidified into iron...", "1", "0"});
 			text2.Add (new string[]{"Mr. Haus: It's untreatable.", "1", "0"});
 			text2.Add (new string[]{"Geaux: :(", "0", "1"});
 			//text2.Add (new string[]{"", "1", "0"});
