@@ -305,7 +305,7 @@ public class BattleStateManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         for (float t = 0; t < 1; t += Time.deltaTime)
         {
-            blackSquare.color = new Color(0, 0, 0, 1 / t);
+            blackSquare.color = new Color(0, 0, 0, t / 1);
             yield return new WaitForEndOfFrame();
         }
         if (SceneManager.GetActiveScene().buildIndex == 8)
