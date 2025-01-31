@@ -229,6 +229,7 @@ MonoBehaviour:
   oilDamage: {r: 0, g: 0, b: 0, a: 1}
   healDamage: {r: 0, g: 1, b: 0, a: 1}
   paused: 0
+  blackSquare: {fileID: 3275427167164634053}
 --- !u!4 &31058657
 Transform:
   m_ObjectHideFlags: 0
@@ -18643,6 +18644,23 @@ MonoBehaviour:
   scenes: []
   scene: 0
   dialog: 1
+  lines:
+    gridSize: {x: 3, y: 3}
+    cellSize: {x: 0, y: 0}
+    cells:
+    - row:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    - row:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    - row:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+  audsrc: {fileID: 0}
 --- !u!1001 &2008835555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19380,6 +19398,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16b196e2c157a6940a123d0504adae23, type: 3}
+--- !u!212 &3275427167164634053 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6212343162272392824, guid: 16b196e2c157a6940a123d0504adae23,
+    type: 3}
+  m_PrefabInstance: {fileID: 3275427167164634052}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5042979519538120027
 PrefabInstance:
   m_ObjectHideFlags: 0

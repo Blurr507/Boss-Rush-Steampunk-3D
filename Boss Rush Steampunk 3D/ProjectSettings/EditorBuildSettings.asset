@@ -15,11 +15,20 @@ EditorBuildSettings:
     path: Assets/Scenes/KevinScene.unity
     guid: ce1ca098c940fc14aa07ee132970995b
   - enabled: 1
+    path: Assets/Scenes/LevelTransitionScene1.unity
+    guid: 3457a2db8cf83e4499ba8088cd65caf8
+  - enabled: 1
     path: Assets/Scenes/SpiderScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/LevelTransitionScene2.unity
+    guid: cad91f3c6456e794698c6d5551f18fbc
+  - enabled: 1
     path: Assets/Scenes/OilmancerScene.unity
     guid: 1165d70fcaa334f4ea6a021f7fa6191f
+  - enabled: 1
+    path: Assets/Scenes/LevelTransitionScene3.unity
+    guid: 88a6b6a6956c66249bed5a79c61f38b8
   - enabled: 1
     path: Assets/Scenes/CEOScene.unity
     guid: dad1919923917ba40b2f7c768192795f

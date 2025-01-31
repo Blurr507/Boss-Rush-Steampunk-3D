@@ -38,6 +38,8 @@ public class BattleStateManager : MonoBehaviour
     public Color oilDamage = Color.black;                       //  The color of the damage numbers when using oil damage
     public Color healDamage = Color.green;                      //  The color of the damage numbers when using heal damage
     public bool paused = false;                                 //  Used to pause the battle for cinematics and stuff
+    private Coroutine toNextScene;                              //  Check if we're swapping to the next scene
+    public SpriteRenderer blackSquare;                          //  The black square that fades in to cover the camera
 
     public static BattleStateManager me; //awful code
 
@@ -291,7 +293,22 @@ public class BattleStateManager : MonoBehaviour
 
     public void NextScene()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 5)
+        if(toNextScene == null)
+        {
+            toNextScene = StartCoroutine(ToNextScene());
+        }
+    }
+
+    private IEnumerator ToNextScene()
+    {
+        ToState7();
+        yield return new WaitForSeconds(1f);
+        for (float t = 0; t < 1; t += Time.deltaTime)
+        {
+            blackSquare.color = new Color(0, 0, 0, 1 / t);
+            yield return new WaitForEndOfFrame();
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 8)
         {
             BackToMenu();
         }
