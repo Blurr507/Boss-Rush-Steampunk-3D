@@ -313,7 +313,7 @@ MonoBehaviour:
   oilDamage: {r: 0, g: 0, b: 0, a: 1}
   healDamage: {r: 0, g: 1, b: 0, a: 1}
   paused: 0
-  blackSquare: {fileID: 0}
+  blackSquare: {fileID: 583921711}
   parts:
   - {fileID: 492001098}
 --- !u!4 &31058657
