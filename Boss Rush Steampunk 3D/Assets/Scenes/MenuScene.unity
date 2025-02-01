@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65f48f727c7f9a418fd57de4f8a5114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  master: {fileID: 24300002, guid: 548cc72319934174ea966df861b2f673, type: 2}
+  masterGroup: {fileID: 24300002, guid: 548cc72319934174ea966df861b2f673, type: 2}
   maxDB: 5
   minDB: -80
 --- !u!1 &74613959
