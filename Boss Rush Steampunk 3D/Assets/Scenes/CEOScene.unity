@@ -723,7 +723,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 65
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 04960fd833613684a9b3e3630ca99f84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -14150,7 +14150,7 @@ MonoBehaviour:
   dialog: 1
   lines:
     gridSize: {x: 3, y: 3}
-    cellSize: {x: 0, y: 0}
+    cellSize: {x: 96, y: 16}
     cells:
     - row:
       - {fileID: 0}

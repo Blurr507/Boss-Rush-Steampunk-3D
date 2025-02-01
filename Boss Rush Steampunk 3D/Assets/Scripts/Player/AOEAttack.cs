@@ -19,6 +19,7 @@ public class AOEAttack : SkillCheck
     public float rotHitMultiplierLow = -1.1f; // How much the rotation speed is multiplied with each successful hit
     public float rotHitMultiplierHigh = -1.2f; // How much the rotation speed is multiplied with each successful hit
     private CreateObjectInBounds create; // A reference to a CreateObjectInBounds component for creating the SmallDamage numbers
+    private bool canCancel = true; // Set to false once we click once for the wheel
 
 	public AudioSource aud;
 
@@ -40,6 +41,7 @@ public class AOEAttack : SkillCheck
             case 0: //  While the wheel is spinning
                 if (gauge.result != -1)
                 {
+                    canCancel = false;
 					aud.Play();
 					aud.pitch += 0.1f;
                     //  Once the spinner stops, create a small damage object, and assign it's number to the correct damage
@@ -47,7 +49,7 @@ public class AOEAttack : SkillCheck
                     switch (gauge.result)
                     {
                         case 0:
-                            damage.damage = (int)(failDamage * damageMultiplier);
+                            damage.damage = Mathf.CeilToInt(failDamage * damageMultiplier);
                             //  Increment stage
                             stage++;
                             break;
@@ -65,7 +67,7 @@ public class AOEAttack : SkillCheck
                             {
                                 gauge.rotationSpeed *= rotHitMultiplierLow;
                             }
-                            damage.damage = (int)(hitDamage * damageMultiplier);
+                            damage.damage = Mathf.CeilToInt(hitDamage * damageMultiplier);
                             gauge.Spin();
 							
                             break;
@@ -83,12 +85,12 @@ public class AOEAttack : SkillCheck
                             {
                                 gauge.rotationSpeed *= rotHitMultiplierLow;
                             }
-                            damage.damage = (int)(critDamage * damageMultiplier);
+                            damage.damage = Mathf.CeilToInt(critDamage * damageMultiplier);
                             gauge.Spin();
                             break;
                     }
                 }
-                else if (Input.GetMouseButtonDown(1))
+                else if (canCancel && Input.GetMouseButtonDown(1))
                 {
                     //  Cancel this attack if we haven't attacked yet, and we press RMB
                     Cancel();

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Cleanse : SkillCheck
 {
+
     void Start()
     {
         StartCoroutine(DoStuff());

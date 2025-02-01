@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 5562157147215144766}
   - component: {fileID: 2890425441849810260}
   - component: {fileID: 4957847077509468502}
-  - component: {fileID: 9200295595742525829}
+  - component: {fileID: 5256530917303300476}
   m_Layer: 5
   m_Name: Cleanse
   m_TagString: Untagged
@@ -613,7 +613,7 @@ MonoBehaviour:
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
---- !u!114 &9200295595742525829
+--- !u!114 &5256530917303300476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -622,12 +622,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5849784938135689516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ba30d2ce13f6a48b5dba00745eb2fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d5f3e508b448264cac6e735ce4251c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 0}
+  actionDescription: 
   skillCheck: {fileID: 9184625425534454636, guid: d9da35a13e61dba488a3475fd1c2c613,
     type: 3}
   cooldown: 0
+  currentCooldown: 0
 --- !u!1 &5882866602105825749
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,9 +925,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ba30d2ce13f6a48b5dba00745eb2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 0}
+  actionDescription: 
   skillCheck: {fileID: 8844748375504431931, guid: 44aefaa1258bd6048b9c494f248c666f,
     type: 3}
   cooldown: 0
+  currentCooldown: 0
 --- !u!1 &8559299202571706728
 GameObject:
   m_ObjectHideFlags: 0

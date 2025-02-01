@@ -40,6 +40,7 @@ public class BattleStateManager : MonoBehaviour
     public bool paused = false;                                 //  Used to pause the battle for cinematics and stuff
     private Coroutine toNextScene;                              //  Check if we're swapping to the next scene
     public SpriteRenderer blackSquare;                          //  The black square that fades in to cover the camera
+    public static bool sceneReset = false;                      //  Used to check if the scene was just reset
 
 	public ParticleSystem[] parts;
 
@@ -52,6 +53,19 @@ public class BattleStateManager : MonoBehaviour
         //  Set the static reference 'me' to this object, so that it can be reference by other scripts
         me = this;
         BackToState0();
+        //  If we just restarted the scene, then skip the dialogue
+        if (sceneReset)
+        {
+            TextCutscene textCutscene = FindObjectOfType<TextCutscene>();
+            if (textCutscene != null)
+            {
+                while(textCutscene.enabled)
+                {
+                    textCutscene.next();
+                }
+            }
+            sceneReset = false;
+        }
     }
 
     void Update()
@@ -285,6 +299,7 @@ public class BattleStateManager : MonoBehaviour
 
     public void RestartScene()
     {
+        sceneReset = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
