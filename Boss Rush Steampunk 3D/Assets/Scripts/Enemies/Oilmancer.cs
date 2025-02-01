@@ -33,6 +33,7 @@ public class Oilmancer : Enemy
 
     public override void DoTurn()
     {
+        BattleStateManager.me.lastEnemy = this;
         turns--;
         if (turns <= 0)
         {

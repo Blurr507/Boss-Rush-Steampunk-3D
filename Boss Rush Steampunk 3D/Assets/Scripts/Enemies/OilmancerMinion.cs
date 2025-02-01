@@ -36,6 +36,7 @@ public class OilmancerMinion : Enemy
     {
         if (turns > 0)
         {
+            BattleStateManager.me.lastEnemy = this;
             turns--;
             if (turns <= 0)
             {

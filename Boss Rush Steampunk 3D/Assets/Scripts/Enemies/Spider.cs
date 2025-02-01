@@ -24,7 +24,8 @@ public class Spider : Enemy
 
 	public override void DoTurn()
     {
-		if(Random.Range(0, 2) == 0){
+        BattleStateManager.me.lastEnemy = this;
+        if (Random.Range(0, 2) == 0){
         Attack1();
 		} else {
 		Attack2();

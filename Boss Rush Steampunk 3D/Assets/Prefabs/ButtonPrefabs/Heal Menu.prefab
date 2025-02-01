@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 9103421917334175886}
   - component: {fileID: 332721636304678767}
   - component: {fileID: 7877823884902886337}
+  - component: {fileID: 4673206822637954257}
   m_Layer: 5
   m_Name: Defend
   m_TagString: Untagged
@@ -466,6 +467,25 @@ MonoBehaviour:
   initialLocalPosition: {x: 0, y: 0, z: 0}
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   active: 1
+--- !u!114 &4673206822637954257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4886527577642301190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ba30d2ce13f6a48b5dba00745eb2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  text: {fileID: 0}
+  actionDescription: 
+  skillCheck: {fileID: 266558353404068656, guid: 44f9994542227a642bc9cb3ea08dba8b,
+    type: 3}
+  cooldown: 1
+  currentCooldown: 0
 --- !u!1 &5849784938135689516
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,7 +950,7 @@ MonoBehaviour:
   actionDescription: 
   skillCheck: {fileID: 8844748375504431931, guid: 44aefaa1258bd6048b9c494f248c666f,
     type: 3}
-  cooldown: 0
+  cooldown: 1
   currentCooldown: 0
 --- !u!1 &8559299202571706728
 GameObject:

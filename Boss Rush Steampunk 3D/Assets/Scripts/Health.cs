@@ -10,7 +10,8 @@ public class Health : MonoBehaviour
     public bool alive = true;       //  Used to specify if the object is alive, to ensure that the death script is only called once
     public RectTransform hp;        //  A reference to this object's healthbar object
     public List<string> effects = new List<string>();   //  A list to keep track of the effects on this object (i.e. burning, wet, buffed, etc.)
-    private CreateObjectInBounds damageNumberCreator;   //  Used to create a DamageNumber in a specified bounds.
+    [HideInInspector]
+    public CreateObjectInBounds damageNumberCreator;   //  Used to create a DamageNumber in a specified bounds.
     public static int healthbarScaleMultiplier = 200;   //  A multiplier for the scale of all healthbars
 
     private void Start()
@@ -33,7 +34,7 @@ public class Health : MonoBehaviour
         ManageHealth();
     }
 
-    public void ManageHealth()
+    public virtual void ManageHealth()
     {
         //  Scale the healthbar based on the amount of health that we have versus our maxHealth
         if (alive)
@@ -85,7 +86,7 @@ public class Health : MonoBehaviour
     }
 
     //  Subtracts 'num' health of type 'type'
-    public void SubtractHealth(int num, int type = 0)
+    public virtual void SubtractHealth(int num, int type = 0)
     {
         //  Reduce health by num down to a minimum of 0
         health = Mathf.Max(health - num, 0);
@@ -120,6 +121,12 @@ public class Health : MonoBehaviour
     public int GetHealth()
     {
         return health;
+    }
+
+    //  Returns this object's health
+    public void SetHealth(int newHealth)
+    {
+        health = newHealth;
     }
 
     //  Returns this object's max health

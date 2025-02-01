@@ -31,6 +31,7 @@ public class BattleStateManager : MonoBehaviour
     public List<Enemy> enemies = new List<Enemy>();             //  A list of the enemies in the scene, used to keep track of turns, and to figure out win conditions eventually
     public CanSelect target;                                    //  The thing that was clicked on during battleState 0.
     public int currentEnemy = 0;                                //  An integer to keep track of which enemy's turn it currently is
+    public Enemy lastEnemy;                                     //  Who the last enemy to attack was
     public GameObject damageNumberObject;                       //  A prefab for creating a damageNumberObject. (Referenced by the health objects so that we don't have to add it to all of them)
     public Color baseDamage = Color.white;                      //  The color of the damage numbers when using base(regular) damage
     public Color fireDamage = Color.red;                        //  The color of the damage numbers when using fire damage
@@ -231,7 +232,7 @@ public class BattleStateManager : MonoBehaviour
         {
             ResetEnemies();
             DecreaseButtonCooldowns();
-            ManageGeauxDOTs();
+            ManageGeauxEffects();
         }
     }
     
@@ -288,12 +289,16 @@ public class BattleStateManager : MonoBehaviour
         }
     }
 
-    public void ManageGeauxDOTs()
+    public void ManageGeauxEffects()
     {
         Geaux geaux = FindObjectOfType<Geaux>();
-        if(geaux != null && geaux.effects.Contains("burning"))
+        if(geaux != null)
         {
-            geaux.Burn();
+            if (geaux.effects.Contains("burning"))
+            {
+                geaux.Burn();
+            }
+            geaux.shield = 0;
         }
     }
 

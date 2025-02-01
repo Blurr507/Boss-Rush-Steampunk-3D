@@ -45,6 +45,7 @@ public class FileFolder : Enemy
     {
         if (leader && turns > 0)
         {
+            BattleStateManager.me.lastEnemy = this;
             turns--;
             if (turns <= 0)
             {

@@ -5258,10 +5258,39 @@ MonoBehaviour:
   alive: 1
   hp: {fileID: 0}
   effects: []
+  damageNumberCreator: {fileID: 0}
   burnDamage: 10
   blackCircleOfDeath: {fileID: 3175631906743716405, guid: bdd5e1bd7de9de749872dbd0b50f31b7,
     type: 3}
   firePart: {fileID: 578879247521992036}
+  shield: 0
+  shieldBar: {fileID: 0}
+  reflectBar: {fileID: 0}
+  reflect: {fileID: 7394190355879897325, guid: 423bd619828e4a546b65b420f6f0b9a4, type: 3}
+  posCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 5.519876
+      outSlope: 5.519876
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.03695488
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   timetravel: {fileID: 3198839852047310101}
   normalMusic: {fileID: 0}
 --- !u!65 &1909111809452160250

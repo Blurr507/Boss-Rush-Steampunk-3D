@@ -34,6 +34,7 @@ public class Kevin : Enemy
         Debug.Log("Do turn");
         if (turns > 0)
         {
+            BattleStateManager.me.lastEnemy = this;
             turns--;
             if (turns <= 0)
             {

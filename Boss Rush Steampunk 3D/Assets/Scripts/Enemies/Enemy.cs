@@ -14,6 +14,7 @@ public class Enemy : Health  //  A base class for all enemies which will be inhe
     //  Default turn script for all enemies. Can be overwritten in scritpts that inherit
     public virtual void DoTurn()
     {
+        BattleStateManager.me.lastEnemy = this;
         //  By default, drop the turns by 1, and if we're out of turns, then tell the BattleStateManager to go to the next enemy
         turns--;
         if (turns <= 0)
