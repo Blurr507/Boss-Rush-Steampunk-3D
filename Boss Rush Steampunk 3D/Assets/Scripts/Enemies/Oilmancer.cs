@@ -226,15 +226,11 @@ public class Oilmancer : Enemy
         return false;
     }
 
-    public override void UpdateAnimatorBools()
-    {
-		//uhh
-    }
-
     public override void ResetTurns()
     {
         turns = maxTurns;
         attacks = maxAttacks;
+        spawns = 1;
         if(minions.Count < minionLocations.Count)
         {
             if(spawnPreps == 0)
