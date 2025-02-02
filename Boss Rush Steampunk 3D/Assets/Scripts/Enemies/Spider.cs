@@ -29,9 +29,9 @@ public class Spider : Enemy
 		turn++;
         BattleStateManager.me.lastEnemy = this;
         if (turn % 3 == 0){
-        Attack2();
+        Attack1();
 		} else {
-		Attack1();
+		Attack2();
 		}
         turns--;
         if (turns <= 0)
