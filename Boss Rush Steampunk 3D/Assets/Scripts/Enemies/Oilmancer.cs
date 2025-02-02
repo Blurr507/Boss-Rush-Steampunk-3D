@@ -5,12 +5,14 @@ using UnityEngine;
 public class Oilmancer : Enemy
 {
     [SerializeField]
-    private GameObject minion, attack1, block1;
+    private GameObject minion, attack1, block1, attack2;
     public int attack1Damage = 50;
     public int block1Fail = 0;
     public int block1Target = -35;
     public int block1Crit = -50;
-    public int damageType = 3;
+    public int damageType1 = 3;
+    public int attack2Damage = 50;
+    public int damageType2 = 1;
     public int maxAttacks = 1, attacks = 1;
     public int spawnPreps = 1, spawns = 0;
     public List<OilmancerMinion> minions = new List<OilmancerMinion>();
@@ -22,6 +24,7 @@ public class Oilmancer : Enemy
 
     private void Start()
     {
+        Random.InitState(0);
         StartOverride();
     }
 
@@ -53,11 +56,11 @@ public class Oilmancer : Enemy
         else if(turns > 0 && attacks > 0)
         {
             //  If it's not the last turn, and we have more attacks this turn, then attack
-            StartCoroutine(Attack1());
+            Attack();
         }
         else if(attacks > 0)
         {
-            StartCoroutine(Attack1());
+            Attack();
         }
         else
         {
@@ -66,6 +69,20 @@ public class Oilmancer : Enemy
         }
     }
 
+    private void Attack()
+    {
+        //  75% chance to use regular attack
+        float randomFloat = Random.Range(0f, 1f);
+        Debug.Log(randomFloat);
+        if (randomFloat < 0.75f)
+        {
+            StartCoroutine(Attack1());
+        }
+        else
+        {
+            StartCoroutine(Attack2());
+        }
+    }
 
     private IEnumerator Attack1()
     {
@@ -111,9 +128,40 @@ public class Oilmancer : Enemy
         // State = 6
         bubble.MoveToPos(target.transform.position, 1, posCurve);
         yield return new WaitForSeconds(1f);
-        HurtTarget(bubble.damage, damageType);
+        HurtTarget(bubble.damage, damageType1);
         Destroy(attack);
         Destroy(block);
+        yield return new WaitForSeconds(1f);
+        BattleStateManager.me.IncrementState();
+    }
+
+    private IEnumerator Attack2()
+    {
+        attacks--;
+        //  State = 4
+        yield return new WaitForSeconds(0.5f);
+        GameObject attack = Instantiate(attack2);
+        DamageBubble bubble = FindObjectOfType<DamageBubble>();
+        Transform oilBlob = attack.transform.GetChild(0);
+        GameObject fire = attack.transform.GetChild(0).GetChild(0).gameObject;
+        bubble.AddDamage(attack2Damage);
+        yield return new WaitForSeconds(1f);
+        BattleStateManager.me.IncrementState();
+        BattleStateManager.me.IncrementState();
+        // State = 6
+        yield return new WaitForSeconds(0.5f);
+        fire.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        bubble.MoveToPos(target.transform.position, 1, posCurve);
+        Vector3 blobStart = oilBlob.position;
+        for(float t = 0; t < 0.99f; t += Time.deltaTime)
+        {
+            oilBlob.position = Vector3.Lerp(blobStart, target.transform.position, posCurve.Evaluate(t / 0.99f));
+            yield return new WaitForEndOfFrame();
+        }
+        HurtTarget(bubble.damage, damageType2);
+        FindObjectOfType<Geaux>().AddEffect("burning");
+        Destroy(attack);
         yield return new WaitForSeconds(1f);
         BattleStateManager.me.IncrementState();
     }

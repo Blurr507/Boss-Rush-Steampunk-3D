@@ -31,6 +31,7 @@ public class Geaux : Health
         //  Scale the healthbar based on the amount of health that we have versus our maxHealth
         if (alive)
         {
+            UpdateHealthText();
             float healthRatio = Mathf.Clamp((float)GetHealth() / GetMaxHealth(), 0, 1);
             hp.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, healthbarScaleMultiplier * healthRatio);
             shieldBar.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, healthbarScaleMultiplier * healthRatio * Mathf.Clamp(shield, 0, 100) / 100);

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,9 +10,10 @@ public class Health : MonoBehaviour
     private int health, maxHealth;  //  The current health and maximum health
     public bool alive = true;       //  Used to specify if the object is alive, to ensure that the death script is only called once
     public RectTransform hp;        //  A reference to this object's healthbar object
+    public TextMeshProUGUI healthIndicator;             //  A text object saying how much health ya got
     public List<string> effects = new List<string>();   //  A list to keep track of the effects on this object (i.e. burning, wet, buffed, etc.)
     [HideInInspector]
-    public CreateObjectInBounds damageNumberCreator;   //  Used to create a DamageNumber in a specified bounds.
+    public CreateObjectInBounds damageNumberCreator;    //  Used to create a DamageNumber in a specified bounds.
     public static int healthbarScaleMultiplier = 200;   //  A multiplier for the scale of all healthbars
 
     private void Start()
@@ -40,6 +42,7 @@ public class Health : MonoBehaviour
         if (alive)
         {
             hp.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, healthbarScaleMultiplier * health / maxHealth);
+            UpdateHealthText();
             if (health <= 0)
             {
                 //  If we're out of health and still alive, call our death event, and set alive to false (to prevent the death event from being called more than once)
@@ -146,6 +149,11 @@ public class Health : MonoBehaviour
     public virtual bool AddEffect(string effect)
     {
         return false;
+    }
+
+    public void UpdateHealthText()
+    {
+        healthIndicator.text = $"{health}/{maxHealth}";
     }
 
     private void OnDestroy()
