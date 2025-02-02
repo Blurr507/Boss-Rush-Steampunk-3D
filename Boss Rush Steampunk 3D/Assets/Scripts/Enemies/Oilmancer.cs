@@ -18,7 +18,6 @@ public class Oilmancer : Enemy
     public List<OilmancerMinion> minions = new List<OilmancerMinion>();
     public List<Transform> minionLocations = new List<Transform>();
     public AnimationCurve posCurve;
-    private Animator anim;
 
 	private int turn;
 
@@ -33,7 +32,6 @@ public class Oilmancer : Enemy
     public override void StartOverride()
     {
         base.StartOverride();
-        anim = GetComponent<Animator>();
     }
 
     public override void DoTurn()
@@ -56,7 +54,7 @@ public class Oilmancer : Enemy
         {
             //  If we're not burning, and we aren't at max minion capacity, and we have more spawns available this turn then spawn a minion
             StartCoroutine(SpawnMinion());
-			turn++;
+			//turn++;
         }
         else if(turns > 0 && attacks > 0)
         {
