@@ -19,6 +19,6 @@ public class CursorManager : MonoBehaviour
             hovering = hit.transform.GetComponent<CanSelect>() && hit.transform.GetComponent<CanSelect>().canSelect;
         }
         Cursor.SetCursor(hovering ? cursorTextureHovering : cursorTexture, clickOffset, CursorMode.Auto);
-        MasterVolumeSlider.SetVolume();
+        //MasterVolumeSlider.SetVolume();
     }
 }

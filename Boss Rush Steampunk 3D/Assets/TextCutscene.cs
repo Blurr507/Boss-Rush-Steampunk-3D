@@ -43,7 +43,7 @@ public class TextCutscene : MonoBehaviour
 		scene = 0;
 		section = 0;
 		if(!dialog){
-		for(int i = 0; i < 9;  i++){
+			for(int i = 0; i < scenes.Length;  i++){
 			scenes[i].SetActive(false);
 		}
 		scenes[scene].SetActive(true);
@@ -98,11 +98,19 @@ public class TextCutscene : MonoBehaviour
 		if(section >= text2.Count){
 			if(!dialog){
 			scene++;
+				if(SceneManager.GetActiveScene().name.Equals ("StoryScene")){
 			if(scene > 8){
 				SceneManager.LoadSceneAsync("KevinScene");
 				scene--;
 				section = text2.Count - 1;
 			}
+				} else if(SceneManager.GetActiveScene().name.Equals ("StoryScene2")){
+					if(scene > 3){
+					SceneManager.LoadSceneAsync("ToBeContinued");
+					scene--;
+					section = text2.Count - 1;
+					}
+				}
 			} else {
 				this.enabled = false;
 				done = true;
@@ -150,8 +158,36 @@ public class TextCutscene : MonoBehaviour
 			SetText4(in1, in2);
 		} else if(name.Equals ("CEOScene")){
 			SetText5(in1, in2);
+		} else if(name.Equals ("StoryScene2")){
+			SetText6(in1, in2);
 		}
 	}
+
+	public void SetText6(int day, int ID){
+		if (day == 0) {
+			text2.Add (new string[]{"Geaux: Oh wow my arm!", "0", "0"});
+			//text2.Add (new string[]{"Mr. Oil Mancer: Blud is NOT allowed in MY area!", "1", "0"});
+			text2.Add (new string[]{"Geaux: I'm kinda surprised they didnt secure it.", "1", "0"});
+			//text2.Add (new string[]{"Mr. Oil Mancer: Get out of mein haus!", "1", "0"});
+		} else if (day == 1) {
+			text2.Add (new string[]{"!!", "1", "0"});
+		} else if (day == 2) {
+			text2.Add (new string[]{"Geaux: uh oh...", "0", "0"});
+			text2.Add (new string[]{"Mr. Haus: Damn.", "0", "0"});
+			text2.Add (new string[]{"Mr. Haus: I needed that you know!", "1", "0"});
+			//text2.Add (new string[]{"Geaux: (Huh. That chandeleir looks deliberately placed there. Odd...)", "0", "1"});
+		} else if (day == 3) {
+			text2.Add (new string[]{"Mr. Haus: Whatever, I've been living without it for 20 years...", "1", "0"});
+			text2.Add (new string[]{"Geaux: I'll buy you a new one", "0", "0"});
+			text2.Add (new string[]{"Mr. Haus: You can afford that?", "1", "0"});
+			text2.Add (new string[]{"Geaux: Yeah! I have 6 quindecillion dollars!", "1", "0"});
+			text2.Add (new string[]{"Mr. Haus: And you didnt think to pay your debt?", "1", "0"});
+			text2.Add (new string[]{"Geaux: Well I was still a quindecillion dollars short", "1", "0"});
+			text2.Add (new string[]{"Mr. Haus: Right...", "1", "0"});
+			text2.Add (new string[]{"Mr. Haus: So who takes on Big Oil's debt now?", "1", "0"});
+		}
+	}
+
 	public void SetText5(int day, int ID){
 		if (day == 0) {
 			text2.Add (new string[]{"Hey buddy, give me my arm back!!", "0", "0"});
