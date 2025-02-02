@@ -16,6 +16,8 @@ public class Spider : Enemy
 	public Transform[] lazerspots;
 	public LineRenderer[] lazers;
 
+	public int turn;
+
 	public override void StartOverride()
 	{
 		base.StartOverride();
@@ -24,11 +26,12 @@ public class Spider : Enemy
 
 	public override void DoTurn()
     {
+		turn++;
         BattleStateManager.me.lastEnemy = this;
-        if (Random.Range(0, 2) == 0){
-        Attack1();
+        if (turn % 3 == 0){
+        Attack2();
 		} else {
-		Attack2();
+		Attack1();
 		}
         turns--;
         if (turns <= 0)
@@ -60,7 +63,7 @@ public class Spider : Enemy
         yield return new WaitForSeconds(0.5f);
         GameObject attack = Instantiate(attack1);
         DamageBubble bubble = FindObjectOfType<DamageBubble>();
-        bubble.AddDamage(attack1Damage);
+		bubble.AddDamage((int)(attack1Damage * 1.6f));
         yield return new WaitForSeconds(0.5f);
         BattleStateManager.me.IncrementState();
         BattleStateManager.me.IncrementState();
@@ -69,7 +72,7 @@ public class Spider : Enemy
         bubble.MoveToPos(target.transform.position, 1, posCurve);
         yield return new WaitForSeconds(1f);
 		fireparts.Play();
-        HurtTarget(attack1Damage, damageType);
+		HurtTarget((int)(attack1Damage * 1.6f), damageType);
         Destroy(attack);
         BattleStateManager.me.IncrementState();
     }
@@ -80,7 +83,7 @@ public class Spider : Enemy
 		yield return new WaitForSeconds(0.5f);
 		GameObject attack = Instantiate(attack1);
 		DamageBubble bubble = FindObjectOfType<DamageBubble>();
-		bubble.AddDamage(100);
+		bubble.AddDamage(attack1Damage);
 		yield return new WaitForSeconds(0.25f);
 		BattleStateManager.me.IncrementState();
 		BattleStateManager.me.IncrementState();

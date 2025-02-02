@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1103,7 +1103,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 241451898}
     m_Modifications:
     - target: {fileID: 2144139277754077749, guid: 262992e4f8f563b42b44663194c63408,
         type: 3}
@@ -1120,15 +1120,20 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 241451897}
+    - target: {fileID: 4032690507647523956, guid: 262992e4f8f563b42b44663194c63408,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
         type: 3}
@@ -1153,12 +1158,27 @@ PrefabInstance:
     - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1280.0001
       objectReference: {fileID: 0}
     - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0006175512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0006175514
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0006175512
       objectReference: {fileID: 0}
     - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
         type: 3}
@@ -1173,7 +1193,7 @@ PrefabInstance:
     - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.3699999
       objectReference: {fileID: 0}
     - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
         type: 3}
@@ -1183,17 +1203,17 @@ PrefabInstance:
     - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4368171201122595929, guid: 262992e4f8f563b42b44663194c63408,
         type: 3}
@@ -1219,6 +1239,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177920303697182091, guid: 262992e4f8f563b42b44663194c63408,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8922379931430435695, guid: 262992e4f8f563b42b44663194c63408,
         type: 3}
@@ -1327,6 +1352,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 583921710}
+  - {fileID: 1146395928}
   m_Father: {fileID: 2120238109}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &241451900
@@ -5084,7 +5110,6 @@ SceneRoots:
   - {fileID: 2116178893}
   - {fileID: 1653326252}
   - {fileID: 101368842}
-  - {fileID: 239079104}
   - {fileID: 326126033}
   - {fileID: 4395852234862374716}
   - {fileID: 332182984}

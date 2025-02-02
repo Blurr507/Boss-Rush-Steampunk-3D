@@ -330,7 +330,7 @@ public class BattleStateManager : MonoBehaviour
             blackSquare.color = new Color(0, 0, 0, t / 1);
             yield return new WaitForEndOfFrame();
         }
-        if (SceneManager.GetActiveScene().buildIndex == 8)
+        if (SceneManager.GetActiveScene().buildIndex == 11)
         {
             BackToMenu();
         }

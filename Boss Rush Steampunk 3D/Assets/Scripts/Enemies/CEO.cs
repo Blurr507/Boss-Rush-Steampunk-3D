@@ -19,6 +19,9 @@ public class CEO : Enemy
 
 	public bool gunsDestroyed;
 
+	public AudioSource[] Musik;
+
+
     public override void StartOverride()
     {
 		gunsDestroyed = false;
@@ -157,6 +160,8 @@ public class CEO : Enemy
         alive = true;
         hp.gameObject.SetActive(true);
         AddHealth(GetMaxHealth());
+		Musik[0].volume = 0f;
+		Musik[1].volume = 1f;
         yield return new WaitForSeconds(1f);
         BattleStateManager.me.paused = false;
         BattleStateManager.me.IncrementState();

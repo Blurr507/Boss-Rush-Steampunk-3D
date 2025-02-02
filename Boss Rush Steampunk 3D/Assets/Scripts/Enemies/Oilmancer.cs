@@ -20,6 +20,8 @@ public class Oilmancer : Enemy
     public AnimationCurve posCurve;
     private Animator anim;
 
+	private int turn;
+
 	public ParticleSystem fire;
 
     private void Start()
@@ -38,6 +40,7 @@ public class Oilmancer : Enemy
     {
         BattleStateManager.me.lastEnemy = this;
         turns--;
+
         if (turns <= 0)
         {
             BattleStateManager.me.IncrementCurrentEnemy();
@@ -47,20 +50,24 @@ public class Oilmancer : Enemy
         {
             //  If we're on fire, put it out
             StartCoroutine(PutOutFire());
+			turn--;
         }
         else if(minions.Count < minionLocations.Count && spawns > 0)
         {
             //  If we're not burning, and we aren't at max minion capacity, and we have more spawns available this turn then spawn a minion
             StartCoroutine(SpawnMinion());
+			turn++;
         }
         else if(turns > 0 && attacks > 0)
         {
             //  If it's not the last turn, and we have more attacks this turn, then attack
             Attack();
+			turn++;
         }
         else if(attacks > 0)
         {
             Attack();
+			turn++;
         }
         else
         {
@@ -74,7 +81,7 @@ public class Oilmancer : Enemy
         //  75% chance to use regular attack
         float randomFloat = Random.Range(0f, 1f);
         Debug.Log(randomFloat);
-        if (randomFloat < 0.75f)
+		if (turn % 4 != 0)
         {
             StartCoroutine(Attack1());
         }

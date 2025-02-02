@@ -17,6 +17,8 @@ public class SelectableButton : MonoBehaviour
     public int currentCooldown = 0;     //  How many turns you must still wait to use this button again
     private bool usedThisTurn = false;  //  If this button was used this turn
 
+	public AudioSource aud;
+
     void Awake()
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
@@ -24,8 +26,13 @@ public class SelectableButton : MonoBehaviour
         button = GetComponent<Button>();
         button.onClick.AddListener(BattleStateManager.me.IncrementState);
         button.onClick.AddListener(ActivateSkillCheck);
+		//button.onHover.AddListener(ActivateSkillCheck);
         BattleStateManager.me.buttons.Add(this);
     }
+
+	void OnMouseEnter(){
+		//aud.Play();
+	}
 
     public void ActivateSkillCheck()
     {

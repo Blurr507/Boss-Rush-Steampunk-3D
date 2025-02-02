@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CEOScene.unity
     guid: dad1919923917ba40b2f7c768192795f
+  - enabled: 1
+    path: Assets/Scenes/StoryScene2.unity
+    guid: 09dde4dca4e1417408e01e76a9ca4d05
+  - enabled: 1
+    path: Assets/Scenes/ToBeContinued.unity
+    guid: 43804646c07760b4293e48d945a4cb85
   m_configObjects: {}
