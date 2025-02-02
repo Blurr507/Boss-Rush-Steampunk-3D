@@ -125,6 +125,10 @@ public class FileFolder : Enemy
         if (kevin != null)
         {
             kevin.files.Remove(this);
+            if (leader && kevin.files.Count > 0)
+            {
+                kevin.files[0].leader = true;
+            }
         }
     }
 }

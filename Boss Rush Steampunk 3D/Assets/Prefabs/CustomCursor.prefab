@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a48bbf9b6c97f4d804ade2df726ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: 5a48160e2916e35489c917247d3cf258, type: 3}
-  cursorTextureHovering: {fileID: 2800000, guid: 3045b0ae5431c514aa8697b2fc163f98,
+  cursorTexture: {fileID: 2800000, guid: e9b7b36b2882b7b439c74eb2f87dfe3b, type: 3}
+  cursorTextureHovering: {fileID: 2800000, guid: b553a4824381bc646abb2417d64f044c,
     type: 3}
   clickOffset: {x: 0, y: 0}
   hovering: 0
