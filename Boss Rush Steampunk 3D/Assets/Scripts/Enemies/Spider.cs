@@ -16,6 +16,8 @@ public class Spider : Enemy
 	public Transform[] lazerspots;
 	public LineRenderer[] lazers;
 
+	public ParticleSystem[] angy;
+
 	public int turn;
 
 	public override void StartOverride()
@@ -80,6 +82,9 @@ public class Spider : Enemy
 	{
 		//  State = 4
 		spiderstuff.SetTrigger("attack2");
+		for(int i = 0; i < angy.Length; i++){
+			angy[i].Play();
+		}
 		yield return new WaitForSeconds(0.5f);
 		GameObject attack = Instantiate(attack1);
 		DamageBubble bubble = FindObjectOfType<DamageBubble>();
@@ -91,6 +96,9 @@ public class Spider : Enemy
 		// State = 6
 		bubble.MoveToPos(target.transform.position, 2.25f, posCurve);
 		yield return new WaitForSeconds(2.25f);
+		for(int i = 0; i < angy.Length; i++){
+			angy[i].Stop();
+		}
 		//fireparts.Play();
 		HurtTarget(attack1Damage, damageType);
 		Destroy(attack);
