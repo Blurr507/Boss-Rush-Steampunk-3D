@@ -16,6 +16,7 @@ public class CEO : Enemy
     private Animator anim;
 
 	public ParticleSystem[] parts;
+	public GameObject[] Phase2stuff;
 
 	public bool gunsDestroyed;
 
@@ -162,7 +163,11 @@ public class CEO : Enemy
         AddHealth(GetMaxHealth());
 		Musik[0].volume = 0f;
 		Musik[1].volume = 1f;
+		Musik[1].Play();
         yield return new WaitForSeconds(1f);
+		for(int i = 0; i < Phase2stuff.Length; i++){
+			Phase2stuff[i].SetActive(true);
+		}
         BattleStateManager.me.paused = false;
         BattleStateManager.me.IncrementState();
     }
