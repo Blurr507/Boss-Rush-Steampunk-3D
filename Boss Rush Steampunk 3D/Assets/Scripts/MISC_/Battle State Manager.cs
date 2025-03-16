@@ -8,6 +8,8 @@ public class BattleStateManager : MonoBehaviour
     public Animator gooseAnimator;
 
 	public AudioSource[] audios;
+
+	public static bool wait;
     //battleState refers to the state of the battle (choosing attacks stage, skill checks stage, boss damager stage, etc)
     //it controls things like logic and camera position
     //the main battle menu (choosing to attack or heal etc) is assigned the intereger 0
@@ -68,6 +70,11 @@ public class BattleStateManager : MonoBehaviour
             sceneReset = false;
         }
     }
+
+	public void SetState(int i){
+		//Dangerous! Doesnt update anything! Only use for cutscenes!
+		battleState = i;
+	}
 
     void Update()
     {

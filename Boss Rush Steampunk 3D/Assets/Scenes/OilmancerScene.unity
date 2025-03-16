@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19198,28 +19198,14 @@ MonoBehaviour:
   - {fileID: 1918133700}
   - {fileID: 885469888}
   - {fileID: 511879760}
+  currentlyTyping: 0
   section: 0
   speaker: 0
   scenes: []
   scene: 0
   dialog: 1
-  lines:
-    gridSize: {x: 3, y: 3}
-    cellSize: {x: 96, y: 16}
-    cells:
-    - row:
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-    - row:
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-    - row:
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
   audsrc: {fileID: 0}
+  p: 0
 --- !u!82 &1999581192
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19227,7 +19213,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999581186}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1aabb26763a0dfc49a25f158b8eca4e7, type: 3}

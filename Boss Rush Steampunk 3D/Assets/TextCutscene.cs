@@ -15,6 +15,8 @@ public class TextCutscene : MonoBehaviour
 
 	public GameObject[] outputs;
 
+	public bool currentlyTyping;
+
 	public int section;
 	public List<string[]> text2 = new List<string[]>();
 	public int speaker;
@@ -29,17 +31,19 @@ public class TextCutscene : MonoBehaviour
 
 	public static TextCutscene me;
 
-	public Array2DAudioClip lines;
+	//public Array2DAudioClip lines;
 
 	public AudioSource audsrc;
 
+	public int p;
     // Start is called before the first frame update
     void Start()
     {
+		p=0;
 		me = this;
 		speaker = 0;
 		text2 = new List<string[]>();
-		GetTextSetter(SceneManager.GetActiveScene().name, 0, 0);
+		GetTextSetter(SceneManager.GetActiveScene().name, 0, 0, 0);
 		scene = 0;
 		section = 0;
 		if(!dialog){
@@ -52,13 +56,64 @@ public class TextCutscene : MonoBehaviour
 				selectables[i].canSelect = false;
 			}
 		}
+		BattleStateManager.wait = true;
 		done = false;
+		CheckCamWarp();
     }
+	public void startAgain(int t){
+		gameObject.SetActive(true);
+		p=t;
+		text2.Clear();
+		Debug.Log(text2.Count);
+		//me = this;
+		speaker = 0;
+		text2 = new List<string[]>();
+		BattleStateManager.wait = true;
+		text2.Clear();
+		GetTextSetter(SceneManager.GetActiveScene().name, 0, 0, t);
+		Debug.Log(text2.Count + "/5");
+		scene = 0;
+		section = 0;
+		for(int i = 0; i < outputs.Length; i++){
+			outputs[i].SetActive(true);
+		}
+		if(!dialog){
+			for(int i = 0; i < scenes.Length;  i++){
+				scenes[i].SetActive(false);
+			}
+			scenes[scene].SetActive(true);
+		} else {
+			for(int i = 0; i < selectables.Length; i++){
+				selectables[i].canSelect = false;
+			}
+		}
+		done = false;
+		Debug.Log("//" + done + "  / " + section + "/" + text2.Count);
+		CheckCamWarp();
+	}
 
+	void CheckCamWarp(){
+		if(!done && section < text2.Count){
+		if(text2 [section][0].Equals ("1")){
+			BattleStateManager.me.SetState(8);
+			section++;
+		}
+		if(text2 [section][0].Equals ("2")){
+			BattleStateManager.me.SetState(9);
+			section++;
+		}
+		if(text2 [section][0].Equals ("0")){
+			BattleStateManager.me.SetState(0);
+			section++;
+		}
+		}
+	}
     // Update is called once per frame
     void Update()
     {	
+
 		if(!done && section < text2.Count){
+			//Debug.Log("//" + done + "  / " + section + "/" + text2.Count);
 		if(dialog){
 				if(speaker != 3){
 				for(int i = 0; i < selectables.Length; i++){
@@ -86,9 +141,27 @@ public class TextCutscene : MonoBehaviour
 		}
 		}
     }
-
+	/*IEnumerator Type(string text){
+		currentlyTyping = true;
+		string outputText = "";
+		for (int i = 0; i < text.Length; i++) {
+			if(currentlyTyping){
+				
+				outputText = outputText + text.Substring(i, 1);
+				output.text = outputText;
+				
+				yield return new WaitForSeconds(0.05f);
+			}
+		}
+		if (currentlyTyping) {
+			next ();
+			currentlyTyping = false;
+		}
+	}*/
 	public void next(){
 		section++;
+		//Debug.Log(text2 [section][0]);
+		CheckCamWarp();
 		if(!dialog){
 			//audsrc.clip = lines.GetCell(scene,section);
 		}
@@ -112,7 +185,7 @@ public class TextCutscene : MonoBehaviour
 					}
 				}
 			} else {
-				this.enabled = false;
+				//this.enabled = false;
 				done = true;
 			}
 			text2 = new List<string[]>();
@@ -124,8 +197,10 @@ public class TextCutscene : MonoBehaviour
 			scenes[scene].SetActive(true);
 		}
 			if(!dialog){
-			GetTextSetter(SceneManager.GetActiveScene().name, scene, 0);
+			GetTextSetter(SceneManager.GetActiveScene().name, scene, 0, p);
 			} else {
+				BattleStateManager.me.SetState(0);
+				BattleStateManager.wait = false;
 				done = true;
 				section = 0;
 				for(int i = 0; i < outputs.Length; i++){
@@ -135,6 +210,7 @@ public class TextCutscene : MonoBehaviour
 					selectables[i].canSelect = true;
 				}
 			}
+			gameObject.SetActive(true);
 			//SetText(scene, 0);
 		}
 		/*if(scene == 4)
@@ -147,7 +223,7 @@ public class TextCutscene : MonoBehaviour
 		}*/
 	}
 
-	public void GetTextSetter(string name, int in1, int in2){
+	public void GetTextSetter(string name, int in1, int in2, int in3){
 		if(name.Equals ("StoryScene")){
 			SetText(in1, in2);
 		} else if(name.Equals ("OilmancerScene")){
@@ -157,12 +233,16 @@ public class TextCutscene : MonoBehaviour
 		} else if(name.Equals ("SpiderScene")){
 			SetText4(in1, in2);
 		} else if(name.Equals ("CEOScene")){
-			SetText5(in1, in2);
+			SetText5(in1, in2, in3);
 		} else if(name.Equals ("StoryScene2")){
 			SetText6(in1, in2);
 		}
 	}
-
+	//CUTSCENE EXPLANATION!
+	//Typing "0" on it's own into the text will move the camera into the default position and skip ahead to the next thing
+	//Typing "1" will look at the player
+	//Typing "2" will look at the enemy
+	//Make sure to set the speaker of the cutscene to whoever is the speaker if the camera movement is at the very beginning of the cutscene
 	public void SetText6(int day, int ID){
 		if (day == 0) {
 			text2.Add (new string[]{"Geaux: Oh wow my arm!", "0", "0"});
@@ -177,37 +257,76 @@ public class TextCutscene : MonoBehaviour
 			text2.Add (new string[]{"Mr. Haus: I needed that you know!", "1", "0"});
 			//text2.Add (new string[]{"Geaux: (Huh. That chandeleir looks deliberately placed there. Odd...)", "0", "1"});
 		} else if (day == 3) {
-			text2.Add (new string[]{"Mr. Haus: Whatever, I've been living without it for 20 years...", "1", "0"});
-			text2.Add (new string[]{"Geaux: I'll buy you a new one", "0", "0"});
-			text2.Add (new string[]{"Mr. Haus: You can afford that?", "1", "0"});
-			text2.Add (new string[]{"Geaux: Yeah! I have 6 quindecillion dollars!", "1", "0"});
-			text2.Add (new string[]{"Mr. Haus: And you didnt think to pay your debt?", "1", "0"});
-			text2.Add (new string[]{"Geaux: Well I was still a quindecillion dollars short", "1", "0"});
-			text2.Add (new string[]{"Mr. Haus: Right...", "1", "0"});
-			text2.Add (new string[]{"Mr. Haus: So who takes on Big Oil's debt now?", "1", "0"});
+		//	text2.Add (new string[]{"Mr. Haus: Whatever, I've been living without it for 20 years...", "1", "0"});
+			text2.Add (new string[]{"Geaux: Wait a second...", "0", "0"});
+			text2.Add (new string[]{"Geaux: That's not your soul, is it?", "0", "0"});
+			text2.Add (new string[]{"Mr. Haus: It's a Fake!", "1", "0"});
+			text2.Add (new string[]{"Mr. Haus: I still need to find my soul!", "1", "0"});
+			text2.Add (new string[]{"Geaux: Well whoever has it probably wants my money too", "1", "0"});
+			text2.Add (new string[]{"Mr. Haus: I will find them, and I will kill them.", "1", "0"});
+			text2.Add (new string[]{"Geaux: Oui", "1", "0"});
 		}
 	}
 
-	public void SetText5(int day, int ID){
+	public void SetText5(int day, int ID, int mid){
 		if (day == 0) {
+			if(mid == 0){
+				text2.Add (new string[]{"1", "0", "0"});
 			text2.Add (new string[]{"Hey buddy, give me my arm back!!", "0", "0"});
 			//text2.Add (new string[]{"Mr. Oil Mancer: Blud is NOT allowed in MY area!", "1", "0"});
+				text2.Add (new string[]{"2", "0", "0"});
 			text2.Add (new string[]{"No.", "1", "0"});
 			//text2.Add (new string[]{"Mr. Oil Mancer: Get out of mein haus!", "1", "0"});
 			text2.Add (new string[]{"I'm missing like half of my body, but with your arm with your iron bones, I'll be more powerful than ever!!", "1", "0"});
 			text2.Add (new string[]{"HEHEHEHAW", "1", "0"});
 			text2.Add (new string[]{"Also, you were in a reduculous amount of debt, I needed something from you at some point.", "1", "0"});
+				text2.Add (new string[]{"1", "0", "0"});
 			text2.Add (new string[]{"That's fair.", "0", "0"});
 			text2.Add (new string[]{"I still want my arm back though.", "0", "0"});
+				text2.Add (new string[]{"2", "0", "0"});
 			text2.Add (new string[]{"No!", "1", "0"});
+				text2.Add (new string[]{"1", "0", "0"});
 			text2.Add (new string[]{"By the way, what's Haus's problem with you?", "0", "0"});
+				text2.Add (new string[]{"2", "0", "0"});
 			text2.Add (new string[]{"We stole his soul.", "1", "0"});
+				text2.Add (new string[]{"1", "0", "0"});
 			text2.Add (new string[]{"Yeah, I'd be mad too.", "0", "0"});
 			text2.Add (new string[]{"Anyway I'll need that arm back and also Haus's soul.", "0", "0"});
+				text2.Add (new string[]{"2", "0", "0"});
 			text2.Add (new string[]{"You'll need to kill me for it!", "1", "0"});
+				text2.Add (new string[]{"1", "0", "0"});
 			text2.Add (new string[]{"Okay, I will", "0", "0"});
+				text2.Add (new string[]{"2", "0", "0"});
 			text2.Add (new string[]{"Wait-", "1", "0"});
 			//text2.Add (new string[]{"Geaux: (Huh. That chandeleir looks deliberately placed there. Odd...)", "0", "1"});
+			} else if(mid == 1){
+				//text2.Clear();
+				//Debug.Log("ahusdghoduyagsfydgakyugsdf");
+				text2.Add (new string[]{"1", "0", "0"});
+				text2.Add (new string[]{"This is way easier than I thought!", "0", "0"});
+				//text2.Add (new string[]{"Mr. Oil Mancer: Blud is NOT allowed in MY area!", "1", "0"});
+				text2.Add (new string[]{"2", "0", "0"});
+				text2.Add (new string[]{"YOU'RE WAY STRONGER THAN I THOUGHT YOU WERE", "1", "0"});
+				//text2.Add (new string[]{"Mr. Oil Mancer: Get out of mein haus!", "1", "0"});
+				text2.Add (new string[]{"I should've expected this from what you did to Oilmancer", "1", "0"});
+				text2.Add (new string[]{"1", "0", "0"});
+				text2.Add (new string[]{"You're cooked bruv", "0", "0"});
+				text2.Add (new string[]{"2", "0", "0"});
+				text2.Add (new string[]{"YOU WILL PAY FOR THIS!", "1", "0"});
+				//text2.Add (new string[]{"Geaux: (Huh. That chandeleir looks deliberately placed there. Odd...)", "0", "1"});
+			}else if(mid == 2){
+				text2.Add (new string[]{"2", "1", "0"});
+				text2.Add (new string[]{"I have been defeated >_<", "1", "0"});
+				//text2.Add (new string[]{"Mr. Oil Mancer: Blud is NOT allowed in MY area!", "1", "0"});
+				text2.Add (new string[]{"What even are you??? Are all of your bones made of iron??", "1", "0"});
+				//text2.Add (new string[]{"Mr. Oil Mancer: Get out of mein haus!", "1", "0"});
+				text2.Add (new string[]{"1", "0", "0"});
+				text2.Add (new string[]{"I dunno, I'll have to ask my doctor.", "0", "0"});
+				text2.Add (new string[]{"Where's my arm?", "0", "0"});
+				text2.Add (new string[]{"2", "0", "0"});
+				text2.Add (new string[]{"It's in the back in the box next to haus' soul", "1", "0"});
+				//text2.Add (new string[]{"Geaux: (Huh. That chandeleir looks deliberately placed there. Odd...)", "0", "1"});
+			}
 		}
 	}
 	public void SetText4(int day, int ID){

@@ -147,27 +147,46 @@ public class CEO : Enemy
         }
         else
         {
-            base.Die();
+			StartCoroutine(DefeatText());
         }
     }
-
+	private IEnumerator DefeatText()
+	{
+		if(gunsDestroyed){
+			TextCutscene.me.startAgain(2);
+		}
+		Musik[1].volume = 0f;
+		gunsDestroyed = false;
+		BattleStateManager.me.paused = true;
+		while(BattleStateManager.wait){
+			yield return null;
+		}
+		base.Die();
+	}
     private IEnumerator DestroyGuns()
     {
+		if(!gunsDestroyed){
+			Debug.Log("running restart");
+			TextCutscene.me.startAgain(1);
+		}
+		Musik[0].volume = 0f;
 		gunsDestroyed = true;
 		parts[0].Play();
         BattleStateManager.me.paused = true;
-        yield return new WaitForSeconds(1f);
-        Destroy(guns);
+		Destroy(guns);
+		while(BattleStateManager.wait){
+			yield return null;
+		}
         alive = true;
         hp.gameObject.SetActive(true);
         AddHealth(GetMaxHealth());
-		Musik[0].volume = 0f;
+
 		Musik[1].volume = 1f;
 		Musik[1].Play();
-        yield return new WaitForSeconds(1f);
 		for(int i = 0; i < Phase2stuff.Length; i++){
 			Phase2stuff[i].SetActive(true);
 		}
+        yield return new WaitForSeconds(1f);
         BattleStateManager.me.paused = false;
         BattleStateManager.me.IncrementState();
     }
