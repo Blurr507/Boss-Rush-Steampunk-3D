@@ -197,7 +197,17 @@ public class BattleStateManager : MonoBehaviour
     public void HurtTarget(int hp, int damageType = 0)
     {
         //  Deal 'hp' damage of 'damageType' type to the selected target
-        target.GetComponent<Health>().SubtractHealth(hp, damageType);
+		if(target.gameObject.GetComponent<CEO>() != null){
+			if(target.gameObject.GetComponent<CEO>().gunsDestroyed){
+				Debug.Log("hit the shield");
+				target.GetComponent<Health>().SubtractHealth((int)(hp * 0.5), damageType);
+			} else {
+				target.GetComponent<Health>().SubtractHealth(hp, damageType);
+			}
+		} else {
+			target.GetComponent<Health>().SubtractHealth(hp, damageType);
+		}
+       
     }
 
     public void HealTarget(int hp, int damageType = -1)
