@@ -1509,7 +1509,7 @@ MonoBehaviour:
     type: 3}
   ionCanonDamage: 150
   smgDamage: 25
-  dashDamage: 50
+  dashDamage: 150
   posCurve:
     serializedVersion: 2
     m_Curve:
@@ -1545,6 +1545,7 @@ MonoBehaviour:
   Musik:
   - {fileID: 31058658}
   - {fileID: 1559660436}
+  attackCounter: 0
 --- !u!114 &404802767
 MonoBehaviour:
   m_ObjectHideFlags: 0

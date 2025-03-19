@@ -200,7 +200,8 @@ public class BattleStateManager : MonoBehaviour
 		if(target.gameObject.GetComponent<CEO>() != null){
 			if(target.gameObject.GetComponent<CEO>().gunsDestroyed){
 				Debug.Log("hit the shield");
-				target.GetComponent<Health>().SubtractHealth((int)(hp * 0.5), damageType);
+				//if in the CEO fight and the ceo has his shield up, deal 0.75 damage
+				target.GetComponent<Health>().SubtractHealth((int)(hp * 0.75), damageType);
 			} else {
 				target.GetComponent<Health>().SubtractHealth(hp, damageType);
 			}

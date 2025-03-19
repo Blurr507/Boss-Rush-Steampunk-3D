@@ -10,7 +10,7 @@ public class CEO : Enemy
     public GameObject ionCanonAttack;
     public int ionCanonDamage = 150;
     public int smgDamage = 75;
-    public int dashDamage = 50;
+    public int dashDamage = 150;
     public AnimationCurve posCurve;
     public GameObject guns;
     private Animator anim;
@@ -22,9 +22,12 @@ public class CEO : Enemy
 
 	public AudioSource[] Musik;
 
+	public int attackCounter;
+
 
     public override void StartOverride()
     {
+		attackCounter = 0;
 		gunsDestroyed = false;
         base.StartOverride();
         Random.InitState(10);
@@ -61,7 +64,14 @@ public class CEO : Enemy
             }
             else
             {
-                StartCoroutine(Dash());
+				if(attackCounter == 0){
+					StartCoroutine(Dash());
+				} else if(attackCounter == 1) {
+					StartCoroutine(Fire());
+				} else {
+					StartCoroutine(Shotgun());
+				}
+                
             }
         }
         else
@@ -72,6 +82,12 @@ public class CEO : Enemy
             BattleStateManager.me.IncrementState();
             BattleStateManager.me.IncrementState();
         }
+		if(gunsDestroyed){
+			attackCounter++;
+			if(attackCounter >= 8){
+				attackCounter = 0;
+			}
+		}
     }
 
     private IEnumerator FireIonCanon()
@@ -115,6 +131,7 @@ public class CEO : Enemy
         DamageBubble bubble = FindObjectOfType<DamageBubble>();
         bubble.AddDamage(dashDamage);
         BattleStateManager.me.IncrementState();
+		//block this
         BattleStateManager.me.IncrementState();
         yield return new WaitForSeconds(0.5f);
         anim.SetTrigger("Dash");
@@ -126,6 +143,47 @@ public class CEO : Enemy
         anim.ResetTrigger("Dash");
         BattleStateManager.me.IncrementState();
     }
+
+	private IEnumerator Shotgun()
+	{
+		yield return new WaitForSeconds(0.5f);
+		GameObject attack = Instantiate(ionCanonAttack);
+		DamageBubble bubble = FindObjectOfType<DamageBubble>();
+		bubble.AddDamage(125);
+		BattleStateManager.me.IncrementState();
+		//dont block this
+		BattleStateManager.me.IncrementState();
+		yield return new WaitForSeconds(0.5f);
+		//anim.SetTrigger("Dash");
+		bubble.MoveToPos(target.transform.position, 0.83f, posCurve);
+		yield return new WaitForSeconds(0.83f);
+		HurtTarget(125);
+		yield return new WaitForSeconds(0.5f);
+		Destroy(attack);
+		//anim.ResetTrigger("Dash");
+		BattleStateManager.me.IncrementState();
+	}
+
+	private IEnumerator Fire()
+	{
+		yield return new WaitForSeconds(0.5f);
+		GameObject attack = Instantiate(ionCanonAttack);
+		DamageBubble bubble = FindObjectOfType<DamageBubble>();
+		bubble.AddDamage(100);
+		BattleStateManager.me.IncrementState();
+		//block this
+		BattleStateManager.me.IncrementState();
+		yield return new WaitForSeconds(0.5f);
+		//anim.SetTrigger("Dash");
+		bubble.MoveToPos(target.transform.position, 0.83f, posCurve);
+		yield return new WaitForSeconds(0.83f);
+		HurtTarget(100);
+		FindObjectOfType<Geaux>().AddEffect("burning");
+		yield return new WaitForSeconds(0.5f);
+		Destroy(attack);
+		//anim.ResetTrigger("Dash");
+		BattleStateManager.me.IncrementState();
+	}
 
     private void IncrementTurn()
     {
