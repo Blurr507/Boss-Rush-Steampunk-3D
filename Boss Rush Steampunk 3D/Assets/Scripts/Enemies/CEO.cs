@@ -68,8 +68,10 @@ public class CEO : Enemy
 					StartCoroutine(Dash());
 				} else if(attackCounter == 1) {
 					StartCoroutine(Fire());
-				} else {
+				} else if(attackCounter == 2){
 					StartCoroutine(Shotgun());
+				} else{
+					StartCoroutine(Heal());
 				}
                 
             }
@@ -84,7 +86,7 @@ public class CEO : Enemy
         }
 		if(gunsDestroyed){
 			attackCounter++;
-			if(attackCounter >= 8){
+			if(attackCounter >= 4){
 				attackCounter = 0;
 			}
 		}
@@ -179,6 +181,27 @@ public class CEO : Enemy
 		yield return new WaitForSeconds(0.83f);
 		HurtTarget(100);
 		FindObjectOfType<Geaux>().AddEffect("burning");
+		yield return new WaitForSeconds(0.5f);
+		Destroy(attack);
+		//anim.ResetTrigger("Dash");
+		BattleStateManager.me.IncrementState();
+	}
+
+	private IEnumerator Heal()
+	{
+		yield return new WaitForSeconds(0.5f);
+		GameObject attack = Instantiate(ionCanonAttack);
+		DamageBubble bubble = FindObjectOfType<DamageBubble>();
+		bubble.AddDamage(50);
+		BattleStateManager.me.IncrementState();
+		//block this + only heal blocked amount
+		BattleStateManager.me.IncrementState();
+		yield return new WaitForSeconds(0.5f);
+		//anim.SetTrigger("Dash");
+		bubble.MoveToPos(target.transform.position, 0.83f, posCurve);
+		yield return new WaitForSeconds(0.83f);
+		HurtTarget(50);
+		AddHealth(50);
 		yield return new WaitForSeconds(0.5f);
 		Destroy(attack);
 		//anim.ResetTrigger("Dash");
