@@ -156,13 +156,14 @@ public class CEO : Enemy
 		//dont block this
 		BattleStateManager.me.IncrementState();
 		yield return new WaitForSeconds(0.5f);
-		//anim.SetTrigger("Dash");
+		parts[3].Play();
+		anim.SetTrigger("Shotgun");
 		bubble.MoveToPos(target.transform.position, 0.83f, posCurve);
 		yield return new WaitForSeconds(0.83f);
 		HurtTarget(125);
 		yield return new WaitForSeconds(0.5f);
 		Destroy(attack);
-		//anim.ResetTrigger("Dash");
+		anim.ResetTrigger("Shotgun");
 		BattleStateManager.me.IncrementState();
 	}
 
@@ -176,14 +177,15 @@ public class CEO : Enemy
 		//block this
 		BattleStateManager.me.IncrementState();
 		yield return new WaitForSeconds(0.5f);
-		//anim.SetTrigger("Dash");
+		parts[2].Play();
+		anim.SetTrigger("Shield");
 		bubble.MoveToPos(target.transform.position, 0.83f, posCurve);
 		yield return new WaitForSeconds(0.83f);
 		HurtTarget(100);
 		FindObjectOfType<Geaux>().AddEffect("burning");
 		yield return new WaitForSeconds(0.5f);
 		Destroy(attack);
-		//anim.ResetTrigger("Dash");
+		anim.ResetTrigger("Shield");
 		BattleStateManager.me.IncrementState();
 	}
 
@@ -202,6 +204,7 @@ public class CEO : Enemy
 		yield return new WaitForSeconds(0.83f);
 		HurtTarget(50);
 		AddHealth(50);
+		parts[4].Play();
 		yield return new WaitForSeconds(0.5f);
 		Destroy(attack);
 		//anim.ResetTrigger("Dash");
