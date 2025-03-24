@@ -2,15 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.Android;
+
+[System.Serializable]
+public struct BlockInfo
+{
+    public int fail;
+    public int target;
+    public int crit;
+    
+    public BlockInfo(int blockFail, int blockTarget, int blockCrit)
+    {
+        fail = blockFail;
+        target = blockTarget;
+        crit = blockCrit;
+    }
+}
 
 public class CEO : Enemy
 {
     private int turnIndex;
-    public GameObject ionCanonAttack;
+    public GameObject ionCanonAttack, blockObject;
+    public BlockInfo dashBlock = new BlockInfo(0, -30, -50);
+    public BlockInfo fireBlock = new BlockInfo(0, -30, -50);
     public int ionCanonDamage = 150;
     public int smgDamage = 75;
     public int dashDamage = 150;
+    public int fireDamage = 100;
     public AnimationCurve posCurve;
     public GameObject guns;
     private Animator anim;
@@ -135,16 +152,46 @@ public class CEO : Enemy
         DamageBubble bubble = FindObjectOfType<DamageBubble>();
         bubble.AddDamage(dashDamage);
         BattleStateManager.me.IncrementState();
-		//block this
+        GameObject block = Instantiate(blockObject);
+        SteamGauge gauge = block.GetComponentInChildren<SteamGauge>();
+        yield return new WaitForSeconds(0.5f);
+        gauge.Spin();
+        while (true)
+        {
+            if (gauge.result != -1)
+            {
+                if (dashBlock.fail != 0 || gauge.result > 0)
+                {
+                    SmallDamage smallDamage = gauge.GetComponent<CreateObjectInBounds>().CreateObject().GetComponent<SmallDamage>();
+                    switch (gauge.result)
+                    {
+                        case 0:
+                            smallDamage.damage = dashBlock.fail;
+                            break;
+                        case 1:
+                            smallDamage.damage = dashBlock.target;
+                            break;
+                        case 2:
+                            smallDamage.damage = dashBlock.crit;
+                            break;
+                    }
+                    yield return new WaitForSeconds(1f);
+                }
+                yield return new WaitForSeconds(1f);
+                break;
+            }
+            yield return new WaitForEndOfFrame();
+        }
         BattleStateManager.me.IncrementState();
         yield return new WaitForSeconds(0.5f);
         anim.SetTrigger("Dash");
 		Sounds[0].Play();
         bubble.MoveToPos(target.transform.position, 0.83f, posCurve);
         yield return new WaitForSeconds(0.83f);
-        HurtTarget(dashDamage);
+        HurtTarget(bubble.damage);
         yield return new WaitForSeconds(0.5f);
         Destroy(attack);
+        Destroy(block);
         anim.ResetTrigger("Dash");
         BattleStateManager.me.IncrementState();
     }
@@ -176,21 +223,51 @@ public class CEO : Enemy
 		yield return new WaitForSeconds(0.5f);
 		GameObject attack = Instantiate(ionCanonAttack);
 		DamageBubble bubble = FindObjectOfType<DamageBubble>();
-		bubble.AddDamage(100);
+		bubble.AddDamage(fireDamage);
 		BattleStateManager.me.IncrementState();
-		//block this
-		BattleStateManager.me.IncrementState();
+        GameObject block = Instantiate(blockObject);
+        SteamGauge gauge = block.GetComponentInChildren<SteamGauge>();
+        yield return new WaitForSeconds(0.5f);
+        gauge.Spin();
+        while (true)
+        {
+            if (gauge.result != -1)
+            {
+                if (fireBlock.fail != 0 || gauge.result > 0)
+                {
+                    SmallDamage smallDamage = gauge.GetComponent<CreateObjectInBounds>().CreateObject().GetComponent<SmallDamage>();
+                    switch (gauge.result)
+                    {
+                        case 0:
+                            smallDamage.damage = fireBlock.fail;
+                            break;
+                        case 1:
+                            smallDamage.damage = fireBlock.target;
+                            break;
+                        case 2:
+                            smallDamage.damage = fireBlock.crit;
+                            break;
+                    }
+                    yield return new WaitForSeconds(1f);
+                }
+                yield return new WaitForSeconds(1f);
+                break;
+            }
+            yield return new WaitForEndOfFrame();
+        }
+        BattleStateManager.me.IncrementState();
 		yield return new WaitForSeconds(0.5f);
 		parts[2].Play();
 		Sounds[2].Play();
 		anim.SetTrigger("Shield");
 		bubble.MoveToPos(target.transform.position, 0.83f, posCurve);
 		yield return new WaitForSeconds(0.83f);
-		HurtTarget(100);
+		HurtTarget(bubble.damage);
 		FindObjectOfType<Geaux>().AddEffect("burning");
 		yield return new WaitForSeconds(0.5f);
 		Destroy(attack);
-		anim.ResetTrigger("Shield");
+        Destroy(block);
+        anim.ResetTrigger("Shield");
 		BattleStateManager.me.IncrementState();
 	}
 
