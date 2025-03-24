@@ -22,6 +22,8 @@ public class CEO : Enemy
 
 	public AudioSource[] Musik;
 
+	public AudioSource[] Sounds;
+
 	public int attackCounter;
 
 
@@ -137,6 +139,7 @@ public class CEO : Enemy
         BattleStateManager.me.IncrementState();
         yield return new WaitForSeconds(0.5f);
         anim.SetTrigger("Dash");
+		Sounds[0].Play();
         bubble.MoveToPos(target.transform.position, 0.83f, posCurve);
         yield return new WaitForSeconds(0.83f);
         HurtTarget(dashDamage);
@@ -156,6 +159,7 @@ public class CEO : Enemy
 		//dont block this
 		BattleStateManager.me.IncrementState();
 		yield return new WaitForSeconds(0.5f);
+		Sounds[3].Play();
 		parts[3].Play();
 		anim.SetTrigger("Shotgun");
 		bubble.MoveToPos(target.transform.position, 0.83f, posCurve);
@@ -178,6 +182,7 @@ public class CEO : Enemy
 		BattleStateManager.me.IncrementState();
 		yield return new WaitForSeconds(0.5f);
 		parts[2].Play();
+		Sounds[2].Play();
 		anim.SetTrigger("Shield");
 		bubble.MoveToPos(target.transform.position, 0.83f, posCurve);
 		yield return new WaitForSeconds(0.83f);
@@ -205,6 +210,7 @@ public class CEO : Enemy
 		HurtTarget(50);
 		AddHealth(50);
 		parts[4].Play();
+		Sounds[1].Play();
 		yield return new WaitForSeconds(0.5f);
 		Destroy(attack);
 		//anim.ResetTrigger("Dash");
@@ -265,7 +271,7 @@ public class CEO : Enemy
         hp.gameObject.SetActive(true);
         AddHealth(GetMaxHealth());
 
-		Musik[1].volume = 1f;
+		Musik[1].volume = 0.75f;
 		Musik[1].Play();
 		for(int i = 0; i < Phase2stuff.Length; i++){
 			Phase2stuff[i].SetActive(true);
