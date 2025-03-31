@@ -19202,10 +19202,20 @@ MonoBehaviour:
   currentlyTyping: 0
   section: 0
   speaker: 0
+  outp: 
   scenes: []
   scene: 0
   dialog: 1
-  audsrc: {fileID: 0}
+  out1sfx:
+  - {fileID: 8300000, guid: ade4d77069c747244881b64f20ab9eee, type: 3}
+  - {fileID: 8300000, guid: dad8c8e01fe69834ab5dfaeffbf0e9a2, type: 3}
+  - {fileID: 8300000, guid: f87954634dc7e7040a2fed5cae198ef5, type: 3}
+  out2sfx:
+  - {fileID: 8300000, guid: ade4d77069c747244881b64f20ab9eee, type: 3}
+  - {fileID: 8300000, guid: dad8c8e01fe69834ab5dfaeffbf0e9a2, type: 3}
+  - {fileID: 8300000, guid: f87954634dc7e7040a2fed5cae198ef5, type: 3}
+  out3sfx: []
+  audsrc: {fileID: 1999581192}
   p: 0
 --- !u!82 &1999581192
 AudioSource:
@@ -19214,13 +19224,13 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999581186}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1aabb26763a0dfc49a25f158b8eca4e7, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.2
+  m_Pitch: 3
   Loop: 0
   Mute: 0
   Spatialize: 0

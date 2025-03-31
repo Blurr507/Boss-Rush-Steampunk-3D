@@ -21,6 +21,8 @@ public class TextCutscene : MonoBehaviour
 	public List<string[]> text2 = new List<string[]>();
 	public int speaker;
 
+	public string outp;
+
 	public GameObject[] scenes;
 
 	public int scene;
@@ -33,13 +35,17 @@ public class TextCutscene : MonoBehaviour
 
 	//public Array2DAudioClip lines;
 
+	public AudioClip[] out1sfx;
+	public AudioClip[] out2sfx;
+	public AudioClip[] out3sfx;
+
 	public AudioSource audsrc;
 
 	public int p;
     // Start is called before the first frame update
     void Start()
     {
-		p=0;
+		p = 0;
 		me = this;
 		speaker = 0;
 		text2 = new List<string[]>();
@@ -59,10 +65,14 @@ public class TextCutscene : MonoBehaviour
 		BattleStateManager.wait = true;
 		done = false;
 		CheckCamWarp();
+		if(dialog){
+			StartCoroutine(Type(text2[section][0]));
+		}
+
     }
 	public void startAgain(int t){
 		gameObject.SetActive(true);
-		p=t;
+		p = t;
 		text2.Clear();
 		Debug.Log(text2.Count);
 		//me = this;
@@ -90,6 +100,10 @@ public class TextCutscene : MonoBehaviour
 		done = false;
 		Debug.Log("//" + done + "  / " + section + "/" + text2.Count);
 		CheckCamWarp();
+		if(dialog){
+		StartCoroutine(Type(text2[section][0]));
+		}
+
 	}
 
 	void CheckCamWarp(){
@@ -121,53 +135,83 @@ public class TextCutscene : MonoBehaviour
 				}
 				}
 			if(speaker == 0){
-			output.text = text2 [section][0];
+			output.text = outp;
 			output2.text = "";
 			output3.text = "";
 			} else if(speaker == 1){
-			output2.text = text2 [section][0];
+					output2.text = outp;
 			output.text = "";
 			output3.text = "";
 				} else {
 					for(int i = 0; i < selectables.Length; i++){
 						selectables[i].canSelect = true;
 					}
-					output3.text = text2 [section][0];
+					output3.text = outp;
 					output2.text = "";
 					output.text = "";
 				}
 		} else {
-		output.text = text2 [section][0];
+				output.text = text2[section][0];
 		}
 		}
     }
-	/*IEnumerator Type(string text){
+	IEnumerator Type(string text){
 		currentlyTyping = true;
 		string outputText = "";
+		outp = "";
 		for (int i = 0; i < text.Length; i++) {
 			if(currentlyTyping){
+				if(!audsrc.isPlaying){
+					if(speaker == 0){
+						audsrc.clip = out1sfx[Random.Range(0, out1sfx.Length)];
+					} else if(speaker == 1){
+						audsrc.clip = out2sfx[Random.Range(0, out2sfx.Length)];
+					} else if(speaker == 3){
+						audsrc.clip = out3sfx[Random.Range(0, out3sfx.Length)];
+					}
+
+
+
+					audsrc.Play();
+				}
+				outp = outp + text.Substring(i, 1);
+				//output.text = outputText;
 				
-				outputText = outputText + text.Substring(i, 1);
-				output.text = outputText;
-				
-				yield return new WaitForSeconds(0.05f);
+				yield return new WaitForSeconds(0.025f);
 			}
 		}
 		if (currentlyTyping) {
 			next ();
 			currentlyTyping = false;
 		}
-	}*/
+	}
 	public void next(){
-		section++;
+		//section++;
+		if(dialog){
+		if(!currentlyTyping){
+			//if(section < text2.Count){
+				section++;
+			CheckCamWarp();
+			if(section < text2.Count){
+				speaker = int.Parse(text2 [section][1]);
+				StartCoroutine(Type(text2[section][0]));
+			}
+
+			//}
+		} else {
+			currentlyTyping = false;
+			outp = text2[section][0];
+
+		}
+		} else {
+			section++;
+		}
 		//Debug.Log(text2 [section][0]);
-		CheckCamWarp();
+
 		if(!dialog){
 			//audsrc.clip = lines.GetCell(scene,section);
 		}
-		if(section < text2.Count){
-		speaker = int.Parse(text2 [section][1]);
-		}
+
 		if(section >= text2.Count){
 			if(!dialog){
 			scene++;
