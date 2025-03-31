@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class BattleStateManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class BattleStateManager : MonoBehaviour
 	public AudioSource[] audios;
 
 	public static bool wait;
+
+	public AudioMixer mixer;
+
+	//private float targetmixerval;
     //battleState refers to the state of the battle (choosing attacks stage, skill checks stage, boss damager stage, etc)
     //it controls things like logic and camera position
     //the main battle menu (choosing to attack or heal etc) is assigned the intereger 0
@@ -76,8 +81,20 @@ public class BattleStateManager : MonoBehaviour
 		battleState = i;
 	}
 
+	void FixedUpdate(){
+		float q;
+		mixer.GetFloat("Lowpass", out q);
+		if(battleState == 2){
+
+			mixer.SetFloat("Lowpass", Mathf.Lerp(q, 100f, 0.1f));
+		} else {
+			mixer.SetFloat("Lowpass", Mathf.Lerp(q, 22000f, 0.1f));
+		}
+	}
+
     void Update()
     {
+
         if (lrpos[0] != null)
         {
             lr.SetPosition(0, lrpos[0].position);

@@ -156,6 +156,7 @@ MonoBehaviour:
   gooseAnimator: {fileID: 1188938336}
   audios:
   - {fileID: 1188938330}
+  mixer: {fileID: 24100000, guid: 548cc72319934174ea966df861b2f673, type: 2}
   lr: {fileID: 1336116550}
   lrpos:
   - {fileID: 0}
@@ -206,7 +207,7 @@ AudioSource:
   m_GameObject: {fileID: 31058655}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 548cc72319934174ea966df861b2f673,
+  OutputAudioMixerGroup: {fileID: 7643746089947698565, guid: 548cc72319934174ea966df861b2f673,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4012a9fc285eb0b44aba27fed9e50d0f, type: 3}
   m_PlayOnAwake: 1
@@ -46200,28 +46201,14 @@ MonoBehaviour:
   - {fileID: 1611002642}
   - {fileID: 1934224412}
   - {fileID: 1328984935}
+  currentlyTyping: 0
   section: 0
   speaker: 0
   scenes: []
   scene: 0
   dialog: 1
-  lines:
-    gridSize: {x: 3, y: 3}
-    cellSize: {x: 96, y: 16}
-    cells:
-    - row:
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-    - row:
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-    - row:
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
   audsrc: {fileID: 0}
+  p: 0
 --- !u!1001 &2015291502
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -156,6 +156,7 @@ MonoBehaviour:
   gooseAnimator: {fileID: 2008835564}
   audios:
   - {fileID: 2008835565}
+  mixer: {fileID: 24100000, guid: 548cc72319934174ea966df861b2f673, type: 2}
   lr: {fileID: 2008835558}
   lrpos:
   - {fileID: 2008835557}
@@ -206,7 +207,7 @@ AudioSource:
   m_GameObject: {fileID: 31058655}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 548cc72319934174ea966df861b2f673,
+  OutputAudioMixerGroup: {fileID: 7643746089947698565, guid: 548cc72319934174ea966df861b2f673,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 5b9d132da2698d648961fad278f0e033, type: 3}
   m_PlayOnAwake: 1
@@ -34099,7 +34100,7 @@ AudioSource:
   m_GameObject: {fileID: 1559660435}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 548cc72319934174ea966df861b2f673,
+  OutputAudioMixerGroup: {fileID: 7643746089947698565, guid: 548cc72319934174ea966df861b2f673,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 6a179d8acbe5df746b85d8ed215c2adb, type: 3}
   m_PlayOnAwake: 1
