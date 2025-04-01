@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1512,18 +1512,23 @@ MonoBehaviour:
     type: 3}
   blockObject: {fileID: 6242750146271802980, guid: 111045ba31c651f45bb56b7d2e48546a,
     type: 3}
+  ionCanonDamage: 150
+  smgDamage: 25
+  dashDamage: 150
   dashBlock:
     fail: 0
     target: -30
     crit: -50
+  fireDamage: 100
   fireBlock:
     fail: 0
     target: -30
     crit: -50
-  ionCanonDamage: 150
-  smgDamage: 25
-  dashDamage: 150
-  fireDamage: 100
+  healDamage: 50
+  healBlock:
+    fail: 0
+    target: -20
+    crit: -40
   posCurve:
     serializedVersion: 2
     m_Curve:

@@ -22,12 +22,14 @@ public class CEO : Enemy
 {
     private int turnIndex;
     public GameObject ionCanonAttack, blockObject;
-    public BlockInfo dashBlock = new BlockInfo(0, -30, -50);
-    public BlockInfo fireBlock = new BlockInfo(0, -30, -50);
     public int ionCanonDamage = 150;
     public int smgDamage = 75;
     public int dashDamage = 150;
+    public BlockInfo dashBlock = new BlockInfo(0, -30, -50);
     public int fireDamage = 100;
+    public BlockInfo fireBlock = new BlockInfo(0, -30, -50);
+    public int healDamage = 50;
+    public BlockInfo healBlock = new BlockInfo(0, -20, -40);
     public AnimationCurve posCurve;
     public GameObject guns;
     private Animator anim;
@@ -276,22 +278,54 @@ public class CEO : Enemy
 		yield return new WaitForSeconds(0.5f);
 		GameObject attack = Instantiate(ionCanonAttack);
 		DamageBubble bubble = FindObjectOfType<DamageBubble>();
-		bubble.AddDamage(50);
+		bubble.AddDamage(healDamage);
 		BattleStateManager.me.IncrementState();
-		//block this + only heal blocked amount
-		BattleStateManager.me.IncrementState();
+        GameObject block = Instantiate(blockObject);
+        SteamGauge gauge = block.GetComponentInChildren<SteamGauge>();
+        yield return new WaitForSeconds(0.5f);
+        gauge.Spin();
+        while (true)
+        {
+            if (gauge.result != -1)
+            {
+                if (healBlock.fail != 0 || gauge.result > 0)
+                {
+                    SmallDamage smallDamage = gauge.GetComponent<CreateObjectInBounds>().CreateObject().GetComponent<SmallDamage>();
+                    switch (gauge.result)
+                    {
+                        case 0:
+                            smallDamage.damage = healBlock.fail;
+                            break;
+                        case 1:
+                            smallDamage.damage = healBlock.target;
+                            break;
+                        case 2:
+                            smallDamage.damage = healBlock.crit;
+                            break;
+                    }
+                    yield return new WaitForSeconds(1f);
+                }
+                yield return new WaitForSeconds(1f);
+                break;
+            }
+            yield return new WaitForEndOfFrame();
+        }
+        BattleStateManager.me.IncrementState();
 		yield return new WaitForSeconds(0.5f);
 		//anim.SetTrigger("Dash");
 		bubble.MoveToPos(target.transform.position, 0.83f, posCurve);
 		yield return new WaitForSeconds(0.83f);
-		HurtTarget(50);
-		AddHealth(50);
+        //  Change the life steal off of how much damage was actually done to account for if Geaux defends
+        int geauxHealth = Geaux.main.GetHealth();
+		HurtTarget(bubble.damage);
+        AddHealth(Mathf.Clamp(geauxHealth - Geaux.main.GetHealth(), 0, bubble.damage));
 		parts[4].Play();
 		Sounds[1].Play();
 		yield return new WaitForSeconds(0.5f);
 		Destroy(attack);
-		//anim.ResetTrigger("Dash");
-		BattleStateManager.me.IncrementState();
+        Destroy(block);
+        //anim.ResetTrigger("Dash");
+        BattleStateManager.me.IncrementState();
 	}
 
     private void IncrementTurn()

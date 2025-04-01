@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Geaux : Health
@@ -18,6 +17,13 @@ public class Geaux : Health
 	public AudioSource normalMusic;
 
 	private ParticleSystem deathparts;
+
+    public static Geaux main;
+
+    private void Awake()
+    {
+        main = this;
+    }
 
     private void Start()
     {
